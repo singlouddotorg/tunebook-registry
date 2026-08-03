@@ -266,12 +266,23 @@
   }
 
   // ---------------- book list ----------------
+  // Sorted by fullTitle - the bold text actually shown on each card - not commonName,
+  // which can diverge from it (e.g. SHC2012's commonName "Cooper Book '12" vs. its
+  // fullTitle "The Sacred Harp") and made the visible card order look scrambled. A
+  // leading "The " is ignored for sorting purposes only, same as a library catalog would,
+  // so "The Sacred Harp" alphabetizes under S rather than clustering every "The..." book
+  // at the end under T.
+  function sortKeyForTitle(title){
+    return String(title || "").replace(/^the\s+/i, "").toLowerCase();
+  }
   function sortedBookCodes(){
     return Object.keys(BOOKS).filter(function(code){
       var b = BOOKS[code];
       return b.songs && Object.keys(b.songs).length > 0;
     }).sort(function(a, b){
-      return (BOOKS[a].commonName || a).localeCompare(BOOKS[b].commonName || b);
+      var ta = sortKeyForTitle(BOOKS[a].fullTitle || a);
+      var tb = sortKeyForTitle(BOOKS[b].fullTitle || b);
+      return ta.localeCompare(tb);
     });
   }
 
