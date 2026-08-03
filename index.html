@@ -72,7 +72,13 @@
   .result-count{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
 
   /* ---- book grid (landing view) ---- */
-  .book-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px; margin-bottom:40px; }
+  .book-group{ margin-bottom:34px; }
+  .book-group:last-child{ margin-bottom:40px; }
+  .group-heading{
+    font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--brass); margin:0 0 10px;
+  }
+  .book-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px; }
   .book-card{
     text-align:left; border:1px solid var(--paper-line); border-radius:10px; padding:14px 16px 16px;
     background:var(--paper-dark); cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
@@ -165,7 +171,7 @@
       <span class="result-count" id="bookResultCount"></span>
     </div>
 
-    <div class="book-grid" id="bookGrid"></div>
+    <div id="bookGrid"></div>
   </div>
 
   <!-- ============== DETAIL VIEW: one book ============== -->
@@ -288,6 +294,31 @@
     return false;
   }
 
+  // Groups books by shape system for display — same digit-extraction logic as the badge
+  // glyph itself, so a book's group and its glyph can never disagree. Anything without a
+  // recognized "4" or "7" in shapeSystem (missing, or some future notation this suite
+  // doesn't index yet) falls into its own group rather than being silently dropped or
+  // guessed into one of the other two.
+  function shapeGroupKey(book){
+    var match = /(\d)/.exec((book && book.shapeSystem) || "");
+    if(match && match[1] === "4") return "four";
+    if(match && match[1] === "7") return "seven";
+    return "other";
+  }
+  var SHAPE_GROUP_LABELS = { four: "Four-Shape Tunebooks", seven: "Seven-Shape Tunebooks", other: "Shape System Not Specified" };
+  var SHAPE_GROUP_ORDER = ["four", "seven", "other"];
+
+  function bookCardHtml(code){
+    var b = BOOKS[code];
+    var songCount = Object.keys(b.songs || {}).length;
+    return '<button class="book-card" data-code="' + esc(code) + '">' +
+      '<div class="badge-row">' + badgeHtml(code) + '</div>' +
+      '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+      (b.subtitle ? '<span class="subtitle">' + esc(b.subtitle) + '</span>' : '') +
+      '<span class="meta">' + songCount + ' songs indexed</span>' +
+    '</button>';
+  }
+
   function renderBookGrid(){
     var query = (bookSearch.value || "").trim().toLowerCase();
     var codes = sortedBookCodes().filter(function(code){ return bookMatchesQuery(code, query); });
@@ -296,15 +327,15 @@
       bookGrid.innerHTML = '<div class="no-results">No tunebooks match that search.</div>';
       return;
     }
-    bookGrid.innerHTML = codes.map(function(code){
-      var b = BOOKS[code];
-      var songCount = Object.keys(b.songs || {}).length;
-      return '<button class="book-card" data-code="' + esc(code) + '">' +
-        '<div class="badge-row">' + badgeHtml(code) + '</div>' +
-        '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
-        (b.subtitle ? '<span class="subtitle">' + esc(b.subtitle) + '</span>' : '') +
-        '<span class="meta">' + songCount + ' songs indexed</span>' +
-      '</button>';
+    var groups = { four: [], seven: [], other: [] };
+    codes.forEach(function(code){ groups[shapeGroupKey(BOOKS[code])].push(code); });
+    bookGrid.innerHTML = SHAPE_GROUP_ORDER.map(function(key){
+      var groupCodes = groups[key];
+      if(!groupCodes.length) return "";
+      return '<div class="book-group">' +
+        '<div class="group-heading">' + esc(SHAPE_GROUP_LABELS[key]) + '</div>' +
+        '<div class="book-grid">' + groupCodes.map(bookCardHtml).join("") + '</div>' +
+      '</div>';
     }).join("");
     Array.prototype.forEach.call(bookGrid.querySelectorAll(".book-card"), function(card){
       card.addEventListener("click", function(){ navigateToBook(card.dataset.code); });
