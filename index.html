@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tunebook Registry :: SingLoud.org</title>
+<meta name="description" content="A browsable, read-only index of every shape-note tunebook indexed by the EZ Minutes Suite — full titles, editions, and page-by-page song contents.">
+<!-- This page reads the same tunebook-index.js file the EZ Minutes Suite (Capture, Compile,
+     Tunebook Editor) ships with — see README.md in this repo for how the two projects relate
+     and how this file gets kept in sync. Nothing here writes back to that file; this is a
+     read-only public mirror of it, browsable by anyone with the link. -->
+<script src="tunebook-index.js"></script>
+<!-- No external fonts or CDN scripts, matching the rest of the EZ Minutes Suite. -->
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-dark:#f8f3e6;
+    --paper-line:#e1d5b8;
+    --ink:#241f1a;
+    --ink-soft:#6b5f4d;
+    --ink-faint:#a89a80;
+    --oxblood:#8a2e2e;
+    --oxblood-dark:#6e2424;
+    --brass:#AD8A4E;
+    --brass-light:#D9C48F;
+    --navy:#2C3E50;
+    --sage:#3F5B44;
+    --card-shadow: 0 1px 2px rgba(43,35,24,.06), 0 8px 24px rgba(43,35,24,.07);
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'Roboto Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif); min-height:100vh;}
+  input, button, select{font-family:var(--sans);}
+
+  .missing-dep-banner{background:#8a2e2e; color:#fff; padding:14px 20px; font-size:14px; line-height:1.5; display:none;}
+  .missing-dep-banner strong{display:block; font-size:15px; margin-bottom:4px;}
+  .missing-dep-banner code{background:rgba(255,255,255,0.15); padding:1px 5px; border-radius:3px;}
+
+  .header-wrap{max-width:900px; margin:0 auto; padding:0 20px;}
+  .suite-header{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding:14px 0; border-bottom:1px solid var(--paper-line); margin-bottom:6px;
+  }
+  .suite-brand{ display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink); }
+  .suite-brand .shapes{ display:flex; gap:5px; margin:0; }
+  .suite-brand .suite-name{ font-family:var(--serif); font-weight:600; font-size:18px; letter-spacing:.01em; }
+  .suite-nav{ display:flex; gap:2px; flex-wrap:wrap; align-items:center; }
+  .suite-nav a{
+    font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    text-decoration:none; padding:6px 10px; border-radius:5px;
+  }
+  .suite-nav a:hover{ background:var(--paper-dark); color:var(--ink); }
+  .suite-nav a[aria-current="page"]{ color:var(--oxblood); background:var(--paper-dark); }
+  .suite-nav a:focus-visible, .suite-brand:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+
+  .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--brass); margin:22px 0 6px; }
+  h1.page-title{ font-size:30px; margin:0 0 8px; color:var(--oxblood-dark); font-weight:700; }
+  .page-desc{ font-family:var(--sans); color:var(--ink-soft); font-size:14.5px; line-height:1.6; max-width:640px; margin:0 0 26px; }
+  .page-desc a{ color:var(--oxblood); }
+
+  /* ---- search + filter row ---- */
+  .toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:20px; }
+  input[type=search]{
+    flex:1; min-width:220px; font-family:var(--serif); font-size:14.5px;
+    padding:10px 12px; border:1px solid var(--paper-line); border-radius:6px;
+    background:#fffdf8; color:var(--ink);
+  }
+  input[type=search]:focus{ outline:2px solid var(--brass-light); outline-offset:1px; border-color:var(--brass); }
+  .result-count{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+
+  /* ---- book grid (landing view) ---- */
+  .book-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px; margin-bottom:40px; }
+  .book-card{
+    text-align:left; border:1px solid var(--paper-line); border-radius:10px; padding:14px 16px 16px;
+    background:var(--paper-dark); cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
+    display:flex; flex-direction:column; gap:6px; font-family:inherit; color:inherit;
+  }
+  .book-card:hover{ transform:translateY(-2px); box-shadow:var(--card-shadow); }
+  .book-card:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+  .book-card .title{ font-family:var(--serif); font-weight:700; font-size:15.5px; color:var(--oxblood-dark); line-height:1.3; }
+  .book-card .subtitle{ font-family:var(--serif); font-size:11.5px; font-style:italic; color:var(--ink-soft); line-height:1.35; }
+  .book-card .meta{ font-family:var(--sans); font-size:11px; color:var(--ink-faint); margin-top:auto; padding-top:6px; }
+  .no-results{ padding:30px 4px; color:var(--ink-faint); font-family:var(--sans); font-size:13.5px; }
+
+  /* ---- book detail view ---- */
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--sans); font-size:12.5px;
+    font-weight:600; color:var(--ink-soft); text-decoration:none; margin-bottom:16px; cursor:pointer;
+    background:none; border:none; padding:0;
+  }
+  .back-link:hover{ color:var(--oxblood); }
+  .book-header{ border:1px solid var(--paper-line); border-radius:10px; padding:16px 20px 18px; margin-bottom:16px; background:var(--paper-dark); }
+  .book-header .title{ font-family:var(--serif); font-weight:700; font-size:20px; color:var(--oxblood-dark); }
+  .book-header .subtitle{ font-family:var(--serif); font-size:13.5px; font-style:italic; color:var(--ink-soft); margin:4px 0 12px; }
+  .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3px 24px; }
+  @media (max-width:560px){ .field-grid{ grid-template-columns:1fr; } }
+  .field-row{ display:flex; gap:8px; padding:2px 0; align-items:baseline; }
+  .field-row .label{ min-width:132px; flex-shrink:0; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
+  .field-row .value{ font-family:var(--sans); font-size:12.5px; color:var(--ink); }
+  .not-set{ color:var(--ink-faint); font-style:italic; }
+
+  .song-row{ display:flex; gap:14px; padding:6px 12px; }
+  .song-row:nth-child(odd){ background:rgba(0,0,0,0.02); }
+  .song-row .page{ min-width:60px; font-weight:600; color:var(--ink-soft); font-family:var(--serif); }
+  .song-list{ border:1px solid var(--paper-line); border-radius:10px; overflow:hidden; }
+
+  .suite-footer{
+    padding:20px 18px 30px; border-top:1px solid var(--paper-line); margin-top:30px;
+    display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; justify-content:center;
+    font-family:var(--sans); font-size:11px; color:var(--ink-faint); text-align:center;
+  }
+  .suite-footer a{ color:var(--ink-faint); text-decoration:underline; }
+  .suite-footer a:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+
+  .badge-pill{ display:inline-flex; align-items:center; height:18px; padding:0 10px; border-radius:999px; font-size:11.5px; font-weight:600; }
+  .shape-glyph{ font-size:18px; line-height:1; margin-left:3px; }
+</style>
+</head>
+<body>
+<div class="missing-dep-banner" id="missingDepBanner" role="alert">
+  <strong>Missing file: tunebook-index.js</strong>
+  This page needs <code>tunebook-index.js</code> in the same folder to show anything. Right now it isn't loading.
+</div>
+
+<div class="header-wrap">
+<header class="suite-header">
+  <a href="#" class="suite-brand" id="brandLink">
+    <span class="shapes" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,3 21,20 3,20"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
+    </span>
+    <span class="suite-name">Tunebook Registry</span>
+  </a>
+  <nav class="suite-nav" aria-label="Site navigation">
+    <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a>
+    <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">EZ Minutes Suite</a>
+    <span aria-hidden="true" style="opacity:.4;padding:0 2px;">|</span>
+    <a href="mailto:sacredharpbiblio@gmail.com">Send feedback</a>
+  </nav>
+</header>
+
+<main id="mainContent">
+
+  <!-- ============== LANDING VIEW: book grid ============== -->
+  <div id="landingView">
+    <div class="eyebrow">Tunebook Registry</div>
+    <h1 class="page-title">Every book, page by page</h1>
+    <p class="page-desc">
+      A browsable index of the shape-note tunebooks this project has indexed so far — full titles,
+      editions, and every page's song content. This is a read-only companion to the
+      <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">EZ Minutes Suite</a>,
+      built from the exact same data file Capture and Compile use to log and publish real singing minutes.
+      Spot an error or have a correction? <a href="mailto:sacredharpbiblio@gmail.com">Let us know</a> —
+      this project is still growing and every correction helps.
+    </p>
+
+    <div class="toolbar">
+      <input type="search" id="bookSearch" placeholder="Search tunebooks or song titles…" autocomplete="off">
+      <span class="result-count" id="bookResultCount"></span>
+    </div>
+
+    <div class="book-grid" id="bookGrid"></div>
+  </div>
+
+  <!-- ============== DETAIL VIEW: one book ============== -->
+  <div id="detailView" style="display:none;">
+    <button class="back-link" id="backBtn">&larr; All tunebooks</button>
+    <div id="bookHeaderHost"></div>
+
+    <div class="toolbar">
+      <input type="search" id="songSearch" placeholder="Search this book's songs or pages…" autocomplete="off">
+      <span class="result-count" id="songResultCount"></span>
+    </div>
+
+    <div class="song-list" id="songListHost"></div>
+  </div>
+
+</main>
+
+<footer class="suite-footer">
+  <span>A project of <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a></span>
+  <span aria-hidden="true">&middot;</span>
+  <span>Data from the <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">EZ Minutes Suite</a></span>
+  <span aria-hidden="true">&middot;</span>
+  <span id="indexVersionFooter"></span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:sacredharpbiblio@gmail.com">Report an error</a>
+</footer>
+</div>
+
+<script>
+(function(){
+  var TUNEBOOKS_LOADED = (typeof EZ_MINUTES_TUNEBOOKS !== "undefined") && EZ_MINUTES_TUNEBOOKS.books;
+  if(!TUNEBOOKS_LOADED){
+    document.getElementById("missingDepBanner").style.display = "block";
+    return;
+  }
+  var BOOKS = EZ_MINUTES_TUNEBOOKS.books;
+
+  document.getElementById("indexVersionFooter").textContent =
+    "Tunebook Index v" + (typeof EZ_MINUTES_TUNEBOOK_INDEX_VERSION !== "undefined" ? EZ_MINUTES_TUNEBOOK_INDEX_VERSION : "unknown");
+
+  // ---------------- escaping ----------------
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  // ---------------- page sorting (matches Tunebook Editor / Compile) ----------------
+  var ROMAN_VALUES = (function(){
+    var vals = {}, numerals = ["i","ii","iii","iv","v","vi","vii","viii","ix","x",
+      "xi","xii","xiii","xiv","xv","xvi","xvii","xviii","xix","xx",
+      "xxi","xxii","xxiii","xxiv","xxv","xxvi","xxvii","xxviii","xxix","xxx",
+      "xxxi","xxxii","xxxiii","xxxiv","xxxv","xxxvi","xxxvii","xxxviii","xxxix"];
+    numerals.forEach(function(n, i){ vals[n] = i + 1; });
+    return vals;
+  })();
+  function romanValue(s){ var v = ROMAN_VALUES[s.toLowerCase()]; return v === undefined ? null : v; }
+  function sortPages(pages){
+    return pages.sort(function(a, b){
+      var na = parseInt(a, 10), nb = parseInt(b, 10);
+      var aIsNum = !isNaN(na), bIsNum = !isNaN(nb);
+      var aRoman = aIsNum ? null : romanValue(a), bRoman = bIsNum ? null : romanValue(b);
+      var aGroup = aRoman !== null ? 0 : (aIsNum ? 1 : 2);
+      var bGroup = bRoman !== null ? 0 : (bIsNum ? 1 : 2);
+      if(aGroup !== bGroup) return aGroup - bGroup;
+      if(aGroup === 0) return aRoman - bRoman;
+      if(aGroup === 2) return a < b ? -1 : (a > b ? 1 : 0);
+      if(na !== nb) return na - nb;
+      var sa = a.replace(/^\d+/, ""), sb = b.replace(/^\d+/, "");
+      if(sa === sb) return 0;
+      if(sa === "t") return -1;
+      if(sb === "t") return 1;
+      return sa < sb ? -1 : 1;
+    });
+  }
+
+  // ---------------- badges ----------------
+  var SHAPE_SYSTEM_DIGIT_GLYPHS = { "4": "\u2779", "7": "\u277C" }; // \u2779 = ❹, \u277C = ❼
+  function shapeGlyphHtml(book){
+    if(!book || !book.shapeSystem) return "";
+    var match = /(\d)/.exec(book.shapeSystem);
+    if(!match) return "";
+    var glyph = SHAPE_SYSTEM_DIGIT_GLYPHS[match[1]];
+    if(!glyph) return "";
+    return '<span class="shape-glyph" title="' + esc(book.shapeSystem) + '">' + glyph + '</span>';
+  }
+  function badgeHtml(code){
+    var b = BOOKS[code];
+    var bg = (b && b.badgeColor) || "#d9d9d9";
+    var fg = (b && b.badgeTextColor) || "#000";
+    return '<span class="badge-pill" style="background:' + esc(bg) + ';color:' + esc(fg) + ';">' + esc(code) + '</span>' + shapeGlyphHtml(b);
+  }
+
+  // ---------------- book list ----------------
+  function sortedBookCodes(){
+    return Object.keys(BOOKS).filter(function(code){
+      var b = BOOKS[code];
+      return b.songs && Object.keys(b.songs).length > 0;
+    }).sort(function(a, b){
+      return (BOOKS[a].commonName || a).localeCompare(BOOKS[b].commonName || b);
+    });
+  }
+
+  // ---------------- landing view: book grid ----------------
+  var bookGrid = document.getElementById("bookGrid");
+  var bookSearch = document.getElementById("bookSearch");
+  var bookResultCount = document.getElementById("bookResultCount");
+
+  function bookMatchesQuery(code, query){
+    if(!query) return true;
+    var b = BOOKS[code];
+    if((b.fullTitle || "").toLowerCase().indexOf(query) > -1) return true;
+    if((b.commonName || "").toLowerCase().indexOf(query) > -1) return true;
+    if((b.subtitle || "").toLowerCase().indexOf(query) > -1) return true;
+    if(code.toLowerCase().indexOf(query) > -1) return true;
+    var songs = b.songs || {};
+    for(var page in songs){
+      if((songs[page].title || "").toLowerCase().indexOf(query) > -1) return true;
+    }
+    return false;
+  }
+
+  function renderBookGrid(){
+    var query = (bookSearch.value || "").trim().toLowerCase();
+    var codes = sortedBookCodes().filter(function(code){ return bookMatchesQuery(code, query); });
+    bookResultCount.textContent = codes.length + " tunebook" + (codes.length === 1 ? "" : "s") + (query ? " matching \u201c" + bookSearch.value.trim() + "\u201d" : "");
+    if(!codes.length){
+      bookGrid.innerHTML = '<div class="no-results">No tunebooks match that search.</div>';
+      return;
+    }
+    bookGrid.innerHTML = codes.map(function(code){
+      var b = BOOKS[code];
+      var songCount = Object.keys(b.songs || {}).length;
+      return '<button class="book-card" data-code="' + esc(code) + '">' +
+        badgeHtml(code) +
+        '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+        (b.subtitle ? '<span class="subtitle">' + esc(b.subtitle) + '</span>' : '') +
+        '<span class="meta">' + songCount + ' songs indexed</span>' +
+      '</button>';
+    }).join("");
+    Array.prototype.forEach.call(bookGrid.querySelectorAll(".book-card"), function(card){
+      card.addEventListener("click", function(){ navigateToBook(card.dataset.code); });
+    });
+  }
+  bookSearch.addEventListener("input", renderBookGrid);
+
+  // ---------------- detail view: one book ----------------
+  var landingView = document.getElementById("landingView");
+  var detailView = document.getElementById("detailView");
+  var bookHeaderHost = document.getElementById("bookHeaderHost");
+  var songSearch = document.getElementById("songSearch");
+  var songResultCount = document.getElementById("songResultCount");
+  var songListHost = document.getElementById("songListHost");
+  var backBtn = document.getElementById("backBtn");
+  var brandLink = document.getElementById("brandLink");
+  var currentCode = null;
+
+  function fieldRow(label, valueHtml){
+    return '<div class="field-row"><span class="label">' + esc(label) + '</span><span class="value">' + valueHtml + '</span></div>';
+  }
+  function valueOrPlaceholder(v){ return v ? esc(v) : '<span class="not-set">not set</span>'; }
+
+  function renderBookHeader(code){
+    var b = BOOKS[code];
+    var songCount = Object.keys(b.songs || {}).length;
+    bookHeaderHost.innerHTML = '<div class="book-header">' +
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px;">' +
+        badgeHtml(code) +
+        '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+      '</div>' +
+      (b.subtitle ? '<div class="subtitle">' + esc(b.subtitle) + '</div>' : '<div style="margin-bottom:12px;"></div>') +
+      '<div class="field-grid">' +
+        fieldRow("Edition code", esc(code)) +
+        fieldRow("Common name", valueOrPlaceholder(b.commonName)) +
+        fieldRow("Work code", valueOrPlaceholder(b.workCode)) +
+        fieldRow("SHMHA code", valueOrPlaceholder(b.shmhaCode)) +
+        fieldRow("Compiler / Editor", valueOrPlaceholder(b.compiler)) +
+        fieldRow("Publisher", valueOrPlaceholder(b.publisher)) +
+        fieldRow("Place published", valueOrPlaceholder(b.placePublished)) +
+        fieldRow("Publication year", valueOrPlaceholder(b.publicationYear)) +
+        fieldRow("Shape system", valueOrPlaceholder(b.shapeSystem)) +
+        fieldRow("Songs indexed", String(songCount)) +
+      '</div>' +
+    '</div>';
+  }
+
+  function songRowHtml(page, song){
+    return '<div class="song-row"><span class="page">' + esc(page) + '</span><span>' + esc(song.title || "") + '</span></div>';
+  }
+
+  function renderSongList(){
+    var b = BOOKS[currentCode];
+    var songs = b.songs || {};
+    var query = (songSearch.value || "").trim().toLowerCase();
+    var pages = sortPages(Object.keys(songs));
+    if(query){
+      pages = pages.filter(function(p){
+        return p.toLowerCase().indexOf(query) > -1 || (songs[p].title || "").toLowerCase().indexOf(query) > -1;
+      });
+    }
+    songResultCount.textContent = pages.length + " of " + Object.keys(songs).length + " song(s)" + (query ? " matching \u201c" + songSearch.value.trim() + "\u201d" : "");
+    songListHost.innerHTML = pages.map(function(p){ return songRowHtml(p, songs[p]); }).join("")
+      || '<div class="no-results">No songs match that search.</div>';
+  }
+  songSearch.addEventListener("input", renderSongList);
+
+  function navigateToBook(code){
+    if(!BOOKS[code]) return;
+    currentCode = code;
+    songSearch.value = "";
+    landingView.style.display = "none";
+    detailView.style.display = "block";
+    renderBookHeader(code);
+    renderSongList();
+    window.location.hash = code;
+    try{ window.scrollTo(0, 0); }catch(e){ /* non-fatal */ }
+  }
+
+  function navigateToLanding(){
+    currentCode = null;
+    landingView.style.display = "block";
+    detailView.style.display = "none";
+    // Best-effort only: some environments (older browsers, certain file:// origins) can
+    // refuse a history.replaceState call. Losing the ability to clear the URL hash on
+    // "back" isn't worth breaking navigation over, so this is never allowed to throw.
+    if(window.location.hash){
+      try{ history.replaceState(null, "", window.location.pathname + window.location.search); }
+      catch(e){ /* non-fatal - hash just stays in the address bar */ }
+    }
+    try{ window.scrollTo(0, 0); }catch(e){ /* non-fatal */ }
+  }
+
+  backBtn.addEventListener("click", navigateToLanding);
+  brandLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
+
+  // ---------------- initial render, deep-link support (e.g. #SHM1991) ----------------
+  renderBookGrid();
+  var initialCode = window.location.hash.replace(/^#/, "");
+  if(initialCode && BOOKS[initialCode]){
+    navigateToBook(initialCode);
+  }
+  window.addEventListener("hashchange", function(){
+    var code = window.location.hash.replace(/^#/, "");
+    if(code && BOOKS[code]) navigateToBook(code);
+    else if(!code) navigateToLanding();
+  });
+})();
+</script>
+</body>
+</html>
