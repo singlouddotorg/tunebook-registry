@@ -229,6 +229,27 @@
     return vals;
   })();
   function romanValue(s){ var v = ROMAN_VALUES[s.toLowerCase()]; return v === undefined ? null : v; }
+  // Compares two "anything else" page keys - an appendix's "a104," "A184.2," etc. - the
+  // same way a person reading the appendix would: by its letter prefix, then the number
+  // embedded in it, then whatever's left over (a t/b split, a decimal suffix). Plain
+  // string comparison alone gets this wrong in a way that's easy to miss in review: "a108"
+  // sorts before "a11" as text, because the character '0' is less than '1' at the third
+  // position - nothing to do with the actual page numbers 108 and 11. Falls back to plain
+  // string comparison only when a key has no digits in it at all (e.g. a bare label).
+  function comparePageMisc(a, b){
+    var ma = /^([A-Za-z]*)(\d+)(.*)$/.exec(a);
+    var mb = /^([A-Za-z]*)(\d+)(.*)$/.exec(b);
+    if(!ma || !mb) return a < b ? -1 : (a > b ? 1 : 0);
+    var prefixA = ma[1].toLowerCase(), prefixB = mb[1].toLowerCase();
+    if(prefixA !== prefixB) return prefixA < prefixB ? -1 : 1;
+    var numA = parseInt(ma[2], 10), numB = parseInt(mb[2], 10);
+    if(numA !== numB) return numA - numB;
+    var sa = ma[3], sb = mb[3];
+    if(sa === sb) return 0;
+    if(sa === "t") return -1;
+    if(sb === "t") return 1;
+    return sa < sb ? -1 : 1;
+  }
   function sortPages(pages){
     return pages.sort(function(a, b){
       var na = parseInt(a, 10), nb = parseInt(b, 10);
@@ -238,7 +259,7 @@
       var bGroup = bRoman !== null ? 0 : (bIsNum ? 1 : 2);
       if(aGroup !== bGroup) return aGroup - bGroup;
       if(aGroup === 0) return aRoman - bRoman;
-      if(aGroup === 2) return a < b ? -1 : (a > b ? 1 : 0);
+      if(aGroup === 2) return comparePageMisc(a, b);
       if(na !== nb) return na - nb;
       var sa = a.replace(/^\d+/, ""), sb = b.replace(/^\d+/, "");
       if(sa === sb) return 0;
