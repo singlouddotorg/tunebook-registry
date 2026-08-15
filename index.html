@@ -27,10 +27,20 @@
   // changing that shared function's own output shape (and re-verifying the main suite
   // against a changed shape) just for this one page's own, additional need.
   var TUNEBOOK_FILE_PATHS = {};
+  // titleProper alone (no subtitle concatenated in) - buildTunebookIndexFromLibrary()
+  // only exposes the combined fullTitle, not the raw titleProper, so this is a second
+  // small local lookup alongside TUNEBOOK_FILE_PATHS for the same reason: avoiding a
+  // change to that shared function's own output shape for one page's own, additional
+  // need. Falls back to the parent Work's own titleProper when an Edition doesn't have
+  // its own, matching buildFullTitle()'s exact same fallback in shared-utils.js.
+  var TITLE_PROPER = {};
   if(typeof EZ_MINUTES_TUNEBOOK_LIBRARY !== "undefined" && EZ_MINUTES_TUNEBOOK_LIBRARY.editions){
     Object.keys(EZ_MINUTES_TUNEBOOK_LIBRARY.editions).forEach(function(editionId){
       var e = EZ_MINUTES_TUNEBOOK_LIBRARY.editions[editionId];
       if(e.tunebookFile) TUNEBOOK_FILE_PATHS[e.editionCode] = e.tunebookFile;
+      var w = EZ_MINUTES_TUNEBOOK_LIBRARY.works[e.workId];
+      var tp = e.titleProper || (w && w.titleProper);
+      if(tp) TITLE_PROPER[e.editionCode] = tp;
     });
   }
 </script>
@@ -663,7 +673,7 @@
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px;">' +
         badgeHtml(code) +
         levelBadgeHtml(code) +
-        '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+        '<span class="title">' + esc(TITLE_PROPER[code] || b.fullTitle || code) + '</span>' +
       '</div>' +
       (b.subtitle ? '<div class="subtitle">' + esc(b.subtitle) + '</div>' : '<div style="margin-bottom:12px;"></div>') +
       '<div class="field-grid">' +
