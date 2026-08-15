@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ :: Tunebook Registry :: SingLoud.org</title>
+<meta name="description" content="What Work and Edition codes mean, what the shape-note and Level symbols on each book stand for, and a brief sketch of the Minutes and Tunebooks apps this Registry's data comes from.">
+<!-- A static, no-data-dependency companion to index.html - broad, stable explanations of
+     concepts that show up throughout the Registry, kept deliberately general rather than
+     tied to specifics (exact counts, exact UI details) likely to drift out of date. See
+     README.md in this repo for how this page relates to the rest of the project. -->
+<!-- No external fonts or CDN scripts, matching the rest of the Minutes / Tunebooks suite. -->
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-dark:#f8f3e6;
+    --paper-line:#e1d5b8;
+    --ink:#241f1a;
+    --ink-soft:#6b5f4d;
+    --ink-faint:#a89a80;
+    --oxblood:#8a2e2e;
+    --oxblood-dark:#6e2424;
+    --brass:#AD8A4E;
+    --brass-light:#D9C48F;
+    --navy:#2C3E50;
+    --sage:#3F5B44;
+    --card-shadow: 0 1px 2px rgba(43,35,24,.06), 0 8px 24px rgba(43,35,24,.07);
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'Roboto Mono', monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif);
+    -webkit-font-smoothing:antialiased;
+  }
+  #mainContent{ max-width:760px; margin:0 auto; padding:0 24px 60px; }
+
+  .suite-header{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:16px 24px; border-bottom:1px solid var(--paper-line); max-width:760px;
+    margin:0 auto; flex-wrap:wrap;
+  }
+  .suite-brand{ display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink); }
+  .suite-brand .shapes{ display:flex; gap:5px; margin:0; }
+  .suite-brand .suite-name{ font-family:var(--serif); font-weight:600; font-size:18px; letter-spacing:.01em; }
+  .suite-nav{ display:flex; gap:2px; flex-wrap:wrap; align-items:center; }
+  .suite-nav a{
+    font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    text-decoration:none; padding:6px 10px; border-radius:5px;
+  }
+  .suite-nav a:hover{ background:var(--paper-dark); color:var(--ink); }
+  .suite-nav a[aria-current="page"]{ color:var(--oxblood); background:var(--paper-dark); }
+  .suite-nav a:focus-visible, .suite-brand:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+
+  .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--brass); margin:22px 0 6px; }
+  h1.page-title{ font-size:30px; margin:0 0 8px; color:var(--oxblood-dark); font-weight:700; }
+  .page-desc{ font-family:var(--sans); color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0 0 34px; }
+  .page-desc a{ color:var(--oxblood); }
+
+  .faq-item{ margin:0 0 30px; }
+  .faq-q{ font-family:var(--serif); font-weight:700; font-size:19px; color:var(--oxblood-dark); margin:0 0 8px; }
+  .faq-a{ font-family:var(--sans); color:var(--ink); font-size:14.5px; line-height:1.65; }
+  .faq-a p{ margin:0 0 10px; }
+  .faq-a p:last-child{ margin-bottom:0; }
+  .faq-a a{ color:var(--oxblood); }
+  .faq-a code{ font-family:var(--mono); font-size:12.5px; background:var(--paper-dark); padding:1px 5px; border-radius:4px; }
+
+  .example-row{
+    display:flex; align-items:center; gap:12px; margin:14px 0; padding:10px 14px;
+    background:var(--paper-dark); border:1px solid var(--paper-line); border-radius:8px;
+    font-family:var(--sans); font-size:13.5px; color:var(--ink-soft); flex-wrap:wrap;
+  }
+  .example-glyph{ font-size:22px; line-height:1; flex-shrink:0; }
+  .example-pill{
+    display:inline-flex; align-items:center; height:20px; padding:0 9px; border-radius:999px;
+    font-family:var(--sans); font-weight:700; font-size:12px; flex-shrink:0;
+  }
+  .level-badge{ display:inline-flex; align-items:center; height:18px; padding:0 8px; border-radius:5px; font-family:var(--sans); font-variant:small-caps; font-weight:700; font-size:12.5px; letter-spacing:.03em; flex-shrink:0; }
+  .level-badge.level-1{ background:var(--paper); color:var(--ink-faint); border:1px solid var(--paper-line); }
+  .level-badge.level-2{ background:var(--paper-line); color:var(--ink-soft); }
+  .level-badge.level-3{ background:var(--sage); color:#fff; }
+
+  .app-sketch{ display:flex; flex-direction:column; gap:14px; margin-top:6px; }
+  .app-sketch-item{ padding:12px 14px; background:var(--paper-dark); border:1px solid var(--paper-line); border-radius:8px; }
+  .app-sketch-item .app-name{ font-family:var(--serif); font-weight:700; color:var(--oxblood-dark); font-size:15px; margin:0 0 4px; }
+  .app-sketch-item p{ margin:0; font-family:var(--sans); font-size:13.5px; color:var(--ink-soft); line-height:1.55; }
+
+  .suite-footer{
+    max-width:760px; margin:40px auto 0; padding:16px 24px; border-top:1px solid var(--paper-line);
+    display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    font-family:var(--sans); font-size:12px; color:var(--ink-faint);
+  }
+  .suite-footer a{ color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="suite-header">
+  <a href="index.html" class="suite-brand">
+    <span class="shapes" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,3 21,20 3,20"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
+    </span>
+    <span class="suite-name">Tunebook Registry</span>
+  </a>
+  <nav class="suite-nav" aria-label="Site navigation">
+    <a href="codes.html" aria-current="page">FAQ</a>
+    <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a>
+    <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a>
+    <span aria-hidden="true" style="opacity:.4;padding:0 2px;">|</span>
+    <a href="mailto:sacredharpbiblio@gmail.com">Send feedback</a>
+  </nav>
+</header>
+
+<main id="mainContent">
+  <div class="eyebrow">Tunebook Registry</div>
+  <h1 class="page-title">Frequently asked questions</h1>
+  <p class="page-desc">
+    What the codes, symbols, and badges on each book's page actually mean, and a quick sketch of the
+    broader project this Registry is a read-only window into. This page sticks to the broad strokes -
+    things settled enough to stay true even as the details of the underlying apps keep changing.
+  </p>
+
+  <div class="faq-item">
+    <h2 class="faq-q">What's a Work Code? What's an Edition Code?</h2>
+    <div class="faq-a">
+      <p>
+        A <strong>Work</strong> is a book in the broad sense - the ongoing, evolving thing, independent
+        of any one printing of it. <em>The Sacred Harp</em> is a Work; it's existed as many different,
+        real editions over nearly two centuries, each with its own compilers, revisions, and additions,
+        but they're all still recognizably the same book. A <strong>Work Code</strong> is a short,
+        stable abbreviation for that ongoing thing - a few letters, not tied to any particular year.
+      </p>
+      <p>
+        An <strong>Edition Code</strong> is more specific: a Work Code plus the year that identifies one
+        particular printing. That's the code you'll actually see most often here, since it's what
+        distinguishes the book someone might really own and sing from.
+      </p>
+      <div class="example-row">
+        <span class="example-pill" style="background:#6e2424;color:#fff;">SHM</span>
+        <span>the Work &nbsp;&rarr;&nbsp;</span>
+        <span class="example-pill" style="background:#800020;color:#d4af37;">SHM1991</span>
+        <span class="example-pill" style="background:#155D13;color:#d4af37;">SHM2025</span>
+        <span>two real Editions of it</span>
+      </div>
+      <p>
+        Some books also carry a separate <strong>SHMHA code</strong> - the abbreviation already used in
+        the printed Sacred Harp Minutes Book, from before this project existed. Where one applies, it's
+        shown alongside the Work Code, not in place of it - two different code systems tracking the same
+        real books, kept side by side rather than merged into one.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h2 class="faq-q">What do the circled numbers next to a book's title mean?</h2>
+    <div class="faq-a">
+      <p>
+        Shape-note singing traditions use a small set of distinct note shapes - rather than plain ovals -
+        to make sight-singing easier without formal training. Different traditions settled on different
+        numbers of shapes for the same underlying scale. The circled digit is a quick, at-a-glance signal
+        for which system a given book uses, nothing more.
+      </p>
+      <div class="example-row">
+        <span class="example-glyph">&#10105;</span>
+        <span><strong>Four-shape</strong> - the older system, and the one <em>The Sacred Harp</em> itself uses.</span>
+      </div>
+      <div class="example-row">
+        <span class="example-glyph">&#10108;</span>
+        <span><strong>Seven-shape</strong> - a later system, used by a number of other real shape-note books.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h2 class="faq-q">What do the "Level 1 / 2 / 3" badges mean?</h2>
+    <div class="faq-a">
+      <p>
+        This is a plain, honest signal of how much has actually been documented about a book so far -
+        not a judgment of the book itself, and not a ranking of one book against another. It's meant to
+        move forward gradually, one step at a time, as real research gets done.
+      </p>
+      <div class="example-row">
+        <span class="level-badge level-1">Level 1</span>
+        <span>A bare record - title, compiler, a rough date. No page index yet.</span>
+      </div>
+      <div class="example-row">
+        <span class="level-badge level-2">Level 2</span>
+        <span>A complete page index: every page matched to its song title, straight through the book.</span>
+      </div>
+      <div class="example-row">
+        <span class="level-badge level-3">Level 3</span>
+        <span>Level 2, plus real scholarly detail - meter, key, scripture reference, who wrote the text and the music, copyright status, and, for the book as a whole, things like publication history and sources.</span>
+      </div>
+      <p>
+        Level 2 is already genuinely useful on its own - it's what's needed to reference a specific page
+        during a real singing. Level 3 takes real research time, so it's filled in unevenly by design,
+        sometimes song by song within the same book, rather than all at once.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h2 class="faq-q">What are "Minutes" and "Tunebooks"?</h2>
+    <div class="faq-a">
+      <p>
+        This Registry is a read-only mirror of data that lives in a small, separate, still-actively-developed
+        project: two companion apps, plus the tunebook data itself.
+      </p>
+      <div class="app-sketch">
+        <div class="app-sketch-item">
+          <p class="app-name">Minutes</p>
+          <p>For logging a real singing as it happens - who led which song, on which page - and later
+            compiling that into a finished, publishable set of minutes for the singing.</p>
+        </div>
+        <div class="app-sketch-item">
+          <p class="app-name">Tunebooks</p>
+          <p>The editing tool behind the tunebook data itself: adding a new book, building out its page
+            index, and layering on the richer Level 3 detail this Registry shows when it's there.</p>
+        </div>
+      </div>
+      <p>
+        Both are plain HTML files, opened by double-clicking - no install, no account, no server
+        required - alongside a couple of shared data files they load from the same folder. This
+        Registry is a separate, public, browsable companion to that same underlying data, meant purely
+        for reference; nothing here writes back to it.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <h2 class="faq-q">I found an error, or a book that should be here isn't. Now what?</h2>
+    <div class="faq-a">
+      <p>
+        This project is still actively growing, and corrections are genuinely welcome -
+        <a href="mailto:sacredharpbiblio@gmail.com">a quick email</a> is the most reliable way to flag
+        anything, whether it's a wrong page number, a book missing entirely, or something on this page
+        that could stand to be clearer.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="suite-footer">
+  <span>A project of <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a></span>
+  <span aria-hidden="true">&middot;</span>
+  <span>Data from the <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a> suite</span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:sacredharpbiblio@gmail.com">Report an error</a>
+</footer>
+
+</body>
+</html>
