@@ -163,6 +163,7 @@
   .book-header .subtitle{ font-family:var(--serif); font-size:13.5px; font-style:italic; color:var(--ink-soft); margin:4px 0 12px; }
   .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3px 24px; }
   @media (max-width:560px){ .field-grid{ grid-template-columns:1fr; } }
+  .level1-note{ font-family:var(--sans); font-size:12.5px; color:var(--ink-soft); font-style:italic; margin:10px 0 0; }
   .field-row{ display:flex; gap:8px; padding:2px 0; align-items:baseline; }
   .field-row .label{ min-width:132px; flex-shrink:0; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
   .field-row .value{ font-family:var(--sans); font-size:12.5px; color:var(--ink); }
@@ -186,9 +187,17 @@
   .badge-row{ display:inline-flex; align-items:center; align-self:flex-start; }
   .badge-pill{ display:inline-flex; align-items:center; height:18px; padding:0 10px; border-radius:999px; font-size:11.5px; font-weight:600; }
   .shape-glyph{ font-size:18px; line-height:1; margin-left:3px; }
-  .level-badge{ display:inline-flex; align-items:center; height:18px; padding:0 8px; border-radius:5px; font-family:var(--sans); font-size:10.5px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; }
-  .level-badge.level-3{ background:var(--sage); color:#fff; }
+  .level-badge{ display:inline-flex; align-items:center; height:18px; padding:0 8px; border-radius:5px; font-family:var(--sans); font-variant:small-caps; font-weight:700; font-size:12.5px; letter-spacing:.03em; }
+  .level-badge.level-1{ background:var(--paper-dark); color:var(--ink-faint); border:1px solid var(--paper-line); }
   .level-badge.level-2{ background:var(--paper-line); color:var(--ink-soft); }
+  .level-badge.level-3{ background:var(--sage); color:#fff; }
+  .level-filter{ display:flex; align-items:center; gap:12px; margin-left:auto; font-family:var(--sans); font-size:12px; color:var(--ink-soft); }
+  .level-filter-label{ color:var(--ink-faint); }
+  .level-filter label{ display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
+  .level-tag{ font-variant:small-caps; font-weight:700; letter-spacing:.02em; }
+  .level-tag.level-1{ color:var(--ink-faint); }
+  .level-tag.level-2{ color:var(--ink-soft); }
+  .level-tag.level-3{ color:var(--sage); }
   .loading-note{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); font-style:italic; padding:8px 0 0; }
   .scholarly-section{ margin-top:14px; padding-top:14px; border-top:1px solid var(--paper-line); }
   .scholarly-heading{ font-family:var(--sans); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--brass); margin-bottom:8px; }
@@ -224,7 +233,7 @@
     <span class="suite-name">Tunebook Registry</span>
   </a>
   <nav class="suite-nav" aria-label="Site navigation">
-    <a href="codes.html">Code Reference</a>
+    <a href="codes.html">FAQ</a>
     <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a>
     <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a>
     <span aria-hidden="true" style="opacity:.4;padding:0 2px;">|</span>
@@ -254,7 +263,8 @@
       happens. Every book's own page lists both a <strong>SingLoud.org Work Code</strong> and, where
       one exists, a separate <strong>SHMHA code</strong> (the abbreviation used in the printed Sacred
       Harp Minutes Book) — two different code systems tracking the same books. See the
-      <a href="codes.html">Code Reference</a> page for the full list of both.
+      <a href="codes.html">FAQ</a> for what these codes, and the other symbols on each book's
+      page, actually mean.
     </p>
 
     <div class="toolbar">
@@ -266,6 +276,12 @@
 
     <div class="toolbar">
       <span class="result-count" id="bookResultCount"></span>
+      <div class="level-filter" id="levelFilter">
+        <span class="level-filter-label">Show:</span>
+        <label><input type="checkbox" id="levelFilter1"> <span class="level-tag level-1">Level 1</span></label>
+        <label><input type="checkbox" id="levelFilter2" checked> <span class="level-tag level-2">Level 2</span></label>
+        <label><input type="checkbox" id="levelFilter3" checked> <span class="level-tag level-3">Level 3</span></label>
+      </div>
     </div>
 
     <div id="bookGrid"></div>
@@ -311,6 +327,28 @@
     return;
   }
   var BOOKS = EZ_MINUTES_TUNEBOOKS.books;
+  // Kevin's own framing: Level 1 books (a bare record - title, compiler, rough date, no
+  // page index at all) should be real, present entries here too, not invisible - just
+  // not overwhelming by default. buildTunebookIndexFromLibrary() only ever returns
+  // fully-indexed editions (Level 2/3); buildMasterListFromLibrary() is the existing,
+  // real shared function for exactly the complement - every Work that doesn't have one,
+  // covering both "no Edition at all" and "an Edition exists but isn't indexed yet."
+  // Merged here rather than changing either shared function's own output shape.
+  var LEVEL1_BOOKS = EZMinutesShared.buildMasterListFromLibrary(EZ_MINUTES_TUNEBOOK_LIBRARY).books;
+  Object.keys(LEVEL1_BOOKS).forEach(function(key){
+    if(!BOOKS[key]) BOOKS[key] = LEVEL1_BOOKS[key];
+  });
+
+  // A real level (1/2/3) on every book, one consistent field regardless of which of the
+  // two source projections it came from - the Level 1 projection already calls this
+  // supportLevel; Level 2 vs. 3 isn't distinguished by either projection at all, so it's
+  // derived here the same way the main Tunebooks app itself does: whether a real Level 3
+  // Tunebook File is linked.
+  function bookLevel(code){
+    var b = BOOKS[code];
+    if(b && b.supportLevel === 1) return 1;
+    return TUNEBOOK_FILE_PATHS[code] ? 3 : 2;
+  }
 
   // R81-registry finding: this checked EZ_MINUTES_TUNEBOOK_INDEX_VERSION, a variable that
   // only ever existed in tunebook-index.js - the retired file this page no longer loads at
@@ -360,10 +398,20 @@
   function sortKeyForTitle(title){
     return String(title || "").replace(/^the\s+/i, "").toLowerCase();
   }
+  // Real, active filter state - checkbox-driven, matching the same "Show: Level 1 /
+  // Level 2 / Level 3" pattern the main Tunebooks app's own Library browse already uses.
+  // Level 1 defaults to hidden: with real Works genuinely outnumbering fully-indexed
+  // Editions, showing every Level 1 record by default would overwhelm the page - the
+  // real point of this filter is that they're still there, one click away, not gone.
+  var levelFilterState = { 1: false, 2: true, 3: true };
+
   function sortedBookCodes(){
     return Object.keys(BOOKS).filter(function(code){
       var b = BOOKS[code];
-      return b.songs && Object.keys(b.songs).length > 0;
+      // A record needs a real title to be worth showing at all - not a "has songs" check
+      // any more, since a genuine Level 1 book has no page index by definition.
+      if(!b.fullTitle && !b.commonName) return false;
+      return levelFilterState[bookLevel(code)];
     }).sort(function(a, b){
       var ta = sortKeyForTitle(BOOKS[a].fullTitle || a);
       var tb = sortKeyForTitle(BOOKS[b].fullTitle || b);
@@ -411,6 +459,7 @@
   function bookRowHtml(code){
     var b = BOOKS[code];
     var songCount = Object.keys(b.songs || {}).length;
+    var level = bookLevel(code);
     // Common Name is the short, familiar name (e.g. "Social Harp"); fullTitle is the
     // complete bibliographic title (title proper + subtitle, which can run to a full
     // sentence for some real books). Showing both used to genuinely repeat the subtitle
@@ -420,13 +469,18 @@
     var hasCommonName = !!(b.commonName && b.commonName.trim());
     var primary = hasCommonName ? b.commonName : (b.fullTitle || code);
     var secondary = (hasCommonName && b.fullTitle) ? b.fullTitle : "";
+    // A Level 1 book genuinely has no page index yet - "0 songs indexed" would read as a
+    // real, if oddly specific, negative fact rather than what it actually is: nothing to
+    // index yet at all.
+    var meta = level === 1 ? "no page index yet" : (songCount + " songs indexed");
     return '<button class="book-row" data-code="' + esc(code) + '">' +
       badgeHtml(code) +
+      levelBadgeHtml(code) +
       '<span class="row-text">' +
         '<span class="title">' + esc(primary) + '</span>' +
         (secondary ? '<span class="full-title">' + esc(secondary) + '</span>' : '') +
       '</span>' +
-      '<span class="meta">' + songCount + ' songs indexed</span>' +
+      '<span class="meta">' + esc(meta) + '</span>' +
     '</button>';
   }
 
@@ -638,11 +692,14 @@
   // A real yes/no fact, not a percentage - matches the main suite's own established
   // "Level" concept exactly (does a Tunebook File exist), rather than inventing a
   // different notion of completeness for this read-only display.
+  var LEVEL_TITLES = {
+    1: "A bare record only \u2014 title and basic facts, no page index yet",
+    2: "A complete page index, page by page, but no additional scholarly file yet",
+    3: "A complete page index plus a real Tunebook File with additional scholarly and per-song detail"
+  };
   function levelBadgeHtml(code){
-    var hasFile = !!TUNEBOOK_FILE_PATHS[code];
-    var label = hasFile ? "Level 3" : "Level 2";
-    var cls = hasFile ? "level-badge level-3" : "level-badge level-2";
-    return '<span class="' + cls + '" title="' + (hasFile ? "A Tunebook File exists with additional scholarly and per-song detail" : "Full page index, no additional scholarly file yet") + '">' + label + '</span>';
+    var level = bookLevel(code);
+    return '<span class="level-badge level-' + level + '" title="' + esc(LEVEL_TITLES[level]) + '">Level ' + level + '</span>';
   }
 
   function renderScholarlySection(l3){
@@ -667,8 +724,33 @@
 
   function renderBookHeader(code){
     var b = BOOKS[code];
+    var level = bookLevel(code);
     var songCount = Object.keys(b.songs || {}).length;
     var l3 = LEVEL3_CACHE.hasOwnProperty(code) ? LEVEL3_CACHE[code] : undefined;
+    // A Level 1 record genuinely doesn't have most of these fields yet - no Edition at
+    // all, in many cases, so no compiler/publisher/publication year/shape system/page
+    // index. Showing "not set" for nine fields in a row would look broken rather than
+    // honest; a shorter field set plus a plain explanation reads more like what it
+    // actually is.
+    var fieldsHtml = (level === 1)
+      ? '<div class="field-grid">' +
+          fieldRow("Work code", valueOrPlaceholder(b.workCode)) +
+          fieldRow("SHMHA code", valueOrPlaceholder(b.shmhaCode)) +
+          fieldRow("Common name", valueOrPlaceholder(b.commonName)) +
+        '</div>' +
+        '<p class="level1-note">This is a bare record so far \u2014 no page index has been built for it yet, so there\u2019s no song list or edition-level detail to show here.</p>'
+      : '<div class="field-grid">' +
+          fieldRow("Edition code", esc(code)) +
+          fieldRow("Common name", valueOrPlaceholder(b.commonName)) +
+          fieldRow("Work code", valueOrPlaceholder(b.workCode)) +
+          fieldRow("SHMHA code", valueOrPlaceholder(b.shmhaCode)) +
+          fieldRow("Compiler / Editor", valueOrPlaceholder(b.compiler)) +
+          fieldRow("Publisher", valueOrPlaceholder(b.publisher)) +
+          fieldRow("Place published", valueOrPlaceholder(b.placePublished)) +
+          fieldRow("Publication year", valueOrPlaceholder(b.publicationYear)) +
+          fieldRow("Shape system", valueOrPlaceholder(b.shapeSystem)) +
+          fieldRow("Songs indexed", String(songCount)) +
+        '</div>';
     bookHeaderHost.innerHTML = '<div class="book-header">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px;">' +
         badgeHtml(code) +
@@ -676,18 +758,7 @@
         '<span class="title">' + esc(TITLE_PROPER[code] || b.fullTitle || code) + '</span>' +
       '</div>' +
       (b.subtitle ? '<div class="subtitle">' + esc(b.subtitle) + '</div>' : '<div style="margin-bottom:12px;"></div>') +
-      '<div class="field-grid">' +
-        fieldRow("Edition code", esc(code)) +
-        fieldRow("Common name", valueOrPlaceholder(b.commonName)) +
-        fieldRow("Work code", valueOrPlaceholder(b.workCode)) +
-        fieldRow("SHMHA code", valueOrPlaceholder(b.shmhaCode)) +
-        fieldRow("Compiler / Editor", valueOrPlaceholder(b.compiler)) +
-        fieldRow("Publisher", valueOrPlaceholder(b.publisher)) +
-        fieldRow("Place published", valueOrPlaceholder(b.placePublished)) +
-        fieldRow("Publication year", valueOrPlaceholder(b.publicationYear)) +
-        fieldRow("Shape system", valueOrPlaceholder(b.shapeSystem)) +
-        fieldRow("Songs indexed", String(songCount)) +
-      '</div>' +
+      fieldsHtml +
       '<div id="scholarlyHost">' +
         (TUNEBOOK_FILE_PATHS[code] ? (l3 === undefined ? '<div class="loading-note">Loading scholarly record\u2026</div>' : renderScholarlySection(l3)) : "") +
       '</div>' +
@@ -761,8 +832,14 @@
       });
     }
     songResultCount.textContent = pages.length + " of " + Object.keys(songs).length + " song(s)" + (query ? " matching \u201c" + songSearch.value.trim() + "\u201d" : "");
+    // "No songs match that search" implies real songs exist but none matched - genuinely
+    // misleading for a Level 1 book, which has no page index at all yet, not zero
+    // matching results from a real one.
+    var emptyMessage = Object.keys(songs).length === 0
+      ? "This book doesn\u2019t have a page index yet."
+      : "No songs match that search.";
     songListHost.innerHTML = pages.map(function(p){ return songRowHtml(p, mergedSong(songs[p], l3Songs[p])); }).join("")
-      || '<div class="no-results">No songs match that search.</div>';
+      || '<div class="no-results">' + esc(emptyMessage) + '</div>';
   }
   songSearch.addEventListener("input", renderSongList);
 
@@ -808,6 +885,16 @@
 
   backBtn.addEventListener("click", navigateToLanding);
   brandLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
+
+  // ---------------- level filter (landing view) ----------------
+  [1, 2, 3].forEach(function(level){
+    var el = document.getElementById("levelFilter" + level);
+    el.checked = levelFilterState[level];
+    el.addEventListener("change", function(){
+      levelFilterState[level] = el.checked;
+      renderBookGrid();
+    });
+  });
 
   // ---------------- initial render, deep-link support (e.g. #SHM1991) ----------------
   renderBookGrid();

@@ -20,6 +20,12 @@ Minutes or Tunebooks.
   matching the "no build step" philosophy of the rest of the Minutes / Tunebooks suite.
   Visually styled to match the main suite (same palette, same badge pills, same shape-system
   glyph) so it reads as a sibling rather than a separate product.
+- **`codes.html`** — a static FAQ page: what Work/Edition codes, the shape-note glyphs, and
+  the Level badges mean, plus a brief sketch of the Minutes and Tunebooks apps this data
+  comes from. Deliberately has no data dependency of its own (no `<script src>` tags) and
+  is kept to broad, stable concepts rather than specifics likely to drift - update it only
+  when one of those underlying concepts itself genuinely changes, not for routine data
+  syncs.
 - **`tunebook-library.js`** — a **copy** of the main suite's Tunebook Library: every Work
   and Edition it knows about, including the full page-by-page song index for each indexed
   Edition. This is the actual base data; `index.html` derives its own book list from it (via
@@ -126,9 +132,4 @@ enabled, that's a fine place for corrections too — either way works.
   File - filled in unevenly across the catalog by design, since that reflects the real,
   current state of the underlying research, not a limitation of this page. A book without a
   Tunebook File yet still shows everything the Library itself carries.
-- A "Code Reference" link in the page's own intro text and navigation currently points at
-  `codes.html`, a page that doesn't exist in this repo yet - a real, known gap, not
-  something quietly removed. Worth either building that page (a listing of every book's
-  Work Code and SHMHA Code side by side, matching what the intro text already promises) or
-  removing the link, as a deliberate decision rather than leaving it broken by default.
 
