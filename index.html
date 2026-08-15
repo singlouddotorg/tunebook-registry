@@ -155,7 +155,7 @@
   .field-row .value{ font-family:var(--sans); font-size:12.5px; color:var(--ink); }
   .not-set{ color:var(--ink-faint); font-style:italic; }
 
-  .song-row{ display:flex; gap:14px; padding:6px 12px; }
+  .song-row{ display:block; padding:6px 12px; }
   .song-row:nth-child(odd){ background:rgba(0,0,0,0.02); }
   .song-row .page{ min-width:60px; font-weight:600; color:var(--ink-soft); font-family:var(--serif); }
   .song-list{ border:1px solid var(--paper-line); border-radius:10px; overflow:hidden; }
@@ -188,12 +188,9 @@
   .cite-notes{ color:var(--ink-soft); font-size:11.5px; margin-top:2px; }
   .song-row-main{ display:flex; align-items:baseline; gap:14px; }
   .song-title-text{ flex:1; }
-  .song-expand-btn{ font-family:var(--sans); font-size:10.5px; font-weight:600; color:var(--ink-soft); background:var(--paper-dark); border:1px solid var(--paper-line); border-radius:5px; padding:2px 8px; cursor:pointer; white-space:nowrap; }
-  .song-expand-btn:hover{ color:var(--oxblood); border-color:var(--oxblood); }
-  .song-detail{ display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:2px 16px; padding:6px 0 4px 74px; }
-  .song-field{ display:flex; gap:6px; font-family:var(--sans); font-size:11.5px; }
-  .song-field-label{ color:var(--ink-faint); text-transform:uppercase; font-size:9.5px; letter-spacing:.04em; min-width:64px; flex-shrink:0; padding-top:1px; }
-  .song-field-value{ color:var(--ink); }
+  .song-detail{ padding:2px 0 4px 74px; font-family:var(--sans); font-size:11.5px; color:var(--ink); line-height:1.6; }
+  .song-field-label{ color:var(--ink-faint); font-size:10px; text-transform:uppercase; letter-spacing:.03em; }
+  .song-field-sep{ color:var(--paper-line); margin:0 8px; }
 </style>
 </head>
 <body>
@@ -685,8 +682,6 @@
   }
 
 
-  var EXPANDED_SONGS = {}; // page -> true; reset fresh on every navigateToBook
-
   var SONG_ENRICHED_FIELDS = [
     { key: "firstLine", label: "First line" },
     { key: "meter", label: "Meter" },
@@ -701,33 +696,31 @@
     { key: "historicalNote", label: "Note" }
   ];
 
-  function songEnrichedRowsHtml(song){
-    var rows = [];
+  function songEnrichedListHtml(song){
+    var items = [];
     SONG_ENRICHED_FIELDS.forEach(function(f){
       var raw = song[f.key];
       var text = f.isAttribution ? attributionText(raw) : raw;
       if(text === undefined || text === null || text === "") return;
-      rows.push('<div class="song-field"><span class="song-field-label">' + esc(f.label) + '</span><span class="song-field-value">' + esc(String(text)) + '</span></div>');
+      items.push('<span class="song-field"><span class="song-field-label">' + esc(f.label) + ':</span> ' + esc(String(text)) + '</span>');
     });
     // source / sourceCited carry their own shape (a cited-abbreviation form, distinct
     // from the free-text attribution fields above), handled separately rather than
     // forced into the same label/value pattern.
     if(song.sourceCited && song.sourceCited.abbreviation){
       var loc = song.sourceCited.locator ? (", " + song.sourceCited.locator) : "";
-      rows.push('<div class="song-field"><span class="song-field-label">Cited source</span><span class="song-field-value">' + esc(song.sourceCited.abbreviation + loc) + '</span></div>');
+      items.push('<span class="song-field"><span class="song-field-label">Cited source:</span> ' + esc(song.sourceCited.abbreviation + loc) + '</span>');
     } else if(song.source && song.source.citedAbbr){
-      rows.push('<div class="song-field"><span class="song-field-label">Cited source</span><span class="song-field-value">' + esc(song.source.citedAbbr) + '</span></div>');
+      items.push('<span class="song-field"><span class="song-field-label">Cited source:</span> ' + esc(song.source.citedAbbr) + '</span>');
     }
-    return rows.join("");
+    if(!items.length) return "";
+    return '<div class="song-detail">' + items.join('<span class="song-field-sep">\u00b7</span>') + '</div>';
   }
 
   function songRowHtml(page, song){
-    var enrichedHtml = songEnrichedRowsHtml(song);
-    var expanded = !!EXPANDED_SONGS[page];
-    var toggle = enrichedHtml ? '<button type="button" class="song-expand-btn" data-page="' + esc(page) + '">' + (expanded ? '\u2212 hide detail' : '+ detail') + '</button>' : '';
     return '<div class="song-row" data-page="' + esc(page) + '">' +
-      '<div class="song-row-main"><span class="page">' + esc(page) + '</span><span class="song-title-text">' + esc(song.title || "") + '</span>' + toggle + '</div>' +
-      (enrichedHtml && expanded ? '<div class="song-detail">' + enrichedHtml + '</div>' : '') +
+      '<div class="song-row-main"><span class="page">' + esc(page) + '</span><span class="song-title-text">' + esc(song.title || "") + '</span></div>' +
+      songEnrichedListHtml(song) +
     '</div>';
   }
 
@@ -746,13 +739,6 @@
     songResultCount.textContent = pages.length + " of " + Object.keys(songs).length + " song(s)" + (query ? " matching \u201c" + songSearch.value.trim() + "\u201d" : "");
     songListHost.innerHTML = pages.map(function(p){ return songRowHtml(p, mergedSong(songs[p], l3Songs[p])); }).join("")
       || '<div class="no-results">No songs match that search.</div>';
-    Array.prototype.forEach.call(songListHost.querySelectorAll(".song-expand-btn"), function(btn){
-      btn.addEventListener("click", function(e){
-        e.stopPropagation();
-        EXPANDED_SONGS[btn.dataset.page] = !EXPANDED_SONGS[btn.dataset.page];
-        renderSongList();
-      });
-    });
   }
   songSearch.addEventListener("input", renderSongList);
 
@@ -760,7 +746,6 @@
     if(!BOOKS[code]) return;
     currentCode = code;
     songSearch.value = "";
-    EXPANDED_SONGS = {};
     landingView.style.display = "none";
     detailView.style.display = "block";
     renderBookHeader(code);
