@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tunebook Registry :: SingLoud.org</title>
+<meta name="description" content="A browsable, read-only index of every shape-note tunebook indexed by the Minutes / Tunebooks suite — full titles, editions, and page-by-page song contents, including scholarly detail where available.">
+<!-- This page reads the same tunebook-library.js file the Minutes / Tunebooks suite (Minutes,
+     Tunebooks) ships with — see README.md in this repo for how the two projects relate
+     and how this file gets kept in sync. Nothing here writes back to that file; this is a
+     read-only public mirror of it, browsable by anyone with the link. -->
+<script src="tunebook-library.js"></script>
+<script src="shared-utils.js"></script>
+<script>
+  // Derived from the Tunebook Library rather than loaded directly - this page's own
+  // rendering code is completely unchanged below; it still just reads EZ_MINUTES_TUNEBOOKS
+  // the same way it always has. Falls back to an empty index rather than throwing if the
+  // Library file is somehow missing, matching how a missing tunebook-index.js used to be
+  // handled here.
+  var EZ_MINUTES_TUNEBOOKS = (typeof EZ_MINUTES_TUNEBOOK_LIBRARY !== "undefined" && typeof EZMinutesShared !== "undefined")
+    ? EZMinutesShared.buildTunebookIndexFromLibrary(EZ_MINUTES_TUNEBOOK_LIBRARY)
+    : { books: {} };
+
+  // buildTunebookIndexFromLibrary() (shared-utils.js) doesn't expose tunebookFile in its
+  // own projection - it's shared, real code the main suite also uses, and this page has
+  // direct access to the real Library object anyway, so a small local lookup here avoids
+  // changing that shared function's own output shape (and re-verifying the main suite
+  // against a changed shape) just for this one page's own, additional need.
+  var TUNEBOOK_FILE_PATHS = {};
+  if(typeof EZ_MINUTES_TUNEBOOK_LIBRARY !== "undefined" && EZ_MINUTES_TUNEBOOK_LIBRARY.editions){
+    Object.keys(EZ_MINUTES_TUNEBOOK_LIBRARY.editions).forEach(function(editionId){
+      var e = EZ_MINUTES_TUNEBOOK_LIBRARY.editions[editionId];
+      if(e.tunebookFile) TUNEBOOK_FILE_PATHS[e.editionCode] = e.tunebookFile;
+    });
+  }
+</script>
+<!-- No external fonts or CDN scripts, matching the rest of the Minutes / Tunebooks suite. -->
+<style>
+  :root{
+    --paper:#ffffff;
+    --paper-dark:#f8f3e6;
+    --paper-line:#e1d5b8;
+    --ink:#241f1a;
+    --ink-soft:#6b5f4d;
+    --ink-faint:#a89a80;
+    --oxblood:#8a2e2e;
+    --oxblood-dark:#6e2424;
+    --brass:#AD8A4E;
+    --brass-light:#D9C48F;
+    --navy:#2C3E50;
+    --sage:#3F5B44;
+    --card-shadow: 0 1px 2px rgba(43,35,24,.06), 0 8px 24px rgba(43,35,24,.07);
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'Roboto Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--serif); min-height:100vh;}
+  input, button, select{font-family:var(--sans);}
+
+  .missing-dep-banner{background:#8a2e2e; color:#fff; padding:14px 20px; font-size:14px; line-height:1.5; display:none;}
+  .missing-dep-banner strong{display:block; font-size:15px; margin-bottom:4px;}
+  .missing-dep-banner code{background:rgba(255,255,255,0.15); padding:1px 5px; border-radius:3px;}
+
+  .header-wrap{max-width:900px; margin:0 auto; padding:0 20px;}
+  .suite-header{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding:14px 0; border-bottom:1px solid var(--paper-line); margin-bottom:6px;
+  }
+  .suite-brand{ display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink); }
+  .suite-brand .shapes{ display:flex; gap:5px; margin:0; }
+  .suite-brand .suite-name{ font-family:var(--serif); font-weight:600; font-size:18px; letter-spacing:.01em; }
+  .suite-nav{ display:flex; gap:2px; flex-wrap:wrap; align-items:center; }
+  .suite-nav a{
+    font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    text-decoration:none; padding:6px 10px; border-radius:5px;
+  }
+  .suite-nav a:hover{ background:var(--paper-dark); color:var(--ink); }
+  .suite-nav a[aria-current="page"]{ color:var(--oxblood); background:var(--paper-dark); }
+  .suite-nav a:focus-visible, .suite-brand:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+
+  .eyebrow{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--brass); margin:22px 0 6px; }
+  h1.page-title{ font-size:30px; margin:0 0 8px; color:var(--oxblood-dark); font-weight:700; }
+  .page-desc{ font-family:var(--sans); color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0 0 10px; }
+  .page-desc a{ color:var(--oxblood); }
+  .page-note{ font-family:var(--sans); color:var(--ink-faint); font-size:12.5px; line-height:1.6; margin:0 0 26px; padding:10px 14px; background:var(--paper-dark); border-radius:8px; border:1px solid var(--paper-line); }
+  .page-note a{ color:var(--oxblood); }
+
+  /* ---- search + filter row ---- */
+  .toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:20px; position:relative; }
+  input[type=search]{
+    flex:1; min-width:220px; font-family:var(--serif); font-size:14.5px;
+    padding:10px 12px; border:1px solid var(--paper-line); border-radius:6px;
+    background:#fffdf8; color:var(--ink);
+  }
+  input[type=search]:focus{ outline:2px solid var(--brass-light); outline-offset:1px; border-color:var(--brass); }
+  .result-count{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); white-space:nowrap; }
+
+  /* ---- live song-search dropdown ---- */
+  .search-wrap{ position:relative; flex:1; min-width:220px; }
+  .search-wrap input[type=search]{ width:100%; }
+  .song-dropdown{
+    position:absolute; top:calc(100% + 4px); left:0; right:0; z-index:20;
+    background:#fffdf8; border:1px solid var(--brass); border-radius:8px;
+    box-shadow:var(--card-shadow); max-height:336px; overflow-y:auto; display:none;
+  }
+  .song-dropdown.open{ display:block; }
+  .song-dropdown .sd-row{
+    display:flex; align-items:center; gap:10px; padding:8px 12px; cursor:pointer;
+    border-bottom:1px solid var(--paper-line); text-align:left; width:100%; background:none; border-left:none; border-right:none; border-top:none;
+    font-family:inherit; color:inherit;
+  }
+  .song-dropdown .sd-row:last-child{ border-bottom:none; }
+  .song-dropdown .sd-row:hover, .song-dropdown .sd-row.active{ background:var(--paper-dark); }
+  .song-dropdown .sd-title{ flex:1; font-family:var(--serif); font-size:13.5px; color:var(--ink); }
+  .song-dropdown .sd-page{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+  .song-dropdown .sd-more{ padding:8px 12px; font-family:var(--sans); font-size:11.5px; color:var(--ink-faint); font-style:italic; }
+  .song-dropdown .sd-empty{ padding:12px; font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); }
+
+  /* ---- book grid (landing view) ---- */
+  .book-group{ margin-bottom:34px; }
+  .book-group:last-child{ margin-bottom:40px; }
+  .group-heading{
+    font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--brass); margin:0 0 10px;
+  }
+  .book-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px; }
+  .book-card{
+    text-align:left; border:1px solid var(--paper-line); border-radius:10px; padding:14px 16px 16px;
+    background:var(--paper-dark); cursor:pointer; transition:transform .12s ease, box-shadow .12s ease;
+    display:flex; flex-direction:column; gap:6px; font-family:inherit; color:inherit;
+  }
+  .book-card:hover{ transform:translateY(-2px); box-shadow:var(--card-shadow); }
+  .book-card:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+  .book-card .title{ font-family:var(--serif); font-weight:700; font-size:15.5px; color:var(--oxblood-dark); line-height:1.3; }
+  .book-card .subtitle{ font-family:var(--serif); font-size:11.5px; font-style:italic; color:var(--ink-soft); line-height:1.35; }
+  .book-card .meta{ font-family:var(--sans); font-size:11px; color:var(--ink-faint); margin-top:auto; padding-top:6px; }
+  .no-results{ padding:30px 4px; color:var(--ink-faint); font-family:var(--sans); font-size:13.5px; }
+
+  /* ---- book detail view ---- */
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--sans); font-size:12.5px;
+    font-weight:600; color:var(--ink-soft); text-decoration:none; margin-bottom:16px; cursor:pointer;
+    background:none; border:none; padding:0;
+  }
+  .back-link:hover{ color:var(--oxblood); }
+  .book-header{ border:1px solid var(--paper-line); border-radius:10px; padding:16px 20px 18px; margin-bottom:16px; background:var(--paper-dark); }
+  .book-header .title{ font-family:var(--serif); font-weight:700; font-size:20px; color:var(--oxblood-dark); }
+  .book-header .subtitle{ font-family:var(--serif); font-size:13.5px; font-style:italic; color:var(--ink-soft); margin:4px 0 12px; }
+  .field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3px 24px; }
+  @media (max-width:560px){ .field-grid{ grid-template-columns:1fr; } }
+  .field-row{ display:flex; gap:8px; padding:2px 0; align-items:baseline; }
+  .field-row .label{ min-width:132px; flex-shrink:0; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
+  .field-row .value{ font-family:var(--sans); font-size:12.5px; color:var(--ink); }
+  .not-set{ color:var(--ink-faint); font-style:italic; }
+
+  .song-row{ display:flex; gap:14px; padding:6px 12px; }
+  .song-row:nth-child(odd){ background:rgba(0,0,0,0.02); }
+  .song-row .page{ min-width:60px; font-weight:600; color:var(--ink-soft); font-family:var(--serif); }
+  .song-list{ border:1px solid var(--paper-line); border-radius:10px; overflow:hidden; }
+  .song-row.jump-highlight{ animation:jumpFlash 1.8s ease-out; }
+  @keyframes jumpFlash{ 0%{ background:var(--brass-light); } 100%{ background:transparent; } }
+
+  .suite-footer{
+    padding:20px 18px 30px; border-top:1px solid var(--paper-line); margin-top:30px;
+    display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; justify-content:center;
+    font-family:var(--sans); font-size:11px; color:var(--ink-faint); text-align:center;
+  }
+  .suite-footer a{ color:var(--ink-faint); text-decoration:underline; }
+  .suite-footer a:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
+
+  .badge-row{ display:inline-flex; align-items:center; align-self:flex-start; }
+  .badge-pill{ display:inline-flex; align-items:center; height:18px; padding:0 10px; border-radius:999px; font-size:11.5px; font-weight:600; }
+  .shape-glyph{ font-size:18px; line-height:1; margin-left:3px; }
+  .level-badge{ display:inline-flex; align-items:center; height:18px; padding:0 8px; border-radius:5px; font-family:var(--sans); font-size:10.5px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; }
+  .level-badge.level-3{ background:var(--sage); color:#fff; }
+  .level-badge.level-2{ background:var(--paper-line); color:var(--ink-soft); }
+  .loading-note{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); font-style:italic; padding:8px 0 0; }
+  .scholarly-section{ margin-top:14px; padding-top:14px; border-top:1px solid var(--paper-line); }
+  .scholarly-heading{ font-family:var(--sans); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--brass); margin-bottom:8px; }
+  .sub-heading{ font-family:var(--sans); font-size:11px; font-weight:700; color:var(--ink-soft); margin:12px 0 4px; }
+  .cite-list{ list-style:none; margin:0; padding:0; font-family:var(--sans); font-size:12px; color:var(--ink); }
+  .cite-list li{ padding:4px 0; border-bottom:1px dotted var(--paper-line); }
+  .cite-list li:last-child{ border-bottom:none; }
+  .cite-list a{ color:var(--oxblood); }
+  .cite-meta{ color:var(--ink-faint); font-size:11px; }
+  .cite-notes{ color:var(--ink-soft); font-size:11.5px; margin-top:2px; }
+  .song-row-main{ display:flex; align-items:baseline; gap:14px; }
+  .song-title-text{ flex:1; }
+  .song-expand-btn{ font-family:var(--sans); font-size:10.5px; font-weight:600; color:var(--ink-soft); background:var(--paper-dark); border:1px solid var(--paper-line); border-radius:5px; padding:2px 8px; cursor:pointer; white-space:nowrap; }
+  .song-expand-btn:hover{ color:var(--oxblood); border-color:var(--oxblood); }
+  .song-detail{ display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:2px 16px; padding:6px 0 4px 74px; }
+  .song-field{ display:flex; gap:6px; font-family:var(--sans); font-size:11.5px; }
+  .song-field-label{ color:var(--ink-faint); text-transform:uppercase; font-size:9.5px; letter-spacing:.04em; min-width:64px; flex-shrink:0; padding-top:1px; }
+  .song-field-value{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="missing-dep-banner" id="missingDepBanner" role="alert">
+  <strong>Missing file: tunebook-library.js</strong>
+  This page needs <code>tunebook-library.js</code> and <code>shared-utils.js</code> in the same folder to show anything. Right now one of them isn't loading.
+</div>
+
+<div class="header-wrap">
+<header class="suite-header">
+  <a href="#" class="suite-brand" id="brandLink">
+    <span class="shapes" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,3 21,20 3,20"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
+    </span>
+    <span class="suite-name">Tunebook Registry</span>
+  </a>
+  <nav class="suite-nav" aria-label="Site navigation">
+    <a href="codes.html">Code Reference</a>
+    <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a>
+    <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a>
+    <span aria-hidden="true" style="opacity:.4;padding:0 2px;">|</span>
+    <a href="mailto:sacredharpbiblio@gmail.com">Send feedback</a>
+  </nav>
+</header>
+
+<main id="mainContent">
+
+  <!-- ============== LANDING VIEW: book grid ============== -->
+  <div id="landingView">
+    <div class="eyebrow">Tunebook Registry</div>
+    <h1 class="page-title">Every book, page by page</h1>
+    <p class="page-desc">
+      A browsable index of the shape-note tunebooks this project has indexed so far — full titles,
+      editions, and every page's song content. This is a read-only companion to the
+      <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a>,
+      built from the exact same data file Capture and Compile use to log and publish real singing minutes.
+      Spot an error or have a correction? <a href="mailto:sacredharpbiblio@gmail.com">Let us know</a> —
+      this project is still growing and every correction helps.
+    </p>
+    <p class="page-note">
+      A note on how complete this is: some books here have been verified page by page against the
+      actual printed book; others are still based solely on that book's own printed index, and haven't
+      been checked page by page yet. Song-level detail — meter, key, and text/music attribution — is
+      filled in unevenly for the same reason, and more will be added over time as that verification
+      happens. Every book's own page lists both a <strong>SingLoud.org Work Code</strong> and, where
+      one exists, a separate <strong>SHMHA code</strong> (the abbreviation used in the printed Sacred
+      Harp Minutes Book) — two different code systems tracking the same books. See the
+      <a href="codes.html">Code Reference</a> page for the full list of both.
+    </p>
+
+    <div class="toolbar">
+      <div class="search-wrap">
+        <input type="search" id="songSearchLive" placeholder="Search song titles across every book…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="songDropdown">
+        <div class="song-dropdown" id="songDropdown" role="listbox"></div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <span class="result-count" id="bookResultCount"></span>
+    </div>
+
+    <div id="bookGrid"></div>
+  </div>
+
+  <!-- ============== DETAIL VIEW: one book ============== -->
+  <div id="detailView" style="display:none;">
+    <button class="back-link" id="backBtn">&larr; All tunebooks</button>
+    <div id="bookHeaderHost"></div>
+
+    <div class="toolbar">
+      <input type="search" id="songSearch" placeholder="Search this book's songs or pages…" autocomplete="off">
+      <span class="result-count" id="songResultCount"></span>
+    </div>
+
+    <div class="song-list" id="songListHost"></div>
+  </div>
+
+</main>
+
+<footer class="suite-footer">
+  <span>A project of <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a></span>
+  <span aria-hidden="true">&middot;</span>
+  <span>Data from the <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a> suite</span>
+  <span aria-hidden="true">&middot;</span>
+  <span id="indexVersionFooter"></span>
+  <span aria-hidden="true">&middot;</span>
+  <a href="mailto:sacredharpbiblio@gmail.com">Report an error</a>
+</footer>
+</div>
+
+<script>
+(function(){
+  // Checks the two real, direct dependencies (the Library itself, and the shared utility
+  // module EZ_MINUTES_TUNEBOOKS is now derived from) rather than the derived
+  // EZ_MINUTES_TUNEBOOKS variable itself - that variable falls back to a real, valid-
+  // looking { books: {} } object when the Library genuinely fails to load, and an empty
+  // object is truthy in JavaScript, so checking it directly meant this banner could never
+  // actually fire, even with tunebook-library.js missing entirely.
+  var TUNEBOOKS_LOADED = (typeof EZ_MINUTES_TUNEBOOK_LIBRARY !== "undefined") && (typeof EZMinutesShared !== "undefined");
+  if(!TUNEBOOKS_LOADED){
+    document.getElementById("missingDepBanner").style.display = "block";
+    return;
+  }
+  var BOOKS = EZ_MINUTES_TUNEBOOKS.books;
+
+  // R81-registry finding: this checked EZ_MINUTES_TUNEBOOK_INDEX_VERSION, a variable that
+  // only ever existed in tunebook-index.js - the retired file this page no longer loads at
+  // all - so the footer always showed "Tunebook Index vunknown" regardless of what was
+  // actually loaded, confirmed live before fixing. The real, current constant is
+  // EZ_MINUTES_TUNEBOOK_LIBRARY_VERSION, set on the Library file this page actually reads.
+  document.getElementById("indexVersionFooter").textContent =
+    "Tunebook Library v" + (typeof EZ_MINUTES_TUNEBOOK_LIBRARY_VERSION !== "undefined" ? EZ_MINUTES_TUNEBOOK_LIBRARY_VERSION : "unknown");
+
+  // ---------------- shared helpers ----------------
+  // esc and the page-sorting trio (romanValue, comparePageMisc, sortPages) come from
+  // shared-utils.js, the same file the main Minutes / Tunebooks suite uses — this page previously
+  // carried its own third copy of them, which is exactly the kind of drift that let a
+  // real page-sorting bug ("a108" sorting before "a11") need fixing in three places at
+  // once. Keep shared-utils.js beside index.html when deploying: it's a hard load-time
+  // dependency now, not an optional extra.
+  var esc = EZMinutesShared.esc;
+  var ROMAN_VALUES = EZMinutesShared.ROMAN_VALUES;
+  var romanValue = EZMinutesShared.romanValue;
+  var comparePageMisc = EZMinutesShared.comparePageMisc;
+  var sortPages = EZMinutesShared.sortPages;
+
+  // ---------------- badges ----------------
+  var SHAPE_SYSTEM_DIGIT_GLYPHS = { "4": "\u2779", "7": "\u277C" }; // \u2779 = ❹, \u277C = ❼
+  function shapeGlyphHtml(book){
+    if(!book || !book.shapeSystem) return "";
+    var match = /(\d)/.exec(book.shapeSystem);
+    if(!match) return "";
+    var glyph = SHAPE_SYSTEM_DIGIT_GLYPHS[match[1]];
+    if(!glyph) return "";
+    return '<span class="shape-glyph" title="' + esc(book.shapeSystem) + '">' + glyph + '</span>';
+  }
+  function badgeHtml(code){
+    var b = BOOKS[code];
+    var bg = (b && b.badgeColor) || "#d9d9d9";
+    var fg = (b && b.badgeTextColor) || "#000";
+    return '<span class="badge-pill" style="background:' + esc(bg) + ';color:' + esc(fg) + ';">' + esc(code) + '</span>' + shapeGlyphHtml(b);
+  }
+
+  // ---------------- book list ----------------
+  // Sorted by fullTitle - the bold text actually shown on each card - not commonName,
+  // which can diverge from it (e.g. SHC2012's commonName "Cooper Book '12" vs. its
+  // fullTitle "The Sacred Harp") and made the visible card order look scrambled. A
+  // leading "The " is ignored for sorting purposes only, same as a library catalog would,
+  // so "The Sacred Harp" alphabetizes under S rather than clustering every "The..." book
+  // at the end under T.
+  function sortKeyForTitle(title){
+    return String(title || "").replace(/^the\s+/i, "").toLowerCase();
+  }
+  function sortedBookCodes(){
+    return Object.keys(BOOKS).filter(function(code){
+      var b = BOOKS[code];
+      return b.songs && Object.keys(b.songs).length > 0;
+    }).sort(function(a, b){
+      var ta = sortKeyForTitle(BOOKS[a].fullTitle || a);
+      var tb = sortKeyForTitle(BOOKS[b].fullTitle || b);
+      return ta.localeCompare(tb);
+    });
+  }
+
+  // ---------------- flat song index, built once, used by the live search dropdown ----------------
+  // A small in-memory list, not a search engine - at this suite's scale (a few thousand
+  // songs across seventeen books) a plain substring filter over an array on every
+  // keystroke is plenty fast, and it keeps this page dependency-free.
+  var SONG_INDEX = (function(){
+    var list = [];
+    sortedBookCodes().forEach(function(code){
+      var b = BOOKS[code];
+      var songs = b.songs || {};
+      Object.keys(songs).forEach(function(page){
+        var title = songs[page].title || "";
+        list.push({ title: title, titleLower: title.toLowerCase(), page: page, bookCode: code, bookTitle: b.fullTitle || code });
+      });
+    });
+    return list;
+  })();
+
+  // ---------------- landing view: book grid (always shows every book - see the live
+  // song-title search below for finding a specific song; filtering seventeen cards by
+  // book name isn't worth its own search box) ----------------
+  var bookGrid = document.getElementById("bookGrid");
+  var bookResultCount = document.getElementById("bookResultCount");
+
+  // Groups books by shape system for display — same digit-extraction logic as the badge
+  // glyph itself, so a book's group and its glyph can never disagree. Anything without a
+  // recognized "4" or "7" in shapeSystem (missing, or some future notation this suite
+  // doesn't index yet) falls into its own group rather than being silently dropped or
+  // guessed into one of the other two.
+  function shapeGroupKey(book){
+    var match = /(\d)/.exec((book && book.shapeSystem) || "");
+    if(match && match[1] === "4") return "four";
+    if(match && match[1] === "7") return "seven";
+    return "other";
+  }
+  var SHAPE_GROUP_LABELS = { four: "Four-Shape Tunebooks", seven: "Seven-Shape Tunebooks", other: "Shape System Not Specified" };
+  var SHAPE_GROUP_ORDER = ["four", "seven", "other"];
+
+  function bookCardHtml(code){
+    var b = BOOKS[code];
+    var songCount = Object.keys(b.songs || {}).length;
+    return '<button class="book-card" data-code="' + esc(code) + '">' +
+      '<div class="badge-row">' + badgeHtml(code) + '</div>' +
+      '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+      (b.subtitle ? '<span class="subtitle">' + esc(b.subtitle) + '</span>' : '') +
+      '<span class="meta">' + songCount + ' songs indexed</span>' +
+    '</button>';
+  }
+
+  function renderBookGrid(){
+    var codes = sortedBookCodes();
+    bookResultCount.textContent = codes.length + " tunebook" + (codes.length === 1 ? "" : "s");
+    if(!codes.length){
+      bookGrid.innerHTML = '<div class="no-results">No tunebooks indexed yet.</div>';
+      return;
+    }
+    var groups = { four: [], seven: [], other: [] };
+    codes.forEach(function(code){ groups[shapeGroupKey(BOOKS[code])].push(code); });
+    bookGrid.innerHTML = SHAPE_GROUP_ORDER.map(function(key){
+      var groupCodes = groups[key];
+      if(!groupCodes.length) return "";
+      return '<div class="book-group">' +
+        '<div class="group-heading">' + esc(SHAPE_GROUP_LABELS[key]) + '</div>' +
+        '<div class="book-grid">' + groupCodes.map(bookCardHtml).join("") + '</div>' +
+      '</div>';
+    }).join("");
+    Array.prototype.forEach.call(bookGrid.querySelectorAll(".book-card"), function(card){
+      card.addEventListener("click", function(){ navigateToBook(card.dataset.code); });
+    });
+  }
+
+  // ---------------- live song-title search (typeahead dropdown) ----------------
+  var songSearchLive = document.getElementById("songSearchLive");
+  var songDropdown = document.getElementById("songDropdown");
+  var SD_MAX_SHOWN = 60; // dropdown itself scrolls to roughly 8 rows tall; this just
+                          // caps how much gets built into the DOM for a very broad query
+
+  function closeDropdown(){
+    songDropdown.classList.remove("open");
+    songDropdown.innerHTML = "";
+    songSearchLive.setAttribute("aria-expanded", "false");
+  }
+
+  function sdRowHtml(match, index){
+    var b = BOOKS[match.bookCode];
+    return '<button type="button" class="sd-row" data-index="' + index + '" role="option">' +
+      badgeHtml(match.bookCode) +
+      '<span class="sd-title">' + esc(match.title) + '</span>' +
+      '<span class="sd-page">p.' + esc(match.page) + '</span>' +
+    '</button>';
+  }
+
+  var currentMatches = [];
+
+  function renderDropdown(query){
+    if(!query){ closeDropdown(); return; }
+    var q = query.toLowerCase();
+    // Titles starting with the query surface first, since that's almost always what
+    // someone typing a song title actually wants, before other substring matches.
+    var starts = [], contains = [];
+    for(var i = 0; i < SONG_INDEX.length; i++){
+      var entry = SONG_INDEX[i];
+      var idx = entry.titleLower.indexOf(q);
+      if(idx === 0) starts.push(entry);
+      else if(idx > 0) contains.push(entry);
+    }
+    currentMatches = starts.concat(contains);
+    songSearchLive.setAttribute("aria-expanded", "true");
+    if(!currentMatches.length){
+      songDropdown.innerHTML = '<div class="sd-empty">No song titles match “' + esc(query) + '.”</div>';
+      songDropdown.classList.add("open");
+      return;
+    }
+    var shown = currentMatches.slice(0, SD_MAX_SHOWN);
+    var extra = currentMatches.length - shown.length;
+    songDropdown.innerHTML = shown.map(sdRowHtml).join("") +
+      (extra > 0 ? '<div class="sd-more">+' + extra + ' more — keep typing to narrow it down</div>' : "");
+    songDropdown.classList.add("open");
+    Array.prototype.forEach.call(songDropdown.querySelectorAll(".sd-row"), function(row){
+      row.addEventListener("click", function(){
+        var match = currentMatches[parseInt(row.dataset.index, 10)];
+        selectSearchResult(match);
+      });
+    });
+  }
+
+  function selectSearchResult(match){
+    if(!match) return;
+    closeDropdown();
+    songSearchLive.value = "";
+    navigateToBook(match.bookCode, match.page);
+  }
+
+  songSearchLive.addEventListener("input", function(){ renderDropdown(songSearchLive.value.trim()); });
+  songSearchLive.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeDropdown(); songSearchLive.blur(); }
+    else if(e.key === "Enter" && currentMatches.length){ selectSearchResult(currentMatches[0]); }
+  });
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".search-wrap")) closeDropdown();
+  });
+
+  // ---------------- detail view: one book ----------------
+  var landingView = document.getElementById("landingView");
+  var detailView = document.getElementById("detailView");
+  var bookHeaderHost = document.getElementById("bookHeaderHost");
+  var songSearch = document.getElementById("songSearch");
+  var songResultCount = document.getElementById("songResultCount");
+  var songListHost = document.getElementById("songListHost");
+  var backBtn = document.getElementById("backBtn");
+  var brandLink = document.getElementById("brandLink");
+  var currentCode = null;
+
+  function fieldRow(label, valueHtml){
+    return '<div class="field-row"><span class="label">' + esc(label) + '</span><span class="value">' + valueHtml + '</span></div>';
+  }
+  function valueOrPlaceholder(v){ return v ? esc(v) : '<span class="not-set">not set</span>'; }
+
+  // ---------------- Level 3 enrichment (fetched separately per book, when available) ----------------
+  // A real Level 3 file adds real scholarly and per-song detail (meter, key, scripture,
+  // attributions, copyright status, publication history, sources) beyond what the Library
+  // itself carries. Fetched lazily, per book, only when its detail view is actually opened
+  // - not all at once on page load, which would mean fetching every enriched book's full
+  // file (some genuinely large - a 469-song index) before a visitor ever looks at most of
+  // them.
+  var LEVEL3_CACHE = {};   // editionCode -> parsed Level 3 object | null (no file, or fetch failed)
+  var LEVEL3_PENDING = {}; // editionCode -> in-flight Promise, so revisiting a book mid-fetch doesn't refetch
+
+  // musicAttribution/textAttribution/harmonizationAttribution appear as a plain string in
+  // some real Level 3 files and as { credit: "..." } in the Library's own song records and
+  // other Level 3 files - a genuine, real inconsistency across the actual data, not
+  // something this read-only page can or should normalize. Handles both shapes rather
+  // than assuming one.
+  function attributionText(v){
+    if(!v) return "";
+    if(typeof v === "string") return v;
+    if(typeof v === "object" && v.credit) return v.credit;
+    return "";
+  }
+
+  function fetchLevel3(code){
+    if(LEVEL3_CACHE.hasOwnProperty(code)) return Promise.resolve(LEVEL3_CACHE[code]);
+    if(LEVEL3_PENDING[code]) return LEVEL3_PENDING[code];
+    var path = TUNEBOOK_FILE_PATHS[code];
+    if(!path){
+      LEVEL3_CACHE[code] = null;
+      return Promise.resolve(null);
+    }
+    var promise = fetch(path).then(function(resp){
+      if(!resp.ok) throw new Error("HTTP " + resp.status);
+      return resp.json();
+    }).then(function(data){
+      LEVEL3_CACHE[code] = data;
+      delete LEVEL3_PENDING[code];
+      return data;
+    }).catch(function(err){
+      // Missing scholarly data isn't an error state for a visitor - this page still has
+      // real, complete data without it (title, page, and everything the Library itself
+      // carries). A file:// context in particular can't fetch() local files at all (the
+      // same Chrome CORS restriction the main suite works around with FileReader
+      // instead) - this page just quietly shows less rather than breaking.
+      console.warn("Tunebook Registry: could not load Level 3 data for " + code + ".", err);
+      LEVEL3_CACHE[code] = null;
+      delete LEVEL3_PENDING[code];
+      return null;
+    });
+    LEVEL3_PENDING[code] = promise;
+    return promise;
+  }
+
+  // Level 3 data wins when both a Library song record and a Level 3 one exist for the
+  // same page, matching the main suite's own architecture exactly - title always comes
+  // from the Library (never overridden), every other field is Level 3's to enrich.
+  function mergedSong(bookSong, l3Song){
+    var merged = Object.assign({}, bookSong || {});
+    if(l3Song){
+      Object.keys(l3Song).forEach(function(k){
+        if(k === "title") return;
+        merged[k] = l3Song[k];
+      });
+    }
+    return merged;
+  }
+
+  function bibliographyListHtml(entries){
+    if(!entries || !entries.length) return "";
+    return '<ul class="cite-list">' + entries.map(function(s){
+      var cite = esc(s.citation || s.notes || "Untitled source");
+      var link = s.url ? ' <a href="' + esc(s.url) + '" target="_blank" rel="noopener">link</a>' : "";
+      var accessed = s.accessedDate ? ' <span class="cite-meta">(accessed ' + esc(s.accessedDate) + ')</span>' : "";
+      var notes = (s.notes && s.notes !== s.citation) ? '<div class="cite-notes">' + esc(s.notes) + '</div>' : "";
+      return '<li>' + cite + link + accessed + notes + '</li>';
+    }).join("") + '</ul>';
+  }
+
+  function publicationHistoryHtml(events){
+    if(!events || !events.length) return "";
+    return '<ul class="cite-list">' + events.map(function(ev){
+      var label = [ev.event, ev.date].filter(Boolean).join(", ");
+      var note = ev.note ? '<div class="cite-notes">' + esc(ev.note) + '</div>' : "";
+      return '<li>' + esc(label) + note + '</li>';
+    }).join("") + '</ul>';
+  }
+
+  function relationshipsHtml(rels){
+    if(!rels || !rels.length) return "";
+    return '<ul class="cite-list">' + rels.map(function(r){
+      var target = r.targetWorkCode || r.target || "";
+      var label = [r.relationshipType, target].filter(Boolean).join(" \u2192 ");
+      var note = r.note ? '<div class="cite-notes">' + esc(r.note) + '</div>' : "";
+      return '<li>' + esc(label) + note + '</li>';
+    }).join("") + '</ul>';
+  }
+
+  // A real yes/no fact, not a percentage - matches the main suite's own established
+  // "Level" concept exactly (does a Tunebook File exist), rather than inventing a
+  // different notion of completeness for this read-only display.
+  function levelBadgeHtml(code){
+    var hasFile = !!TUNEBOOK_FILE_PATHS[code];
+    var label = hasFile ? "Level 3" : "Level 2";
+    var cls = hasFile ? "level-badge level-3" : "level-badge level-2";
+    return '<span class="' + cls + '" title="' + (hasFile ? "A Tunebook File exists with additional scholarly and per-song detail" : "Full page index, no additional scholarly file yet") + '">' + label + '</span>';
+  }
+
+  function renderScholarlySection(l3){
+    if(!l3) return "";
+    var sr = l3.scholarlyRecord || {};
+    var rows = "";
+    if(sr.editorialHistory) rows += fieldRow("Editorial history", esc(sr.editorialHistory));
+    if(sr.historicalNotes) rows += fieldRow("Historical notes", esc(sr.historicalNotes));
+    if(l3.book && l3.book.notes) rows += fieldRow("Notes", esc(l3.book.notes));
+    var pubHistory = publicationHistoryHtml(sr.publicationHistory);
+    var sources = bibliographyListHtml((l3.sources || []).concat(sr.bibliography || []));
+    var relationships = relationshipsHtml(l3.relationships);
+    if(!rows && !pubHistory && !sources && !relationships) return "";
+    return '<div class="scholarly-section">' +
+      '<div class="scholarly-heading">Scholarly record</div>' +
+      (rows ? '<div class="field-grid">' + rows + '</div>' : "") +
+      (pubHistory ? '<div class="sub-heading">Publication history</div>' + pubHistory : "") +
+      (sources ? '<div class="sub-heading">Sources</div>' + sources : "") +
+      (relationships ? '<div class="sub-heading">Relationships</div>' + relationships : "") +
+      '</div>';
+  }
+
+  function renderBookHeader(code){
+    var b = BOOKS[code];
+    var songCount = Object.keys(b.songs || {}).length;
+    var l3 = LEVEL3_CACHE.hasOwnProperty(code) ? LEVEL3_CACHE[code] : undefined;
+    bookHeaderHost.innerHTML = '<div class="book-header">' +
+      '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px;">' +
+        badgeHtml(code) +
+        levelBadgeHtml(code) +
+        '<span class="title">' + esc(b.fullTitle || code) + '</span>' +
+      '</div>' +
+      (b.subtitle ? '<div class="subtitle">' + esc(b.subtitle) + '</div>' : '<div style="margin-bottom:12px;"></div>') +
+      '<div class="field-grid">' +
+        fieldRow("Edition code", esc(code)) +
+        fieldRow("Common name", valueOrPlaceholder(b.commonName)) +
+        fieldRow("Work code", valueOrPlaceholder(b.workCode)) +
+        fieldRow("SHMHA code", valueOrPlaceholder(b.shmhaCode)) +
+        fieldRow("Compiler / Editor", valueOrPlaceholder(b.compiler)) +
+        fieldRow("Publisher", valueOrPlaceholder(b.publisher)) +
+        fieldRow("Place published", valueOrPlaceholder(b.placePublished)) +
+        fieldRow("Publication year", valueOrPlaceholder(b.publicationYear)) +
+        fieldRow("Shape system", valueOrPlaceholder(b.shapeSystem)) +
+        fieldRow("Songs indexed", String(songCount)) +
+      '</div>' +
+      '<div id="scholarlyHost">' +
+        (TUNEBOOK_FILE_PATHS[code] ? (l3 === undefined ? '<div class="loading-note">Loading scholarly record\u2026</div>' : renderScholarlySection(l3)) : "") +
+      '</div>' +
+    '</div>';
+    if(TUNEBOOK_FILE_PATHS[code] && l3 === undefined){
+      fetchLevel3(code).then(function(){
+        // Only re-render if the visitor is still looking at this same book - a fast
+        // click back to the landing view, or on to a different book, shouldn't have a
+        // late-arriving fetch overwrite whatever's now actually being shown.
+        if(currentCode === code){
+          renderBookHeader(code);
+          renderSongList();
+        }
+      });
+    }
+  }
+
+
+  var EXPANDED_SONGS = {}; // page -> true; reset fresh on every navigateToBook
+
+  var SONG_ENRICHED_FIELDS = [
+    { key: "firstLine", label: "First line" },
+    { key: "meter", label: "Meter" },
+    { key: "key", label: "Key" },
+    { key: "timeSignature", label: "Time signature" },
+    { key: "verseCount", label: "Verses" },
+    { key: "scriptureReference", label: "Scripture" },
+    { key: "textAttribution", label: "Text", isAttribution: true },
+    { key: "musicAttribution", label: "Music", isAttribution: true },
+    { key: "harmonizationAttribution", label: "Harmonization", isAttribution: true },
+    { key: "copyrightNotice", label: "Copyright" },
+    { key: "historicalNote", label: "Note" }
+  ];
+
+  function songEnrichedRowsHtml(song){
+    var rows = [];
+    SONG_ENRICHED_FIELDS.forEach(function(f){
+      var raw = song[f.key];
+      var text = f.isAttribution ? attributionText(raw) : raw;
+      if(text === undefined || text === null || text === "") return;
+      rows.push('<div class="song-field"><span class="song-field-label">' + esc(f.label) + '</span><span class="song-field-value">' + esc(String(text)) + '</span></div>');
+    });
+    // source / sourceCited carry their own shape (a cited-abbreviation form, distinct
+    // from the free-text attribution fields above), handled separately rather than
+    // forced into the same label/value pattern.
+    if(song.sourceCited && song.sourceCited.abbreviation){
+      var loc = song.sourceCited.locator ? (", " + song.sourceCited.locator) : "";
+      rows.push('<div class="song-field"><span class="song-field-label">Cited source</span><span class="song-field-value">' + esc(song.sourceCited.abbreviation + loc) + '</span></div>');
+    } else if(song.source && song.source.citedAbbr){
+      rows.push('<div class="song-field"><span class="song-field-label">Cited source</span><span class="song-field-value">' + esc(song.source.citedAbbr) + '</span></div>');
+    }
+    return rows.join("");
+  }
+
+  function songRowHtml(page, song){
+    var enrichedHtml = songEnrichedRowsHtml(song);
+    var expanded = !!EXPANDED_SONGS[page];
+    var toggle = enrichedHtml ? '<button type="button" class="song-expand-btn" data-page="' + esc(page) + '">' + (expanded ? '\u2212 hide detail' : '+ detail') + '</button>' : '';
+    return '<div class="song-row" data-page="' + esc(page) + '">' +
+      '<div class="song-row-main"><span class="page">' + esc(page) + '</span><span class="song-title-text">' + esc(song.title || "") + '</span>' + toggle + '</div>' +
+      (enrichedHtml && expanded ? '<div class="song-detail">' + enrichedHtml + '</div>' : '') +
+    '</div>';
+  }
+
+  function renderSongList(){
+    var b = BOOKS[currentCode];
+    var songs = b.songs || {};
+    var l3 = LEVEL3_CACHE.hasOwnProperty(currentCode) ? LEVEL3_CACHE[currentCode] : undefined;
+    var l3Songs = (l3 && l3.songs) || {};
+    var query = (songSearch.value || "").trim().toLowerCase();
+    var pages = sortPages(Object.keys(songs));
+    if(query){
+      pages = pages.filter(function(p){
+        return p.toLowerCase().indexOf(query) > -1 || (songs[p].title || "").toLowerCase().indexOf(query) > -1;
+      });
+    }
+    songResultCount.textContent = pages.length + " of " + Object.keys(songs).length + " song(s)" + (query ? " matching \u201c" + songSearch.value.trim() + "\u201d" : "");
+    songListHost.innerHTML = pages.map(function(p){ return songRowHtml(p, mergedSong(songs[p], l3Songs[p])); }).join("")
+      || '<div class="no-results">No songs match that search.</div>';
+    Array.prototype.forEach.call(songListHost.querySelectorAll(".song-expand-btn"), function(btn){
+      btn.addEventListener("click", function(e){
+        e.stopPropagation();
+        EXPANDED_SONGS[btn.dataset.page] = !EXPANDED_SONGS[btn.dataset.page];
+        renderSongList();
+      });
+    });
+  }
+  songSearch.addEventListener("input", renderSongList);
+
+  function navigateToBook(code, targetPage){
+    if(!BOOKS[code]) return;
+    currentCode = code;
+    songSearch.value = "";
+    EXPANDED_SONGS = {};
+    landingView.style.display = "none";
+    detailView.style.display = "block";
+    renderBookHeader(code);
+    renderSongList();
+    window.location.hash = code;
+    if(targetPage){
+      // Give the song list a moment to actually be in the DOM before hunting for the
+      // row to scroll to - renderSongList() above is synchronous, but scrollIntoView on
+      // a row that hasn't painted yet can be a no-op in some browsers.
+      setTimeout(function(){
+        var row = songListHost.querySelector('.song-row[data-page="' + targetPage.replace(/"/g, '\\"') + '"]');
+        if(row){
+          try{ row.scrollIntoView({ block: "center", behavior: "smooth" }); }catch(e){ try{ row.scrollIntoView(); }catch(e2){} }
+          row.classList.add("jump-highlight");
+          setTimeout(function(){ row.classList.remove("jump-highlight"); }, 1800);
+        }
+      }, 30);
+    } else {
+      try{ window.scrollTo(0, 0); }catch(e){ /* non-fatal */ }
+    }
+  }
+
+  function navigateToLanding(){
+    currentCode = null;
+    landingView.style.display = "block";
+    detailView.style.display = "none";
+    // Best-effort only: some environments (older browsers, certain file:// origins) can
+    // refuse a history.replaceState call. Losing the ability to clear the URL hash on
+    // "back" isn't worth breaking navigation over, so this is never allowed to throw.
+    if(window.location.hash){
+      try{ history.replaceState(null, "", window.location.pathname + window.location.search); }
+      catch(e){ /* non-fatal - hash just stays in the address bar */ }
+    }
+    try{ window.scrollTo(0, 0); }catch(e){ /* non-fatal */ }
+  }
+
+  backBtn.addEventListener("click", navigateToLanding);
+  brandLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
+
+  // ---------------- initial render, deep-link support (e.g. #SHM1991) ----------------
+  renderBookGrid();
+  var initialCode = window.location.hash.replace(/^#/, "");
+  if(initialCode && BOOKS[initialCode]){
+    navigateToBook(initialCode);
+  }
+  window.addEventListener("hashchange", function(){
+    var code = window.location.hash.replace(/^#/, "");
+    if(code && BOOKS[code]) navigateToBook(code);
+    else if(!code) navigateToLanding();
+  });
+})();
+</script>
+</body>
+</html>

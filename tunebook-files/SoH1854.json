@@ -1,0 +1,2427 @@
+{
+  "editionId": "e_SoH1854",
+  "workId": "w_SoH",
+  "editionCode": "SoH1854",
+  "editionIdentifierYear": "1854",
+  "schemaVersion": "1",
+  "book": {
+    "titleProper": "The Southern Harmony, and Musical Companion",
+    "subtitle": "New Edition, Thoroughly Revised and Much Enlarged",
+    "commonName": "Southern Harmony",
+    "workCode": "SoH",
+    "shmhaCode": "SoH",
+    "compiler": "William Walker",
+    "publisher": "E.W. Miller",
+    "placePublished": "Philadelphia",
+    "publicationYear": "1854",
+    "shapeSystem": "4-shape",
+    "notes": "The Work's true first edition is 1835 (see w_SoH); this Edition is the fourth of five distinctive 19th-century editions (1835, 1840, 1847 x2, 1854), each with real content differences, not a mere reprint."
+  },
+  "songs": {
+    "116": {
+      "title": "ALABAMA",
+      "firstLine": "Angels in shining order stand",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "23t": {
+      "title": "ALBION",
+      "firstLine": "Come, ye that love the Lord",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Boyd"
+      }
+    },
+    "23b": {
+      "title": "CHARLESTOWN",
+      "firstLine": "Mercy, O thou Son of David",
+      "meter": "8.7"
+    },
+    "306": {
+      "title": "ALL IS WELL",
+      "firstLine": "What's this that steals upon my frame",
+      "meter": "Irregular",
+      "musicAttribution": {
+        "credit": "J. T. White"
+      }
+    },
+    "27t": {
+      "title": "AMERICA (Whitmore)",
+      "firstLine": "My soul, repeat his praise",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Whitmore"
+      },
+      "historicalNote": "CCEL heading: \"AMERICA\"; Hymnary title: \"AMERICA (Whitmore)\". CCEL prints composer as “Wetmore”; Hymnary gives “Whitmore.”"
+    },
+    "27b": {
+      "title": "NINETY-FIFTH",
+      "firstLine": "When I can read my title clear",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Colton"
+      }
+    },
+    "330b": {
+      "title": "AMHERST",
+      "firstLine": "Lord of the worlds above",
+      "meter": "6.6.6.6.8.8",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "330t": {
+      "title": "OLIVE SHADE",
+      "firstLine": "Father, who in the olive shade",
+      "meter": "8.6.8.4",
+      "musicAttribution": {
+        "credit": "Col. Daniel Smith"
+      }
+    },
+    "282": {
+      "title": "AMITY [1]",
+      "firstLine": "How pleased and blest was I",
+      "meter": "6.6.8.6.6.8"
+    },
+    "311b": {
+      "title": "AMITY [2]",
+      "firstLine": "People of the living God",
+      "meter": "7.7.7.7 D"
+    },
+    "311t": {
+      "title": "PRECIOUS BIBLE",
+      "firstLine": "Precious Bible, what a treasure",
+      "meter": "8.7.8.7.7.7"
+    },
+    "99": {
+      "title": "AN ADDRESS FOR ALL",
+      "firstLine": "I sing a song which doth belong",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "316": {
+      "title": "ANTIOCH",
+      "firstLine": "Joy to the world, the Lord is come",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Handel"
+      },
+      "historicalNote": "CCEL prints “Handle”; Hymnary normalizes this to “Handel.”"
+    },
+    "285t": {
+      "title": "ARLINGTON",
+      "firstLine": "And must I be to judgment brought",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Dr. Arne"
+      }
+    },
+    "285b": {
+      "title": "MORNING WORSHIP",
+      "firstLine": "How sweet the melting lay",
+      "meter": "6.6.8.6",
+      "historicalNote": "Also headed \"NATCHEZ\" in some sources (CCEL). Additional CCEL heading(s): NATCHEZ."
+    },
+    "281t": {
+      "title": "AYLESBURY",
+      "firstLine": "And am I born to die?",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "John Chetham"
+      }
+    },
+    "281b": {
+      "title": "JOY TO THE WORLD (or PAXTON)",
+      "firstLine": "Joy to the world, the Lord is come",
+      "meter": "8.6.8.6",
+      "historicalNote": "Also headed \"PAXTON\" in some sources (CCEL). CCEL heading: \"JOY TO THE WORLD\"; Hymnary title: \"JOY TO THE WORLD (or PAXTON)\". Additional CCEL heading(s): PAXTON."
+    },
+    "181t": {
+      "title": "AZMON",
+      "firstLine": "Plung'd in a gulf of dark despair",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Glaser"
+      }
+    },
+    "181b": {
+      "title": "ETON",
+      "firstLine": "Wide, ye heavenly gates, unfold",
+      "meter": "7.7.7.7 D"
+    },
+    "52": {
+      "title": "BABEL'S STREAMS",
+      "firstLine": "By Babel's streams we sat and wept",
+      "meter": "8.6.8.6"
+    },
+    "164": {
+      "title": "BABYLONIAN CAPTIVITY",
+      "firstLine": "Along the banks where Babel's current flows",
+      "meter": "Irregular",
+      "musicAttribution": {
+        "credit": "Dare"
+      }
+    },
+    "267t": {
+      "title": "BALLERMA",
+      "firstLine": "If God is mine, then present things",
+      "meter": "8.6.8.6"
+    },
+    "267b": {
+      "title": "SHEPHERD",
+      "firstLine": "Let party names no more",
+      "meter": "6.6.8.6"
+    },
+    "162": {
+      "title": "BALLSTOWN",
+      "firstLine": "Great God, attend while Zion sings",
+      "meter": "8.8.8.8"
+    },
+    "320": {
+      "title": "BEHOLD THE LAMB OF GOD (Collins)",
+      "firstLine": "Behold! behold the Lamb of God!",
+      "meter": "8.8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Houser; T. K. Collins"
+      },
+      "historicalNote": "CCEL heading: \"BEHOLD THE LAMB OF GOD\"; Hymnary title: \"BEHOLD THE LAMB OF GOD (Collins)\"."
+    },
+    "317": {
+      "title": "BENEVENTO",
+      "firstLine": "While, with ceaseless course, the sun",
+      "meter": "7.7.7.7 D",
+      "musicAttribution": {
+        "credit": "S. Webbe"
+      }
+    },
+    "193t": {
+      "title": "BOUND FOR CANAAN",
+      "firstLine": "Oh when shall I see Jesus",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "E. J. King"
+      }
+    },
+    "193b": {
+      "title": "INVOCATION [2]",
+      "firstLine": "Jesus, grant us all a blessing",
+      "meter": "8.7"
+    },
+    "70": {
+      "title": "BOWER OF PRAYER",
+      "firstLine": "To leave my dear friends, and with neighbors to part",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Richerson; Walker"
+      }
+    },
+    "39t": {
+      "title": "BOZRAH",
+      "firstLine": "Who is this that comes from far",
+      "meter": "7.7.7.7 D"
+    },
+    "39b": {
+      "title": "UNION",
+      "firstLine": "From whence does this union arise",
+      "meter": "8.8.8.",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "132": {
+      "title": "BRUCE'S ADDRESS",
+      "firstLine": "Soldiers of the cross, arise",
+      "meter": "7.7.7.5.7.7.7.5"
+    },
+    "19b": {
+      "title": "CANON",
+      "firstLine": "Welcome, Welcome, ev'ry guest",
+      "meter": "7.7.7.7"
+    },
+    "19t": {
+      "title": "HICKS' FAREWELL",
+      "firstLine": "The time is swiftly rolling on",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "50": {
+      "title": "CAPTAIN KIDD",
+      "firstLine": "Through all the world below",
+      "meter": "6.6.6.3.6.6.6.6.6.3"
+    },
+    "26b": {
+      "title": "CARNSVILLE",
+      "firstLine": "I love my blessed Saviour",
+      "meter": "7.7.7.6 D",
+      "musicAttribution": {
+        "credit": "E. J. King"
+      },
+      "historicalNote": "CCEL indexes this as page 26; Hymnary uses 26b to distinguish the second tune on a shared page."
+    },
+    "26t": {
+      "title": "THE CHRISTIAN",
+      "firstLine": "I love my blessed Saviour",
+      "meter": "7.7.7.6 D",
+      "musicAttribution": {
+        "credit": "E. J. King"
+      }
+    },
+    "91": {
+      "title": "CHEERFUL",
+      "firstLine": "O how I have long'd for th coming of God",
+      "meter": "11.11.11.11"
+    },
+    "276b": {
+      "title": "CHINA (Swan)",
+      "firstLine": "Why do we mourn departing friends?",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Swan"
+      },
+      "historicalNote": "CCEL heading: \"CHINA\"; Hymnary title: \"CHINA (Swan)\"."
+    },
+    "276t": {
+      "title": "DUNLAP'S CREEK",
+      "firstLine": "My God, my portion, and my love",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "F. Lewis"
+      }
+    },
+    "323": {
+      "title": "CHRISTIAN PROSPECT",
+      "firstLine": "We have our trials here below",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "45": {
+      "title": "CHRISTIAN SOLDIER [1]",
+      "firstLine": "Am I a soldier of the cross",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "F. Price"
+      }
+    },
+    "95": {
+      "title": "CHRISTIAN SOLDIER [2]",
+      "firstLine": "Soldiers, go, but not to claim",
+      "meter": "7.8.7.8.7.8.7.8.7.7.8.8"
+    },
+    "129": {
+      "title": "CHRISTIAN SONG",
+      "firstLine": "Mine eyes are now closing to rest"
+    },
+    "183b": {
+      "title": "CLAREMONT",
+      "firstLine": "Vital spark of heav'nly flame"
+    },
+    "183t": {
+      "title": "PETERBOROUGH",
+      "firstLine": "Approach, my soul, the mercy seat",
+      "meter": "8.6.8.6"
+    },
+    "55": {
+      "title": "COLUMBUS",
+      "firstLine": "O, once I had a glorious view",
+      "meter": "8.6.8.6"
+    },
+    "105": {
+      "title": "COME AND TASTE WITH ME",
+      "firstLine": "Come and taste, along with me",
+      "meter": "7.7.7.7.7.7.9.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "294": {
+      "title": "COME, YE DISCONSOLATE [1]",
+      "firstLine": "Come, ye disconsolate, where'er ye languish",
+      "meter": "11.10"
+    },
+    "331t": {
+      "title": "COME, YE DISCONSOLATE [2]",
+      "firstLine": "Come, ye disconsolate, where'er ye languish",
+      "meter": "11.10",
+      "musicAttribution": {
+        "credit": "Swan"
+      }
+    },
+    "331b": {
+      "title": "TENDER CARE",
+      "firstLine": "When all thy mercies, O, my God",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "P. M. Atchley"
+      },
+      "historicalNote": "Also headed \"SODA\" in some sources (CCEL). Additional CCEL heading(s): SODA."
+    },
+    "18": {
+      "title": "COMPLAINER",
+      "firstLine": "I am a great complainer, that bears the name of Christ",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "321": {
+      "title": "CONCORD (Caldwell)",
+      "firstLine": "Ye objects of sense, And enjoyments of time",
+      "meter": "11.8",
+      "musicAttribution": {
+        "credit": "Caldwell"
+      },
+      "historicalNote": "CCEL heading: \"CONCORD\"; Hymnary title: \"CONCORD (Caldwell)\"."
+    },
+    "312t": {
+      "title": "CONDESCENSION",
+      "firstLine": "How condescending and how kind",
+      "meter": "8.6.8.6"
+    },
+    "312b": {
+      "title": "SWEET HEAVEN",
+      "firstLine": "Jesus, my all, to heav'n is gone",
+      "meter": "8.8.8.8"
+    },
+    "33": {
+      "title": "CONFIDENCE",
+      "firstLine": "Though troubles assail, and dangers affright",
+      "meter": "10.10.11.11"
+    },
+    "17b": {
+      "title": "CONSOLATION",
+      "firstLine": "Once more, my soul, the rising day",
+      "meter": "8.6.8.6",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Dean"
+      }
+    },
+    "17t": {
+      "title": "MIDDLEBURY",
+      "firstLine": "Come away to the skies. My beloved, arise",
+      "meter": "6.6.9"
+    },
+    "58": {
+      "title": "CONSOLATION NEW",
+      "firstLine": "Come on, my partners in distress",
+      "meter": "8.8.6"
+    },
+    "314": {
+      "title": "CONTENTED SOLDIER",
+      "firstLine": "I've listed in the holy war",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "8b": {
+      "title": "COOKHAM",
+      "firstLine": "Lord I cannot let thee go",
+      "meter": "7.7.7.7"
+    },
+    "8t": {
+      "title": "NEW BRITAIN",
+      "firstLine": "Amazing grace! (how sweet the sound)",
+      "meter": "8.6.8.6"
+    },
+    "299": {
+      "title": "CORONATION",
+      "firstLine": "All hail the power of Jesus' name",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Holden"
+      }
+    },
+    "35t": {
+      "title": "CROSS OF CHRIST",
+      "firstLine": "The cross of Christ inspires my heart",
+      "meter": "8.6.8.6 D",
+      "musicAttribution": {
+        "credit": "L. P. Breedlove"
+      }
+    },
+    "35b": {
+      "title": "PARTING FRIENDS",
+      "firstLine": "Farewell, my lovely friends, farewell",
+      "meter": "8.7"
+    },
+    "25t": {
+      "title": "CRUCIFIXION",
+      "firstLine": "Saw ye my Saviour",
+      "meter": "7.7.7.7.9"
+    },
+    "25b": {
+      "title": "INDIAN'S FAREWELL",
+      "firstLine": "When shall we all meet again",
+      "meter": "7.7.7.7.7.7",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "213": {
+      "title": "DAVID'S LAMENTATION",
+      "firstLine": "David the king was grieved and moved",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "15": {
+      "title": "DAVIS",
+      "firstLine": "O Thou in whose presence my soul takes delight",
+      "meter": "11.8"
+    },
+    "84b": {
+      "title": "DAY OF JUDGMENT",
+      "firstLine": "The day of the Lord--the day of salvation",
+      "meter": "11.11.6.6.7.6"
+    },
+    "84t": {
+      "title": "SALVATION",
+      "firstLine": "Come, humble sinner, in whose breast",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Boyd"
+      }
+    },
+    "315": {
+      "title": "DAYSPRING",
+      "firstLine": "Christian, see the orient morning",
+      "meter": "8.7"
+    },
+    "102": {
+      "title": "DELIGHT [1]",
+      "firstLine": "Vain, delusive world, adieu",
+      "meter": "7.6"
+    },
+    "167": {
+      "title": "DELIGHT [2]",
+      "firstLine": "No burning heats by day",
+      "meter": "Irregular",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Simeon Coan"
+      }
+    },
+    "199": {
+      "title": "DERRICK",
+      "firstLine": "Hark! the glad sound, the Saviour comes",
+      "meter": "8.6.8.6 D"
+    },
+    "40t": {
+      "title": "DETROIT",
+      "firstLine": "Do not I love thee, O my Lord?",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Bradshaw"
+      }
+    },
+    "40b": {
+      "title": "HAPPINESS",
+      "firstLine": "No more beneath th' oppressive hand",
+      "meter": "8.6.8.6"
+    },
+    "13b": {
+      "title": "DEVOTION",
+      "firstLine": "Sweet is the day of sacred rest",
+      "meter": "8.8.8.8"
+    },
+    "13t": {
+      "title": "DUBLIN",
+      "firstLine": "Lord, what is man, poor feeble man",
+      "meter": "8.6.8.6"
+    },
+    "123": {
+      "title": "DISCIPLE",
+      "firstLine": "Jesus, I my cross have taken",
+      "musicAttribution": {
+        "credit": "Wm. Houser"
+      }
+    },
+    "22b": {
+      "title": "DISTRESS",
+      "firstLine": "So fades the lovely, blooming flow'r",
+      "meter": "8.8.8.8"
+    },
+    "22t": {
+      "title": "OLD HUNDRED",
+      "firstLine": "O come, loud anthems let us sing",
+      "meter": "8.8.8.8"
+    },
+    "89t": {
+      "title": "DOVE OF PEACE",
+      "firstLine": "O tell me where the Dove has flown",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Houser"
+      }
+    },
+    "89b": {
+      "title": "HAPPY LAND",
+      "firstLine": "There is a happy land",
+      "meter": "6.4.6.4.6.7.6.4",
+      "musicAttribution": {
+        "credit": "Leonard P. Breedlove"
+      }
+    },
+    "196": {
+      "title": "DRUMMOND",
+      "firstLine": "Away from his home and the friends of his youth",
+      "meter": "11.11.11.11",
+      "textAttribution": {
+        "credit": "Rev. Samuel Wakefield; Rev. Wm. Hunter"
+      }
+    },
+    "250": {
+      "title": "DUDLEY (Walker)",
+      "firstLine": "When I can read my title clear",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "William Walker"
+      },
+      "historicalNote": "CCEL heading: \"DUDLEY\"; Hymnary title: \"DUDLEY (Walker)\"."
+    },
+    "291t": {
+      "title": "DUKE STREET",
+      "firstLine": "'Tis by the faith of joys to come",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Hutton"
+      }
+    },
+    "291b": {
+      "title": "WARWICK",
+      "firstLine": "Lord, in the morning thou shalt hear",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "J. Stanley"
+      }
+    },
+    "189": {
+      "title": "EASTER ANTHEM",
+      "firstLine": "The Lord is ris'n indeed",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "309": {
+      "title": "EDEN OF LOVE",
+      "firstLine": "How sweet to reflect on those joys that await me",
+      "meter": "12.11.12.11.12.12.12.11"
+    },
+    "177": {
+      "title": "EDOM",
+      "firstLine": "With songs and honours sounding loud",
+      "meter": "8.6.8.6"
+    },
+    "307": {
+      "title": "ELTHAM (Mason)",
+      "firstLine": "Hasten, Lord, the glorious time",
+      "meter": "7.7.7.7 D",
+      "musicAttribution": {
+        "credit": "Lowell Mason"
+      },
+      "historicalNote": "CCEL heading: \"ELTHAM\"; Hymnary title: \"ELTHAM (Mason)\"."
+    },
+    "100": {
+      "title": "ELYSIAN",
+      "firstLine": "Burst, ye emerald gates, and bring",
+      "meter": "7.6.7.6.7.7.7.7"
+    },
+    "255": {
+      "title": "ESSAY",
+      "firstLine": "See how the wicked kingdom",
+      "meter": "7.6.7.6.7.6.7.6",
+      "musicAttribution": {
+        "credit": "A. C. Clark"
+      }
+    },
+    "46": {
+      "title": "EVENING SHADE",
+      "firstLine": "The day is past and gone",
+      "meter": "6.6.8.6"
+    },
+    "54": {
+      "title": "EXHILARATION",
+      "firstLine": "Oh! may I worthy prove to see",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Dr. T. W. Carter"
+      }
+    },
+    "88": {
+      "title": "EXULTATION",
+      "firstLine": "Come away to the skies",
+      "meter": "6.6.9",
+      "musicAttribution": {
+        "credit": "Humphreys"
+      }
+    },
+    "48b": {
+      "title": "FAIRFIELD",
+      "firstLine": "Come, humble sinner, in whose breast",
+      "meter": "8.6.8.6"
+    },
+    "48t": {
+      "title": "WINDHAM",
+      "firstLine": "Broad is the road that leads to death",
+      "meter": "8.8.8.8",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Read"
+      }
+    },
+    "122": {
+      "title": "FAITHFUL SOLDIER",
+      "firstLine": "O when shall I see Jesus",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "81t": {
+      "title": "FAREWELL [1]",
+      "firstLine": "Come, Christians, be valiant, our Jesus is near us",
+      "meter": "12.11",
+      "musicAttribution": {
+        "credit": "More"
+      }
+    },
+    "81b": {
+      "title": "FAREWELL [2]",
+      "firstLine": "Come, all ye young people of every relation,",
+      "meter": "12.11",
+      "musicAttribution": {
+        "credit": "More"
+      }
+    },
+    "214": {
+      "title": "FAREWELL ANTHEM",
+      "firstLine": "My friends, I am going a long and tedious journey"
+    },
+    "92t": {
+      "title": "FIDUCIA",
+      "firstLine": "Father, I long, I faint to see",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Robison"
+      }
+    },
+    "92b": {
+      "title": "PROSPECT",
+      "firstLine": "Why should we start, or fear to die?",
+      "meter": "8.8.8.8",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Graham"
+      }
+    },
+    "120": {
+      "title": "FLORIDA",
+      "firstLine": "Let sinners take their course",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Witmore"
+      }
+    },
+    "325": {
+      "title": "FOUNT OF GLORY",
+      "firstLine": "Far from our mortal cares retreating",
+      "meter": "8.7.8.7 D",
+      "musicAttribution": {
+        "credit": "R. W. Thompson"
+      }
+    },
+    "265": {
+      "title": "FRENCH BROAD",
+      "firstLine": "High o'er the hills the mountains rise",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "187": {
+      "title": "FUNERAL ANTHEM",
+      "firstLine": "I heard a great voice from heav'n",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "257": {
+      "title": "FUNERAL THOUGHT",
+      "firstLine": "Thou are gone to the grave&#8212;but we will not deplore thee",
+      "meter": "13.12.11",
+      "musicAttribution": {
+        "credit": "Caldwell"
+      }
+    },
+    "90": {
+      "title": "GARDEN HYMN",
+      "firstLine": "The Lord into his garden comes",
+      "meter": "8.8.6"
+    },
+    "72t": {
+      "title": "GEORGIA",
+      "firstLine": "Return, O God of love, return",
+      "meter": "8.6.8.6"
+    },
+    "72b": {
+      "title": "INVOCATION [1]",
+      "firstLine": "Rise, my soul, and stretch thy wings",
+      "meter": "7.6.7.6.7.7.7.6",
+      "historicalNote": "CCEL indexes this as page 72; Hymnary uses 72b to distinguish the second tune on a shared page."
+    },
+    "295": {
+      "title": "GLASGOW",
+      "firstLine": "This Life's a dream, an empty show",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Dare"
+      }
+    },
+    "273": {
+      "title": "GOSPEL TIDINGS",
+      "firstLine": "How beauteous are their feet",
+      "meter": "6.6.8.6"
+    },
+    "271t": {
+      "title": "GOSPEL TRUMPET",
+      "firstLine": "Let ev'ry mortal ear attend",
+      "meter": "8.6.8.6",
+      "historicalNote": "Also headed \"WOODSTOCK\" in some sources (CCEL). Additional CCEL heading(s): WOODSTOCK."
+    },
+    "271b": {
+      "title": "NASHVILLE",
+      "firstLine": "I love the volume of thy word",
+      "meter": "8.8.8.8.8.8",
+      "historicalNote": "CCEL heading: \"NASHVILLE [2]\"; Hymnary title: \"NASHVILLE\"."
+    },
+    "71": {
+      "title": "GREEN FIELDS",
+      "firstLine": "How tedious and tasteless the hours",
+      "meter": "8.8.8."
+    },
+    "121": {
+      "title": "GREENFIELD",
+      "firstLine": "God is our refuge in distress",
+      "meter": "8.8.8.8.8.8"
+    },
+    "332": {
+      "title": "GREENLAND (Swan)",
+      "firstLine": "Why should I be affrighted",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Swan"
+      },
+      "historicalNote": "CCEL heading: \"GREENLAND\"; Hymnary title: \"GREENLAND (Swan)\"."
+    },
+    "141": {
+      "title": "HAIL, COLUMBIA",
+      "firstLine": "Hail, Columbia! happy land!"
+    },
+    "107": {
+      "title": "HALLELUJAH",
+      "firstLine": "And let this feeble body fail",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      },
+      "historicalNote": "CCEL heading: \"HALLELUJAH [1]\"; Hymnary title: \"HALLELUJAH\"."
+    },
+    "139": {
+      "title": "HALLELUJAH [Harrison]",
+      "firstLine": "He comes! he comes! the Judge severe",
+      "meter": "8.6.8.6.8.6.8.7",
+      "musicAttribution": {
+        "credit": "Dr. Harrison"
+      },
+      "historicalNote": "CCEL heading: \"HALLELUJAH [2]\"; Hymnary title: \"HALLELUJAH [Harrison]\"."
+    },
+    "4b": {
+      "title": "HANOVER",
+      "firstLine": "Come, humble sinner, in whose breast",
+      "meter": "8.6.8.6"
+    },
+    "4t": {
+      "title": "MEDITATION (Dover)",
+      "firstLine": "Today, if you will hear his voice",
+      "meter": "8.8.8.8",
+      "historicalNote": "CCEL heading: \"MEDITATION\"; Hymnary title: \"MEDITATION (Dover)\"."
+    },
+    "192": {
+      "title": "HARWELL",
+      "firstLine": "Hark! ten thousand harps and voices",
+      "meter": "8.7.7"
+    },
+    "93": {
+      "title": "HEAVENLY ARMOUR",
+      "firstLine": "And if you meet with troubles",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "206": {
+      "title": "HEAVENLY VISION",
+      "firstLine": "I beheld, and lo a great multitude",
+      "musicAttribution": {
+        "credit": "Jacob French"
+      }
+    },
+    "266": {
+      "title": "HEBREW CHILDREN",
+      "firstLine": "Where are the Hebrew children?",
+      "meter": "7.6.8.8.8.6",
+      "textAttribution": {
+        "credit": "David Walker"
+      },
+      "musicAttribution": {
+        "credit": "David Walker"
+      }
+    },
+    "288t": {
+      "title": "HEBRON",
+      "firstLine": "Thus far the Lord has led me on",
+      "meter": "8.8.8.8"
+    },
+    "288b": {
+      "title": "ROCKBRIDGE",
+      "firstLine": "Life is the time to serve the Lord",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Chapin"
+      },
+      "historicalNote": "CCEL indexes this as page 288; Hymnary uses 288b to distinguish the second tune on a shared page."
+    },
+    "103": {
+      "title": "HOLY MANNA",
+      "firstLine": "Brethren, we have met to worship",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "More"
+      }
+    },
+    "272": {
+      "title": "HOPE",
+      "firstLine": "My God, my life, my love",
+      "meter": "6.6.8.6"
+    },
+    "326": {
+      "title": "HOPEWELL",
+      "firstLine": "Jesus, my all, to heav'n is gone",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "L. J. Jones"
+      }
+    },
+    "172": {
+      "title": "HUMBLE PENITENT",
+      "firstLine": "Show pity, Lord, O Lord, forgive",
+      "meter": "8.7 with refrain",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "169": {
+      "title": "HUNTINGTON",
+      "firstLine": "Lord, what a thoughtless wretch was I",
+      "meter": "8.8.8.8"
+    },
+    "160": {
+      "title": "HYMN",
+      "firstLine": "Thou art gone to the grave, but we will not deplore thee",
+      "meter": "13.12.11",
+      "musicAttribution": {
+        "credit": "Dr. John Clarke"
+      },
+      "historicalNote": "Also headed \"THOU ART GONE TO THE GRAVE\" in some sources (CCEL). Additional CCEL heading(s): THOU ART GONE TO THE GRAVE."
+    },
+    "31t": {
+      "title": "IDUMEA",
+      "firstLine": "And am I born to die?",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Davison"
+      }
+    },
+    "31b": {
+      "title": "SUFFIELD",
+      "firstLine": "Teach me the measure of my days",
+      "meter": "8.6.8.6"
+    },
+    "134": {
+      "title": "IMANDRA",
+      "firstLine": "I love thee, my Saviour, I love thee, my Lord",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Davison"
+      }
+    },
+    "34b": {
+      "title": "IMANDRA NEW",
+      "firstLine": "Farewell, my dear brethren, the time is at hand",
+      "meter": "11.11.11.11"
+    },
+    "34t": {
+      "title": "VERNON",
+      "firstLine": "Come, O thou traveller unknown",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "319": {
+      "title": "IMMENSITY",
+      "firstLine": "There is a world we have not seen",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Caldwell"
+      }
+    },
+    "194": {
+      "title": "IN THAT MORNING",
+      "firstLine": "Jesus, my all, to heav'n is gone",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "133": {
+      "title": "INDIAN CONVERT",
+      "firstLine": "In de dark woods, no Indian nigh",
+      "meter": "8.8.6",
+      "musicAttribution": {
+        "credit": "Johnson"
+      },
+      "historicalNote": "Also headed \"NASHVILLE [1]\" in some sources (CCEL). Additional CCEL heading(s): NASHVILLE [1]."
+    },
+    "324b": {
+      "title": "INTERCESSION (Moffett)",
+      "firstLine": "The Lord is ris'n indeed",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "T. C. Moffett"
+      },
+      "historicalNote": "CCEL heading: \"INTERCESSION\"; Hymnary title: \"INTERCESSION (Moffett)\"."
+    },
+    "324t": {
+      "title": "REMEMBER ME",
+      "firstLine": "Alas! and did my Saviour bleed?",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "L. J. Jones"
+      }
+    },
+    "249": {
+      "title": "INTERROGATION",
+      "firstLine": "Hark! my soul, it is the Lord",
+      "meter": "7.7.7.7",
+      "musicAttribution": {
+        "credit": "Christopher"
+      }
+    },
+    "303": {
+      "title": "INVITATION NEW",
+      "firstLine": "Come, ye sinners, poor and wretched",
+      "meter": "8.7.4"
+    },
+    "2": {
+      "title": "INVITATION (Walker)",
+      "firstLine": "Come, ye sinners, poor and wretched",
+      "meter": "8.7.4",
+      "musicAttribution": {
+        "credit": "William Walker"
+      },
+      "historicalNote": "CCEL heading: \"INVITATION\"; Hymnary title: \"INVITATION (Walker)\"."
+    },
+    "165t": {
+      "title": "IONIA (Belcher)",
+      "firstLine": "Children of the heavenly King",
+      "meter": "7.7.7.7",
+      "musicAttribution": {
+        "credit": "J. W. Belcher"
+      },
+      "historicalNote": "CCEL heading: \"IONIA\"; Hymnary title: \"IONIA (Belcher)\"."
+    },
+    "165b": {
+      "title": "WILMOT",
+      "firstLine": "Sinner, art thou still secure?",
+      "meter": "7.7.7.7"
+    },
+    "86": {
+      "title": "ISLES OF THE SOUTH",
+      "firstLine": "Wake, Isles of the South! your redemption is near",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Wm. Houser"
+      }
+    },
+    "42": {
+      "title": "JEFFERSON",
+      "firstLine": "Glorious things of thee are spoken",
+      "meter": "8.7"
+    },
+    "11": {
+      "title": "JERUSALEM",
+      "firstLine": "Jesus my all to heav'n is gone",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "318": {
+      "title": "JORDAN'S SHORE",
+      "firstLine": "On Jordan's stormy banks I stand",
+      "meter": "8.6.8.6",
+      "textAttribution": {
+        "credit": "J. T. White"
+      }
+    },
+    "118": {
+      "title": "JUBILEE",
+      "firstLine": "Hark! the jubilee is sounding",
+      "meter": "Irregular",
+      "musicAttribution": {
+        "credit": "Unknown"
+      }
+    },
+    "47": {
+      "title": "JUDGMENT",
+      "firstLine": "Rise, my soul, and stretch thy wings",
+      "meter": "7.6.7.6.7.7.7.6",
+      "musicAttribution": {
+        "credit": "F. Price"
+      }
+    },
+    "154t": {
+      "title": "KAMBIA",
+      "firstLine": "Lord, what a feeble piece",
+      "meter": "6.6.8.6"
+    },
+    "154b": {
+      "title": "LISBON",
+      "firstLine": "Welcome, sweet day of rest",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Read"
+      }
+    },
+    "3b": {
+      "title": "KEDRON",
+      "firstLine": "Thou Man of grief, remember me",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Dare"
+      }
+    },
+    "3t": {
+      "title": "PRIMROSE",
+      "firstLine": "Salvation! O the joyful sound!",
+      "meter": "8.6.8.6",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "6b": {
+      "title": "KING OF PEACE",
+      "firstLine": "Children of the heav'nly King",
+      "meter": "7.7.7.7",
+      "musicAttribution": {
+        "credit": "F. Price"
+      }
+    },
+    "6t": {
+      "title": "MARYSVILLE",
+      "firstLine": "Jesus, my all, to heav'n is gone",
+      "meter": "8.8.8.8"
+    },
+    "98": {
+      "title": "KINGWOOD",
+      "firstLine": "My days, my weeks, my months, my years",
+      "meter": "8.8.6",
+      "musicAttribution": {
+        "credit": "Humphreys"
+      }
+    },
+    "140": {
+      "title": "KNOXVILLE",
+      "firstLine": "Rejoice, my friends, the Lord is King",
+      "meter": "8.8.8.8.7",
+      "musicAttribution": {
+        "credit": "R. Monday"
+      }
+    },
+    "63": {
+      "title": "LAND OF PLEASURE",
+      "firstLine": "There is a land of pleasure",
+      "meter": "7.8",
+      "musicAttribution": {
+        "credit": "Davison; William Walker"
+      }
+    },
+    "128": {
+      "title": "LEANDER",
+      "firstLine": "My soul forsakes her vain delight",
+      "meter": "8.6.8.6",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      }
+    },
+    "73": {
+      "title": "LEGACY",
+      "firstLine": "When in death I shall calm recline",
+      "meter": "8.9.10"
+    },
+    "149": {
+      "title": "LENA",
+      "firstLine": "See the Lord of glory dying",
+      "meter": "8.7"
+    },
+    "77": {
+      "title": "LENOX",
+      "firstLine": "Blow ye the trumpet, blow",
+      "meter": "Irregular",
+      "musicAttribution": {
+        "credit": "Edson"
+      }
+    },
+    "68": {
+      "title": "LIBERTY",
+      "firstLine": "No more beneath th' oppressive hand",
+      "meter": "8.6.8.6"
+    },
+    "168b": {
+      "title": "LINDAN",
+      "firstLine": "Lord, when my thoughts delighted rove",
+      "meter": "8.8.8.8"
+    },
+    "168t": {
+      "title": "ROCKINGHAM",
+      "firstLine": "Thy praise, O Lord, shall tune the lyre",
+      "meter": "8.8.8.8",
+      "textAttribution": {
+        "credit": "Lowell Mason"
+      },
+      "musicAttribution": {
+        "credit": "Lowell Mason"
+      },
+      "historicalNote": "CCEL heading: \"ROCKINGHAM [1]\"; Hymnary title: \"ROCKINGHAM\"."
+    },
+    "1": {
+      "title": "LIVERPOOL",
+      "firstLine": "Young people all, attention give",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "M. C. H. Davis"
+      }
+    },
+    "302": {
+      "title": "LONG SOUGHT HOME",
+      "firstLine": "Jerusalem, my happy home",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "William Bobo"
+      },
+      "historicalNote": "CCEL prints “Wilham Bobo”; Hymnary gives “William Bobo.”"
+    },
+    "313b": {
+      "title": "LONG TIME AGO",
+      "firstLine": "Jesus died on Calvary's mountain"
+    },
+    "313t": {
+      "title": "TRAVELLING PILGRIM",
+      "firstLine": "Farewell! vain world, I'm going home",
+      "meter": "8.8.8.8 D"
+    },
+    "62": {
+      "title": "LOUISIANA",
+      "firstLine": "Come, little children, now we may",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "159t": {
+      "title": "LUTHER",
+      "firstLine": "My soul, be on thy guard",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Thomas Hastings"
+      }
+    },
+    "159b": {
+      "title": "NEW HAVEN",
+      "firstLine": "Come, thou Almighty king",
+      "meter": "6.6.4.6.6.6.4",
+      "musicAttribution": {
+        "credit": "Thomas Hastings"
+      }
+    },
+    "24b": {
+      "title": "MEAR",
+      "firstLine": "Will God for ever cast us off?",
+      "meter": "8.6.8.6"
+    },
+    "24t": {
+      "title": "PROSPECT OF HEAVEN",
+      "firstLine": "The faithless world promiscuous flows",
+      "meter": "8.7.8.8.7",
+      "musicAttribution": {
+        "credit": "A. Grambling"
+      }
+    },
+    "304": {
+      "title": "MERCY'S FREE",
+      "firstLine": "What's this that in my soul is rising?",
+      "meter": "9.6.9.8.8.8.6",
+      "musicAttribution": {
+        "credit": "Leonard P. Breedlove"
+      }
+    },
+    "97": {
+      "title": "MESSIAH (Carrell)",
+      "firstLine": "He comes! he comes! to judge the world",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Carrell"
+      },
+      "historicalNote": "CCEL heading: \"MESSIAH\"; Hymnary title: \"MESSIAH (Carrell)\". CCEL prints “Carreil”; Hymnary gives “Carrell.”"
+    },
+    "300t": {
+      "title": "MILLEDGEVILLE",
+      "firstLine": "Oh! for a closer walk with God",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Rev. A. Grambling"
+      }
+    },
+    "300b": {
+      "title": "ROCKINGHAM",
+      "firstLine": "Come, happy souls, approach your God",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Chapin"
+      },
+      "historicalNote": "CCEL heading: \"ROCKINGHAM [2]\"; Hymnary title: \"ROCKINGHAM\"."
+    },
+    "75": {
+      "title": "MILLENNIUM",
+      "firstLine": "The time is soon coming",
+      "meter": "12.12.12.13",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "14": {
+      "title": "MINISTER'S FAREWELL",
+      "firstLine": "Dear friends, farewell, I do you tell",
+      "meter": "8.6.8.6"
+    },
+    "96": {
+      "title": "MISSION",
+      "firstLine": "Young people all, attention give",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "A. Grambling"
+      }
+    },
+    "328": {
+      "title": "MISSIONARY FAREWELL",
+      "firstLine": "Yes, my native land, I love thee",
+      "meter": "8.7.4",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "111": {
+      "title": "MISSIONARY HYMN",
+      "firstLine": "From Greenland's icy mountains",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "James Langston"
+      }
+    },
+    "197": {
+      "title": "MISSIONARY SONG",
+      "firstLine": "O'er the gloomy hills of darkness",
+      "meter": "8.7.4",
+      "musicAttribution": {
+        "credit": "Sylvanus B. Pond"
+      }
+    },
+    "290b": {
+      "title": "MISSIONARY'S ADIEU",
+      "firstLine": "My dearest, lovely, native land",
+      "meter": "8.6.8.6"
+    },
+    "290t": {
+      "title": "THE PENITENT'S PRAYER",
+      "firstLine": "Oh! thou, whose tender mercy hears",
+      "meter": "8.6.8.6",
+      "historicalNote": "Also headed \"AVON\" in some sources (CCEL). Additional CCEL heading(s): AVON."
+    },
+    "148": {
+      "title": "MISSISSIPPI",
+      "firstLine": "When Gabriel's awful trump shall sound",
+      "meter": "8.8.8.7.8.8.3.3.3.3.8",
+      "musicAttribution": {
+        "credit": "Bradshaw"
+      }
+    },
+    "170": {
+      "title": "MONTGOMERY (Morgan)",
+      "firstLine": "Early, my God, without delay",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Justin Morgan"
+      },
+      "historicalNote": "CCEL heading: \"MONTGOMERY\"; Hymnary title: \"MONTGOMERY (Morgan)\"."
+    },
+    "44": {
+      "title": "MORALITY",
+      "firstLine": "While beauty and youth are in their full prime",
+      "meter": "10.11.11"
+    },
+    "115": {
+      "title": "MORNING STAR (Lowry)",
+      "firstLine": "How splendid shines the morning star",
+      "meter": "8.8.7.8.8.7.7.9.8",
+      "musicAttribution": {
+        "credit": "Robert Lowry"
+      },
+      "historicalNote": "CCEL heading: \"MORNING STAR\"; Hymnary title: \"MORNING STAR (Lowry)\"."
+    },
+    "175": {
+      "title": "MOUNT ZION",
+      "firstLine": "The hill of Zion yields",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Brown"
+      }
+    },
+    "53t": {
+      "title": "MUTUAL LOVE",
+      "firstLine": "O when shall I see Jesus",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "53b": {
+      "title": "SALEM",
+      "firstLine": "He dies, the Friend of sinners dies",
+      "meter": "8.8.8.8",
+      "historicalNote": "CCEL heading: \"SALEM [2]\"; Hymnary title: \"SALEM\"."
+    },
+    "198": {
+      "title": "NEVER PART AGAIN",
+      "firstLine": "Jerusalem, my happy home",
+      "meter": "8.6.8.6"
+    },
+    "125": {
+      "title": "NEW JERUSALEM",
+      "firstLine": "My gracious Redeemer I love",
+      "meter": "8.8.8."
+    },
+    "76": {
+      "title": "NEW ORLEANS",
+      "firstLine": "Why do we mourn departing friends?",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Boyd"
+      }
+    },
+    "163": {
+      "title": "NEW TOPIA",
+      "firstLine": "Young people all, attention give",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Munday"
+      }
+    },
+    "333b": {
+      "title": "NEW YEAR",
+      "firstLine": "Eternity draws nigh",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "William Walker; P. M. Atchley"
+      },
+      "historicalNote": "CCEL indexes this as page 333; Hymnary uses 333b to distinguish the second tune on a shared page."
+    },
+    "333t": {
+      "title": "RAPTURE",
+      "firstLine": "Come away to the skies",
+      "meter": "6.6.9",
+      "musicAttribution": {
+        "credit": "M. L. Swan"
+      }
+    },
+    "296": {
+      "title": "NEWBURGH",
+      "firstLine": "Let every creature join",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Manson"
+      }
+    },
+    "7t": {
+      "title": "NINETY-THIRD PSALM",
+      "firstLine": "Grace! 'tis a charming sound",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "7b": {
+      "title": "WEEPING SAVIOUR",
+      "firstLine": "Did Christ o'er sinner's weep?",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "E. J. King"
+      }
+    },
+    "283": {
+      "title": "NORTHFIELD",
+      "firstLine": "How long, dear Jesus, oh! how long",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Ingalls"
+      }
+    },
+    "144": {
+      "title": "O COME, COME AWAY",
+      "firstLine": "O come, come away! the Sabbath morn is passing",
+      "musicAttribution": {
+        "credit": "W. Houser"
+      }
+    },
+    "180": {
+      "title": "OCEAN",
+      "firstLine": "Thy works of glory, mighty Lord",
+      "musicAttribution": {
+        "credit": "Swan"
+      }
+    },
+    "210": {
+      "title": "ODE ON SCIENCE",
+      "firstLine": "The morning sun shines from the east"
+    },
+    "263": {
+      "title": "OH TURN, SINNER",
+      "firstLine": "Today if you will hear his voice",
+      "meter": "8.8.8.8"
+    },
+    "64": {
+      "title": "OLNEY",
+      "firstLine": "Come, thou fount of ev'ry blessing",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "10b": {
+      "title": "ORTONVILLE",
+      "firstLine": "Am I a soldier of the cross",
+      "meter": "8.6.8.6"
+    },
+    "10t": {
+      "title": "WEBSTER",
+      "firstLine": "Come, we that love the Lord",
+      "meter": "6.6.8.6"
+    },
+    "327": {
+      "title": "OUR JOURNEY HOME",
+      "firstLine": "Come, thou fount of ev'ry blessing",
+      "meter": "7.7.7.7",
+      "musicAttribution": {
+        "credit": "L. J. Jones"
+      }
+    },
+    "106b": {
+      "title": "PACOLET",
+      "firstLine": "Shall men pretend to pleasure",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Wm. Golightly, jr."
+      }
+    },
+    "106t": {
+      "title": "THE PILGRIM'S SONG",
+      "firstLine": "I am a stranger here below",
+      "meter": "8.8.8.8"
+    },
+    "268": {
+      "title": "PARDONING LOVE",
+      "firstLine": "In evil long I took delight",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "113": {
+      "title": "PARTING HAND",
+      "firstLine": "My Christian friends, in bonds of love",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "147": {
+      "title": "PASTORAL ELEGY",
+      "firstLine": "What sorrowful sounds do I hear",
+      "meter": "8.8.8."
+    },
+    "150": {
+      "title": "PILGRIM",
+      "firstLine": "Come, all ye mourning pilgrims dear",
+      "meter": "8.6.8.6.8.6.8.6"
+    },
+    "158": {
+      "title": "PILGRIM'S FAREWELL",
+      "firstLine": "Farewell, farewell, farewell, my friends, I must be gone",
+      "meter": "12.12.12.12.8.8.8.8"
+    },
+    "80": {
+      "title": "PISGAH",
+      "firstLine": "Jesus, thou art all the sinner's friend",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Lowry"
+      }
+    },
+    "66": {
+      "title": "PLEASANT HILL",
+      "firstLine": "Religion is the chief concern",
+      "meter": "8.6.8.6"
+    },
+    "262": {
+      "title": "PLENARY",
+      "firstLine": "Hark! from the tombs a doleful sound",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "A. Clark"
+      }
+    },
+    "287": {
+      "title": "PORTUGAL",
+      "firstLine": "How pleasant, how divinely fair",
+      "meter": "8.8.8.8"
+    },
+    "136": {
+      "title": "PORTUGUESE HYMN",
+      "firstLine": "Hither, ye faithful, haste with songs of triumph",
+      "meter": "Irregular"
+    },
+    "56": {
+      "title": "REDEEMING GRACE",
+      "firstLine": "Come all, who love my Lord and master",
+      "meter": "9.8"
+    },
+    "108": {
+      "title": "REDEMPTION",
+      "firstLine": "Hark! hark! glad tiding charm our ears",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "A. Benham, Sr."
+      }
+    },
+    "161": {
+      "title": "REPENTANCE",
+      "firstLine": "O, if my soul was form'd for wo",
+      "meter": "8.6.8.6"
+    },
+    "151": {
+      "title": "REPOSE",
+      "firstLine": "The Lamb appears to wipe our tears",
+      "meter": "8.7"
+    },
+    "38": {
+      "title": "RESIGNATION",
+      "firstLine": "My Shepherd will supply my need",
+      "meter": "8.6.8.6"
+    },
+    "5b": {
+      "title": "RESTORATION",
+      "firstLine": "Mercy, O thou Son of David",
+      "meter": "8.7"
+    },
+    "5t": {
+      "title": "SUPPLICATION",
+      "firstLine": "O thou who hear'st when sinners cry",
+      "meter": "8.8.8.8",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      }
+    },
+    "145": {
+      "title": "RHODE ISLAND",
+      "firstLine": "Thou great, mysterious God unknown",
+      "meter": "8.8.6"
+    },
+    "292": {
+      "title": "RIPLEY",
+      "firstLine": "Jesus, I my cross have taken",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "Lowell Mason"
+      }
+    },
+    "279t": {
+      "title": "ROCHESTER",
+      "firstLine": "There is a land of pure delight",
+      "meter": "8.6.8.6"
+    },
+    "279b": {
+      "title": "STONINGTON",
+      "firstLine": "Ye trembling captives hear",
+      "meter": "6.6.8.6",
+      "historicalNote": "CCEL indexes this as page 279; Hymnary uses 279b to distinguish the second tune on a shared page."
+    },
+    "275": {
+      "title": "ROCK OF AGES",
+      "firstLine": "Rock of Ages, shelter me",
+      "meter": "7.7.7.7.7.7"
+    },
+    "200b": {
+      "title": "ROSE OF SHARON",
+      "firstLine": "I am the rose of Sharon, the lily of the valley",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "200t": {
+      "title": "SWEET GLIDING KEDRON",
+      "firstLine": "Thou sweet gliding Kedron, by thy silver stream",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Wm. Houser"
+      }
+    },
+    "146": {
+      "title": "ROYAL PROCLAMATION",
+      "firstLine": "Hear the royal proclamation",
+      "meter": "8.8.8.8.8.3"
+    },
+    "12": {
+      "title": "SALEM",
+      "firstLine": "How sweet the name of Jesus sounds",
+      "meter": "8.6.8.6",
+      "historicalNote": "CCEL heading: \"SALEM [1]\"; Hymnary title: \"SALEM\"."
+    },
+    "143": {
+      "title": "SALUTATION",
+      "firstLine": "Good morning, brother pilgrim",
+      "meter": "7.6.8.7.7.6.7.6"
+    },
+    "322": {
+      "title": "SAMANTHRA",
+      "firstLine": "His voice as the sound of th dulcimer sweet",
+      "meter": "11.8"
+    },
+    "126": {
+      "title": "SARDINA",
+      "firstLine": "How did his flowing tears condole",
+      "meter": "8.6.8.6"
+    },
+    "178": {
+      "title": "SCHENECTADY",
+      "firstLine": "From all that dwell below the skies",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Shumway"
+      }
+    },
+    "30": {
+      "title": "SEPARATION",
+      "firstLine": "Our cheerful voices let us raise",
+      "meter": "8.6.8.6"
+    },
+    "124": {
+      "title": "SHARON",
+      "firstLine": "How pleasant 'tis to see",
+      "meter": "Irregular"
+    },
+    "280b": {
+      "title": "SHERBURNE",
+      "firstLine": "To God our voices let us raise",
+      "meter": "8.8.8.8"
+    },
+    "280t": {
+      "title": "SILVER STREET",
+      "firstLine": "Come, sound his name abroad",
+      "meter": "6.6.8.6",
+      "musicAttribution": {
+        "credit": "J. Street"
+      }
+    },
+    "286": {
+      "title": "SHIRLAND",
+      "firstLine": "My God, my life, my love",
+      "meter": "6.6.8.6"
+    },
+    "101": {
+      "title": "SINCERITY",
+      "firstLine": "How firm a foundation, ye saints of the Lord",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "William Walker"
+      }
+    },
+    "112": {
+      "title": "SOCIAL BAND",
+      "firstLine": "Say now, ye lovely social band",
+      "meter": "8.8.8.8"
+    },
+    "29": {
+      "title": "SOLEMN THOUGHT",
+      "firstLine": "Remember, sinful youth, you must die",
+      "meter": "12.9.12.12.9",
+      "musicAttribution": {
+        "credit": "F. Price"
+      }
+    },
+    "69": {
+      "title": "SOLICITUDE",
+      "firstLine": "How firm a foundation, ye saints of the Lord",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Smith"
+      }
+    },
+    "173b": {
+      "title": "SOLITUDE NEW",
+      "firstLine": "My refuge is the God of love",
+      "meter": "8.6.8.6"
+    },
+    "173t": {
+      "title": "UXBRIDGE",
+      "firstLine": "Sweet is the work, my God, my King",
+      "meter": "8.8.8.8"
+    },
+    "254": {
+      "title": "SOMETHING NEW",
+      "firstLine": "Since man by sin has lost his God",
+      "meter": "8.6.8.6"
+    },
+    "284b": {
+      "title": "SPRAGUE",
+      "firstLine": "Give me the wings of faith, to rise",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "J. Smith"
+      }
+    },
+    "284t": {
+      "title": "WATCHMAN",
+      "firstLine": "Shall wisdom cry aloud",
+      "meter": "6.6.8.6"
+    },
+    "274": {
+      "title": "STANTON",
+      "firstLine": "Father, Son, and Holy Ghost",
+      "meter": "7.7.7.7.7.7"
+    },
+    "16": {
+      "title": "STAR IN THE EAST",
+      "firstLine": "Hail the blest morn, see the great Mediator",
+      "meter": "10.11"
+    },
+    "260": {
+      "title": "STAR OF COLUMBIA",
+      "firstLine": "Columbia! Columbia! to glory arise",
+      "meter": "11.11.11.11",
+      "textAttribution": {
+        "credit": "Dr. Dwight"
+      },
+      "musicAttribution": {
+        "credit": "Miss M. T. Durham"
+      }
+    },
+    "259": {
+      "title": "SWEET AFFLICTION",
+      "firstLine": "In the floods of tribulation",
+      "meter": "8.7"
+    },
+    "59": {
+      "title": "SWEET HARMONY",
+      "firstLine": "O tell me no more of this world's vain store",
+      "meter": "10.10.10.10",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "251": {
+      "title": "SWEET HOME",
+      "firstLine": "Mid Scenes of confusion and creature complaints",
+      "meter": "11.11.11.5.11"
+    },
+    "137": {
+      "title": "SWEET PROSPECT",
+      "firstLine": "On Jordan's stormy banks I stand",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "166": {
+      "title": "SWEET RIVERS",
+      "firstLine": "Sweet rivers of redeeming love",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "More"
+      }
+    },
+    "155": {
+      "title": "SWEET SOLITUDE",
+      "firstLine": "Hail, solitude! thou gentle queen",
+      "meter": "8.8.8.8"
+    },
+    "28": {
+      "title": "TENNESSEE",
+      "firstLine": "Afflictions, though they seem severe",
+      "meter": "8.6.8.6"
+    },
+    "78": {
+      "title": "THE BABE OF BETHLEHEM",
+      "firstLine": "Ye nations all, on you I call",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "37": {
+      "title": "THE CHRISTIAN WARFARE",
+      "firstLine": "I find myself placed in a state of probation",
+      "meter": "12.11.11.11.12.11"
+    },
+    "131": {
+      "title": "THE CHRISTIAN'S CONFLICTS",
+      "firstLine": "See how the wicked kingdom",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "334": {
+      "title": "THE CHRISTIAN'S FAREWELL",
+      "firstLine": "Farewell, my dear brethren, the time is at hand",
+      "meter": "11.11.11.11"
+    },
+    "74": {
+      "title": "THE CHRISTIAN'S HOPE",
+      "firstLine": "A few more days on earth to spend",
+      "meter": "8.8.8.6.8.8.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "9": {
+      "title": "THE CONVERTED THIEF",
+      "firstLine": "As on the cross the Saviour hung",
+      "meter": "8.6.8.6 D",
+      "musicAttribution": {
+        "credit": "More"
+      }
+    },
+    "20": {
+      "title": "THE FAMILY BIBLE",
+      "firstLine": "How painfully pleasing the fond recollection",
+      "meter": "12.11"
+    },
+    "156": {
+      "title": "THE GOOD OLD WAY",
+      "firstLine": "Lift up your heads, Immanuel's friends",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "49": {
+      "title": "THE GOOD PHYSICIAN",
+      "firstLine": "How lost was my condition",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "253": {
+      "title": "THE HEAVENLY MARCH",
+      "firstLine": "On Jordan's stormy banks I stand",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "269": {
+      "title": "THE INDIAN'S PETITION",
+      "firstLine": "Let me go to my home in the far distant west",
+      "meter": "12.12.12.12.11"
+    },
+    "256": {
+      "title": "THE LONE PILGRIM",
+      "firstLine": "I came to the place where the lone pilgrim lay",
+      "meter": "11.8.11.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "61": {
+      "title": "THE MARTIAL TRUMPET",
+      "firstLine": "Brethren, don't you hear the sound?",
+      "meter": "7.9",
+      "musicAttribution": {
+        "credit": "Rev. J. G. Landrum; William Walker"
+      }
+    },
+    "32": {
+      "title": "THE MIDNIGHT CRY",
+      "firstLine": "When the midnight cry began",
+      "meter": "7.6.7.6.7.6.7.7"
+    },
+    "195": {
+      "title": "THE MORNING TRUMPET",
+      "firstLine": "Oh when shall I see Jesus",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "B. F. White"
+      }
+    },
+    "87": {
+      "title": "THE MOULDERING VINE",
+      "firstLine": "Hail! ye sighing sons of sorrow",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "Carrell"
+      }
+    },
+    "289": {
+      "title": "THE NARROW WAY",
+      "firstLine": "Come ye who know the Lord indeed",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Rev. Andrew Grambling"
+      }
+    },
+    "138": {
+      "title": "THE PILGRIM'S LOT",
+      "firstLine": "How happy is the pilgrim's lot",
+      "meter": "8.8.6",
+      "musicAttribution": {
+        "credit": "A. Grambling"
+      }
+    },
+    "51": {
+      "title": "THE PROMISED LAND",
+      "firstLine": "On Jordan's stormy banks I stand",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Miss M. Durham"
+      }
+    },
+    "60": {
+      "title": "THE ROCK",
+      "firstLine": "In seasons of grief to my God",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Wm. Houser"
+      }
+    },
+    "82": {
+      "title": "THE ROMISH LADY",
+      "firstLine": "There was a Romish lady",
+      "meter": "7.6"
+    },
+    "182": {
+      "title": "THE SAILOR'S HOME",
+      "firstLine": "When for eternal worlds we steer",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. M. Caudill; William Walker"
+      }
+    },
+    "258": {
+      "title": "THE SAINTS BOUND FOR HEAVEN",
+      "firstLine": "Our bondage it shall end, by and by",
+      "meter": "12.9",
+      "musicAttribution": {
+        "credit": "J. King; William Walker"
+      }
+    },
+    "104": {
+      "title": "THE SAINTS' DELIGHT",
+      "firstLine": "When I can read my title clear",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "F. Price"
+      }
+    },
+    "310": {
+      "title": "THE SHEPHERD'S STAR",
+      "firstLine": "Hail the blest morn! see the great Mediator",
+      "meter": "11.10"
+    },
+    "264": {
+      "title": "THE SINGING CHRISTIAN",
+      "firstLine": "Sometimes a light surprises",
+      "meter": "7.6"
+    },
+    "36": {
+      "title": "THE SOLDIER'S RETURN",
+      "firstLine": "Bright scenes of glory strike my sense",
+      "meter": "8.7"
+    },
+    "41": {
+      "title": "THE SPIRITUAL SAILOR",
+      "firstLine": "The people called Christians",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "I. Neighbours"
+      }
+    },
+    "85": {
+      "title": "THE SUFFERINGS OF CHRIST",
+      "firstLine": "A story most lovely I'll tell",
+      "meter": "8.8.8.",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "79": {
+      "title": "THE TRAVELLER",
+      "firstLine": "Come, all you weary travellers",
+      "meter": "7.6",
+      "musicAttribution": {
+        "credit": "Lowry"
+      }
+    },
+    "57": {
+      "title": "THE TRUMPET",
+      "firstLine": "The Chariot! the chariot! its wheels roll in fire",
+      "meter": "12.12.12.12",
+      "musicAttribution": {
+        "credit": "J. Willi; Wm. Walker"
+      }
+    },
+    "301": {
+      "title": "THE TRUMPETERS",
+      "firstLine": "Hark! listen to the trumpeters",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Rev. Mr. McCloud; William Walker"
+      }
+    },
+    "43": {
+      "title": "THE TURTLE DOVE",
+      "firstLine": "Hark! don't you hear the turtle dove",
+      "meter": "8.8.8.8"
+    },
+    "65": {
+      "title": "THE WATCHMAN'S CALL",
+      "firstLine": "The watchmen blow the trumpet round",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "308": {
+      "title": "THE YOUNG CONVERT",
+      "firstLine": "When converts first begin to sing",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "S. Hill"
+      }
+    },
+    "293b": {
+      "title": "THIS WORLD IS NOT MY HOME",
+      "firstLine": "When I can read my title clear to mansions in the skies",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Rev. Mr. Gamewell"
+      }
+    },
+    "293t": {
+      "title": "WINTER",
+      "firstLine": "His hoary frost, his fleecy snow",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "Reed"
+      }
+    },
+    "83": {
+      "title": "THORNY DESERT",
+      "firstLine": "Dark and thorny is the desert",
+      "meter": "8.7",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "329": {
+      "title": "THOU ART PASSING AWAY",
+      "firstLine": "Thou art passing away",
+      "meter": "11.11.11.11",
+      "musicAttribution": {
+        "credit": "Rev. George Coles"
+      }
+    },
+    "152": {
+      "title": "TRANSPORT",
+      "firstLine": "Ye children of Jesus, who're bound for the kingdom",
+      "meter": "12.11",
+      "musicAttribution": {
+        "credit": "Davison; White"
+      }
+    },
+    "119": {
+      "title": "TRIBULATION",
+      "firstLine": "Death, 'tis a melancholy day",
+      "meter": "8.6.8.6",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      },
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "127": {
+      "title": "TRUE HAPPINESS",
+      "firstLine": "O, how happy are they",
+      "meter": "6.6.9.6.6.9",
+      "musicAttribution": {
+        "credit": "Wm. Walker"
+      }
+    },
+    "153t": {
+      "title": "UPTON",
+      "firstLine": "Bless, O my soul, the living God",
+      "meter": "8.8.8.8"
+    },
+    "153b": {
+      "title": "WELTON",
+      "firstLine": "Thou great instructor, lest I stray",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Malan"
+      }
+    },
+    "94b": {
+      "title": "WAR DEPARTMENT",
+      "firstLine": "No more shall the sound of the war-whoop be heard",
+      "meter": "11.11.11.11"
+    },
+    "94t": {
+      "title": "WARRENTON",
+      "firstLine": "Come, thou fount of every blessing",
+      "meter": "8.7"
+    },
+    "67": {
+      "title": "WASHINGTON",
+      "firstLine": "Dismiss us with thy blessing, Lord",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Munday"
+      }
+    },
+    "298": {
+      "title": "WEARY PILGRIM'S CONSOLATION",
+      "firstLine": "How sweet to reflect on the joys that await me",
+      "meter": "12.11.12.11.12.12.12.11",
+      "musicAttribution": {
+        "credit": "C. H. Pare"
+      }
+    },
+    "109": {
+      "title": "WELCH",
+      "firstLine": "There's a friend above all others, O, how he loves!",
+      "meter": "8.4"
+    },
+    "278t": {
+      "title": "WELLS (Holdroyd)",
+      "firstLine": "Ye nations of the earth, rejoice",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Holdroyd"
+      },
+      "historicalNote": "CCEL heading: \"WELLS\"; Hymnary title: \"WELLS (Holdroyd)\"."
+    },
+    "278b": {
+      "title": "ZION",
+      "firstLine": "On the mountain's top appearing",
+      "meter": "8.7.4",
+      "musicAttribution": {
+        "credit": "Thomas Hastings"
+      }
+    },
+    "114": {
+      "title": "WESLEY (More)",
+      "firstLine": "With inward pain my heart-strings sound",
+      "meter": "8.6.8.6",
+      "musicAttribution": {
+        "credit": "More"
+      },
+      "historicalNote": "CCEL heading: \"WESLEY\"; Hymnary title: \"WESLEY (More)\"."
+    },
+    "305": {
+      "title": "WHEN I AM GONE",
+      "firstLine": "Shed not a tear o'er your friend's early bier",
+      "musicAttribution": {
+        "credit": "M. H. Turner"
+      }
+    },
+    "135": {
+      "title": "WHITESTOWN",
+      "firstLine": "Where nothing dwelt but beasts of prey",
+      "meter": "8.8.8.8",
+      "musicAttribution": {
+        "credit": "Ward"
+      }
+    },
+    "277": {
+      "title": "WILLOUGHBY",
+      "firstLine": "How precious, Lord, thy sacred word",
+      "meter": "8.8.6"
+    },
+    "252": {
+      "title": "WONDROUS LOVE",
+      "firstLine": "What Wondrous Love Is This",
+      "meter": "12.9.6.6.12.9",
+      "musicAttribution": {
+        "credit": "Christopher"
+      }
+    },
+    "110": {
+      "title": "WOODLAND",
+      "firstLine": "This world's not all a fleeting show",
+      "meter": "8.6.8.8.6"
+    },
+    "157": {
+      "title": "WORCESTER",
+      "firstLine": "How beauteous are their feet",
+      "meter": "6.6.8.6",
+      "textAttribution": {
+        "credit": "Isaac Watts"
+      }
+    },
+    "270": {
+      "title": "ZION'S LIGHT",
+      "firstLine": "The glorious light of Zion",
+      "meter": "7.6"
+    }
+  },
+  "states": [],
+  "scholarlyRecord": {
+    "publicationHistory": [
+      {
+        "event": "First edition",
+        "date": "1835",
+        "note": "Compiled by William Walker of Spartanburg, South Carolina; printed by Nathan Whiting, New Haven, Connecticut. i-xxxii + 216 pp. This is the Work's true origin (w_SoH's firstEditionYear) - a separate fact from this Edition's own 1854 identifier year."
+      },
+      {
+        "event": "Edition",
+        "date": "1840",
+        "note": "Printed in Philadelphia."
+      },
+      {
+        "event": "Edition",
+        "date": "1847",
+        "note": "Two distinct 1847 editions were printed, both in Philadelphia."
+      },
+      {
+        "event": "This edition",
+        "date": "1854",
+        "note": "\"New Edition, Thoroughly Revised and Much Enlarged.\" Published by E.W. Miller, Philadelphia. xxxii + 336 pp. (original pagination skips 217-248). This is the edition Hymnary.org and CCEL both index, and the one this Tunebook File's song data comes from."
+      },
+      {
+        "event": "Facsimile edition",
+        "date": "1993",
+        "note": "University Press of Kentucky, with an introduction by Glenn C. Wilcox. A facsimile of this 1854 printing specifically - Wilcox edited this reprint's introduction, not the original 1854 tunes, and is not the Work's compiler (that is William Walker; an earlier version of this Library's Work record had this backwards, misattributing the Work's own responsibilityStatement to Wilcox)."
+      }
+    ],
+    "editorialHistory": "Walker reported 500,000 copies of Southern Harmony sold by 1866, across all editions combined, per the Southern Cultures review of the 1993 facsimile (cited below). Southern Harmony singings using this book specifically continue today, most notably the annual Benton, Kentucky singing.",
+    "bibliography": [
+      {
+        "citation": "The Southern Harmony and Musical Companion. The University Press of Kentucky.",
+        "url": "https://www.kentuckypress.com/9780813118598/the-southern-harmony-and-musical-companion/",
+        "accessedDate": "2026-08-07",
+        "notes": "Publisher's page for the 1993 facsimile of this 1854 edition; source for the 335-song count (matches this file's own index exactly) and general publication background."
+      },
+      {
+        "citation": "The Southern Harmony & Musical Companion by William Walker (Review). Southern Cultures.",
+        "url": "https://www.southerncultures.org/article/southern-harmony-musical-companion-william-walker-review/",
+        "accessedDate": "2026-08-07",
+        "notes": "Source for the full five-edition publication history (1835 New Haven; 1840, 1847 x2, 1854 all Philadelphia) and the 500,000-copies figure."
+      },
+      {
+        "citation": "Southern Harmony. ChoralWiki (CPDL).",
+        "url": "https://www.cpdl.org/wiki/index.php/Southern_Harmony",
+        "accessedDate": "2026-08-07",
+        "notes": "Source for the exact 1835 first-edition imprint and full title-page transcription, and for scholarly references on the book's editions (Eskew 1986; Music 2012)."
+      },
+      {
+        "citation": "The southern harmony, and musical companion (1854 edition). University of North Texas Libraries catalog.",
+        "url": "https://discover.library.unt.edu/catalog/b4540852",
+        "accessedDate": "2026-08-07",
+        "notes": "Source for this specific edition's exact imprint (E.W. Miller, Philadelphia, [1854]), full title-page transcription, and physical description (xxxii + 336 pp., pagination skips 217-248)."
+      }
+    ],
+    "historicalNotes": "The song index in this file was built from a CCEL/Hymnary.org comparison dataset Kevin provided, not transcribed by hand. That source's own page-numbering convention differs from this suite's: it uses a bare number for the top tune on a split page and a 'b' suffix for the bottom tune, with no 't' suffix at all - converted here to this suite's own t/b convention (bare number reserved for a page with only one tune). Verified against three failure modes before import: no split page had more than two tunes, no page had a lone 'b' entry with no bare counterpart, and the 335 real (canonical) tune count matches published sources exactly. Seven rows in the source data were alternate CCEL headings for tunes already counted once (e.g. \"WOODSTOCK\" as an alternate heading for \"GOSPEL TRUMPET\" on 271t) - these are preserved as historicalNote text on the correct song rather than counted as separate songs."
+  },
+  "sources": [
+    {
+      "sourceId": "source-upk-soh",
+      "sourceType": "website",
+      "citation": "The Southern Harmony and Musical Companion. The University Press of Kentucky.",
+      "url": "https://www.kentuckypress.com/9780813118598/the-southern-harmony-and-musical-companion/",
+      "accessedDate": "2026-08-07"
+    },
+    {
+      "sourceId": "source-southerncultures-soh",
+      "sourceType": "website",
+      "citation": "The Southern Harmony & Musical Companion by William Walker (Review). Southern Cultures.",
+      "url": "https://www.southerncultures.org/article/southern-harmony-musical-companion-william-walker-review/",
+      "accessedDate": "2026-08-07"
+    },
+    {
+      "sourceId": "source-choralwiki-soh",
+      "sourceType": "website",
+      "citation": "Southern Harmony. ChoralWiki (CPDL).",
+      "url": "https://www.cpdl.org/wiki/index.php/Southern_Harmony",
+      "accessedDate": "2026-08-07"
+    },
+    {
+      "sourceId": "source-unt-soh1854",
+      "sourceType": "database",
+      "citation": "The southern harmony, and musical companion (1854 edition). University of North Texas Libraries catalog.",
+      "url": "https://discover.library.unt.edu/catalog/b4540852",
+      "accessedDate": "2026-08-07"
+    },
+    {
+      "sourceId": "source-ccel-hymnary-dataset",
+      "sourceType": "dataset",
+      "citation": "Southern Harmony / CCEL / Hymnary merged comparison dataset.",
+      "notes": "Provided by Kevin; the direct source of this file's song index (titles, first lines, meters, attributions, and the CCEL alias-heading cross-references preserved in historicalNote fields).",
+      "accessedDate": "2026-08-07"
+    }
+  ],
+  "relationships": [],
+  "publicationStatus": "draft",
+  "internalNote": "Built from a CCEL/Hymnary comparison CSV Kevin provided, plus web research done at the time this Edition was added. Like ScH1855, publicationStatus is \"draft\": every individual fact was sourced, but no curator has reviewed the assembled scholarlyRecord as a whole yet. Also corrected a real error found while building this: w_SoH's Work-level responsibilityStatement previously named Glenn C. Wilcox (the 1993 facsimile's editor) as if he were the Work's own compiler; that's now William Walker, with Wilcox's real role recorded correctly in publicationHistory instead."
+}
