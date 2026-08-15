@@ -145,6 +145,7 @@
   .book-row:nth-child(odd){ background:rgba(0,0,0,0.02); }
   .book-row:hover{ background:var(--paper-dark); }
   .book-row:focus-visible{ outline:2px solid var(--oxblood); outline-offset:-2px; }
+  .row-badges{ display:flex; align-items:center; gap:6px; flex-shrink:0; }
   .book-row .row-text{ display:flex; flex-direction:column; gap:1px; min-width:0; flex:1; }
   .book-row .title{ font-family:var(--serif); font-weight:700; font-size:14.5px; color:var(--oxblood-dark); }
   .book-row .full-title{ font-family:var(--serif); font-size:11px; font-style:italic; color:var(--ink-soft); line-height:1.3; }
@@ -185,9 +186,9 @@
   .suite-footer a:focus-visible{ outline:2px solid var(--oxblood); outline-offset:2px; }
 
   .badge-row{ display:inline-flex; align-items:center; align-self:flex-start; }
-  .badge-pill{ display:inline-flex; align-items:center; height:18px; padding:0 10px; border-radius:999px; font-size:11.5px; font-weight:600; }
-  .shape-glyph{ font-size:18px; line-height:1; margin-left:3px; }
-  .level-badge{ display:inline-flex; align-items:center; height:18px; padding:0 8px; border-radius:5px; font-family:var(--sans); font-variant:small-caps; font-weight:700; font-size:12.5px; letter-spacing:.03em; }
+  .badge-pill{ display:inline-flex; align-items:center; justify-content:center; height:18px; min-width:58px; padding:0 10px; border-radius:999px; font-size:11.5px; font-weight:600; }
+  .shape-glyph{ display:inline-flex; align-items:center; justify-content:center; width:20px; font-size:18px; line-height:1; }
+  .level-badge{ display:inline-flex; align-items:center; justify-content:center; height:18px; min-width:56px; padding:0 8px; border-radius:999px; font-family:var(--sans); font-variant:small-caps; font-weight:700; font-size:12.5px; letter-spacing:.03em; }
   .level-badge.level-1{ background:var(--paper-dark); color:var(--ink-faint); border:1px solid var(--paper-line); }
   .level-badge.level-2{ background:var(--paper-line); color:var(--ink-soft); }
   .level-badge.level-3{ background:var(--sage); color:#fff; }
@@ -233,9 +234,8 @@
     <span class="suite-name">Tunebook Registry</span>
   </a>
   <nav class="suite-nav" aria-label="Site navigation">
+    <a href="#" id="registryNavLink" aria-current="page">Registry</a>
     <a href="codes.html">FAQ</a>
-    <a href="https://www.singloud.org" target="_blank" rel="noopener">SingLoud.org</a>
-    <a href="https://github.com/singlouddotorg/ezminutes" target="_blank" rel="noopener">Minutes / Tunebooks</a>
     <span aria-hidden="true" style="opacity:.4;padding:0 2px;">|</span>
     <a href="mailto:sacredharpbiblio@gmail.com">Send feedback</a>
   </nav>
@@ -473,9 +473,17 @@
     // real, if oddly specific, negative fact rather than what it actually is: nothing to
     // index yet at all.
     var meta = level === 1 ? "no page index yet" : (songCount + " songs indexed");
+    // A glyph slot is always rendered, even empty, so a Level 1 book (genuinely no known
+    // shape system yet) doesn't shift the Level badge left relative to every other row -
+    // shapeGlyphHtml() itself returns "" for that case, which badgeHtml() (shared with the
+    // single-book detail view, where this alignment concern doesn't apply) leaves absent
+    // rather than reserving space for.
+    var glyphHtml = shapeGlyphHtml(b) || '<span class="shape-glyph"></span>';
+    var bg = (b && b.badgeColor) || "#d9d9d9";
+    var fg = (b && b.badgeTextColor) || "#000";
+    var editionPill = '<span class="badge-pill" style="background:' + esc(bg) + ';color:' + esc(fg) + ';">' + esc(code) + '</span>';
     return '<button class="book-row" data-code="' + esc(code) + '">' +
-      badgeHtml(code) +
-      levelBadgeHtml(code) +
+      '<span class="row-badges">' + editionPill + glyphHtml + levelBadgeHtml(code) + '</span>' +
       '<span class="row-text">' +
         '<span class="title">' + esc(primary) + '</span>' +
         (secondary ? '<span class="full-title">' + esc(secondary) + '</span>' : '') +
@@ -586,6 +594,7 @@
   var songListHost = document.getElementById("songListHost");
   var backBtn = document.getElementById("backBtn");
   var brandLink = document.getElementById("brandLink");
+  var registryNavLink = document.getElementById("registryNavLink");
   var currentCode = null;
 
   function fieldRow(label, valueHtml){
@@ -885,6 +894,7 @@
 
   backBtn.addEventListener("click", navigateToLanding);
   brandLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
+  registryNavLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
 
   // ---------------- level filter (landing view) ----------------
   [1, 2, 3].forEach(function(level){
