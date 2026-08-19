@@ -128,6 +128,23 @@
   .song-dropdown .sd-more{ padding:8px 12px; font-family:var(--sans); font-size:11.5px; color:var(--ink-faint); font-style:italic; }
   .song-dropdown .sd-empty{ padding:12px; font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); }
 
+  /* ---- two-search block (Song Titles / Everything) ---- */
+  .search-section{ margin-bottom:18px; }
+  .search-heading{
+    font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--brass); margin:0 0 8px;
+  }
+  .search-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px; position:relative; }
+  .search-row:last-child{ margin-bottom:0; }
+  .search-row-label{ font-family:var(--sans); font-size:12.5px; color:var(--ink-soft); flex:none; }
+  .sd-book-title{ font-family:var(--sans); font-size:11px; color:var(--ink-faint); white-space:nowrap; }
+
+  /* ---- jump-to-section links, replacing the old Level show/hide checkboxes ---- */
+  .section-jump{ display:flex; align-items:center; gap:10px; margin-left:auto; font-family:var(--sans); font-size:12px; flex-wrap:wrap; }
+  .section-jump-label{ color:var(--ink-faint); }
+  .section-jump a{ color:var(--oxblood); text-decoration:none; font-weight:600; }
+  .section-jump a:hover{ text-decoration:underline; }
+
   /* ---- book list (landing view) ---- */
   .book-group{ margin-bottom:26px; }
   .book-group:last-child{ margin-bottom:40px; }
@@ -192,13 +209,6 @@
   .level-badge.level-1{ background:var(--paper-dark); color:var(--ink-faint); border:1px solid var(--paper-line); }
   .level-badge.level-2{ background:var(--paper-line); color:var(--ink-soft); }
   .level-badge.level-3{ background:var(--sage); color:#fff; }
-  .level-filter{ display:flex; align-items:center; gap:12px; margin-left:auto; font-family:var(--sans); font-size:12px; color:var(--ink-soft); }
-  .level-filter-label{ color:var(--ink-faint); }
-  .level-filter label{ display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
-  .level-tag{ font-variant:small-caps; font-weight:700; letter-spacing:.02em; }
-  .level-tag.level-1{ color:var(--ink-faint); }
-  .level-tag.level-2{ color:var(--ink-soft); }
-  .level-tag.level-3{ color:var(--sage); }
   .loading-note{ font-family:var(--sans); font-size:12px; color:var(--ink-faint); font-style:italic; padding:8px 0 0; }
   .scholarly-section{ margin-top:14px; padding-top:14px; border-top:1px solid var(--paper-line); }
   .scholarly-heading{ font-family:var(--sans); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--brass); margin-bottom:8px; }
@@ -267,20 +277,31 @@
       page, actually mean.
     </p>
 
-    <div class="toolbar">
-      <div class="search-wrap">
-        <input type="search" id="songSearchLive" placeholder="Search song titles across every book…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="songDropdown">
-        <div class="song-dropdown" id="songDropdown" role="listbox"></div>
+    <div class="search-section">
+      <div class="search-heading">Search</div>
+      <div class="search-row">
+        <span class="search-row-label">Song Titles</span>
+        <div class="search-wrap">
+          <input type="search" id="songSearchLive" placeholder="Search only song titles across every book…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="songDropdown">
+          <div class="song-dropdown" id="songDropdown" role="listbox"></div>
+        </div>
+      </div>
+      <div class="search-row">
+        <span class="search-row-label">Everything</span>
+        <div class="search-wrap">
+          <input type="search" id="everythingSearchLive" placeholder="Search all information — titles, codes, compilers, and more…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="everythingDropdown">
+          <div class="song-dropdown" id="everythingDropdown" role="listbox"></div>
+        </div>
       </div>
     </div>
 
     <div class="toolbar">
       <span class="result-count" id="bookResultCount"></span>
-      <div class="level-filter" id="levelFilter">
-        <span class="level-filter-label">Show:</span>
-        <label><input type="checkbox" id="levelFilter1"> <span class="level-tag level-1">Level 1</span></label>
-        <label><input type="checkbox" id="levelFilter2" checked> <span class="level-tag level-2">Level 2</span></label>
-        <label><input type="checkbox" id="levelFilter3" checked> <span class="level-tag level-3">Level 3</span></label>
+      <div class="section-jump" id="sectionJump">
+        <span class="section-jump-label">Jump to:</span>
+        <a href="#section-level-3">Level 3</a>
+        <a href="#section-level-2">Level 2</a>
+        <a href="#section-level-1">Level 1</a>
       </div>
     </div>
 
@@ -398,20 +419,15 @@
   function sortKeyForTitle(title){
     return String(title || "").replace(/^the\s+/i, "").toLowerCase();
   }
-  // Real, active filter state - checkbox-driven, matching the same "Show: Level 1 /
-  // Level 2 / Level 3" pattern the main Tunebooks app's own Library browse already uses.
-  // Level 1 defaults to hidden: with real Works genuinely outnumbering fully-indexed
-  // Editions, showing every Level 1 record by default would overwhelm the page - the
-  // real point of this filter is that they're still there, one click away, not gone.
-  var levelFilterState = { 1: false, 2: true, 3: true };
-
+  // Every real record shows on load now - Level 1 included, per Kevin's own direction:
+  // with the front page grouped and jump-linked by Level instead of hidden behind a
+  // Show/Hide filter, there's no reason left to hold any of them back by default.
   function sortedBookCodes(){
     return Object.keys(BOOKS).filter(function(code){
       var b = BOOKS[code];
       // A record needs a real title to be worth showing at all - not a "has songs" check
       // any more, since a genuine Level 1 book has no page index by definition.
-      if(!b.fullTitle && !b.commonName) return false;
-      return levelFilterState[bookLevel(code)];
+      return !!(b.fullTitle || b.commonName);
     }).sort(function(a, b){
       var ta = sortKeyForTitle(BOOKS[a].fullTitle || a);
       var tb = sortKeyForTitle(BOOKS[b].fullTitle || b);
@@ -442,19 +458,9 @@
   var bookGrid = document.getElementById("bookGrid");
   var bookResultCount = document.getElementById("bookResultCount");
 
-  // Groups books by shape system for display — same digit-extraction logic as the badge
-  // glyph itself, so a book's group and its glyph can never disagree. Anything without a
-  // recognized "4" or "7" in shapeSystem (missing, or some future notation this suite
-  // doesn't index yet) falls into its own group rather than being silently dropped or
-  // guessed into one of the other two.
-  function shapeGroupKey(book){
-    var match = /(\d)/.exec((book && book.shapeSystem) || "");
-    if(match && match[1] === "4") return "four";
-    if(match && match[1] === "7") return "seven";
-    return "other";
-  }
-  var SHAPE_GROUP_LABELS = { four: "Four-Shape Tunebooks", seven: "Seven-Shape Tunebooks", other: "Shape System Not Specified" };
-  var SHAPE_GROUP_ORDER = ["four", "seven", "other"];
+  // Groups books by completion Level for display now (Kevin's own direction), not shape
+  // system - shapeGlyphHtml() below still shows each book's own shape per row, just no
+  // longer used to decide which section it lands in.
 
   function bookRowHtml(code){
     var b = BOOKS[code];
@@ -499,13 +505,17 @@
       bookGrid.innerHTML = '<div class="no-results">No tunebooks indexed yet.</div>';
       return;
     }
-    var groups = { four: [], seven: [], other: [] };
-    codes.forEach(function(code){ groups[shapeGroupKey(BOOKS[code])].push(code); });
-    bookGrid.innerHTML = SHAPE_GROUP_ORDER.map(function(key){
-      var groupCodes = groups[key];
+    // Grouped by completion Level (3, then 2, then 1) rather than by shape system -
+    // Kevin's own direction: shapes mix together within a Level now, since Level is the
+    // more useful thing to scan the page by. Each heading carries a real id so the
+    // jump-to-section links above can target it directly.
+    var groups = { 3: [], 2: [], 1: [] };
+    codes.forEach(function(code){ groups[bookLevel(code)].push(code); });
+    bookGrid.innerHTML = [3, 2, 1].map(function(level){
+      var groupCodes = groups[level];
       if(!groupCodes.length) return "";
       return '<div class="book-group">' +
-        '<div class="group-heading">' + esc(SHAPE_GROUP_LABELS[key]) + '</div>' +
+        '<div class="group-heading" id="section-level-' + level + '">' + esc(LEVEL_GROUP_LABELS[level]) + '</div>' +
         '<div class="book-list">' + groupCodes.map(bookRowHtml).join("") + '</div>' +
       '</div>';
     }).join("");
@@ -583,6 +593,105 @@
   });
   document.addEventListener("click", function(e){
     if(!e.target.closest(".search-wrap")) closeDropdown();
+  });
+
+  // ---------------- "Everything" search (typeahead dropdown) ----------------
+  // A second, broader search alongside Song Titles above - Kevin's own split. Song
+  // Titles only ever matches a song's own title; this one searches every real, indexed
+  // fact a book carries (title, Common Name, both code systems, compiler, publisher) and
+  // song titles too, since "everything" is meant as the superset, not a separate,
+  // narrower slice. Built once, same as SONG_INDEX above, for the same reason: a plain
+  // substring filter over an in-memory array is plenty fast at this suite's real scale.
+  var EVERYTHING_INDEX = (function(){
+    var list = [];
+    sortedBookCodes().forEach(function(code){
+      var b = BOOKS[code];
+      var fields = [b.fullTitle, b.commonName, code, b.workCode, b.shmhaCode, b.compiler, b.publisher].filter(Boolean);
+      list.push({
+        type: "book",
+        bookCode: code,
+        display: (b.commonName || b.fullTitle || code),
+        bookTitle: b.fullTitle || code,
+        searchText: fields.join(" \u2014 ").toLowerCase()
+      });
+    });
+    SONG_INDEX.forEach(function(entry){
+      list.push({
+        type: "song",
+        bookCode: entry.bookCode,
+        page: entry.page,
+        display: entry.title,
+        bookTitle: entry.bookTitle,
+        searchText: entry.titleLower
+      });
+    });
+    return list;
+  })();
+
+  var everythingSearchLive = document.getElementById("everythingSearchLive");
+  var everythingDropdown = document.getElementById("everythingDropdown");
+
+  function closeEverythingDropdown(){
+    everythingDropdown.classList.remove("open");
+    everythingDropdown.innerHTML = "";
+    everythingSearchLive.setAttribute("aria-expanded", "false");
+  }
+
+  function edRowHtml(match, index){
+    var pageHtml = match.type === "song" ? '<span class="sd-page">p.' + esc(match.page) + '</span>' : '<span class="sd-book-title">' + esc(match.bookTitle) + '</span>';
+    return '<button type="button" class="sd-row" data-index="' + index + '" role="option">' +
+      badgeHtml(match.bookCode) +
+      '<span class="sd-title">' + esc(match.display) + '</span>' +
+      pageHtml +
+    '</button>';
+  }
+
+  var everythingMatches = [];
+
+  function renderEverythingDropdown(query){
+    if(!query){ closeEverythingDropdown(); return; }
+    var q = query.toLowerCase();
+    var starts = [], contains = [];
+    for(var i = 0; i < EVERYTHING_INDEX.length; i++){
+      var entry = EVERYTHING_INDEX[i];
+      var idx = entry.searchText.indexOf(q);
+      if(idx === 0) starts.push(entry);
+      else if(idx > 0) contains.push(entry);
+    }
+    everythingMatches = starts.concat(contains);
+    everythingSearchLive.setAttribute("aria-expanded", "true");
+    if(!everythingMatches.length){
+      everythingDropdown.innerHTML = '<div class="sd-empty">Nothing matches \u201c' + esc(query) + '.\u201d</div>';
+      everythingDropdown.classList.add("open");
+      return;
+    }
+    var shown = everythingMatches.slice(0, SD_MAX_SHOWN);
+    var extra = everythingMatches.length - shown.length;
+    everythingDropdown.innerHTML = shown.map(edRowHtml).join("") +
+      (extra > 0 ? '<div class="sd-more">+' + extra + ' more \u2014 keep typing to narrow it down</div>' : "");
+    everythingDropdown.classList.add("open");
+    Array.prototype.forEach.call(everythingDropdown.querySelectorAll(".sd-row"), function(row){
+      row.addEventListener("click", function(){
+        var match = everythingMatches[parseInt(row.dataset.index, 10)];
+        selectEverythingResult(match);
+      });
+    });
+  }
+
+  function selectEverythingResult(match){
+    if(!match) return;
+    closeEverythingDropdown();
+    everythingSearchLive.value = "";
+    navigateToBook(match.bookCode, match.type === "song" ? match.page : undefined);
+  }
+
+  everythingSearchLive.addEventListener("input", function(){ renderEverythingDropdown(everythingSearchLive.value.trim()); });
+  everythingSearchLive.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){ closeEverythingDropdown(); everythingSearchLive.blur(); }
+    else if(e.key === "Enter" && everythingMatches.length){ selectEverythingResult(everythingMatches[0]); }
+  });
+  document.addEventListener("click", function(e){
+    if(!e.target.closest(".search-wrap")) closeEverythingDropdown();
   });
 
   // ---------------- detail view: one book ----------------
@@ -706,9 +815,15 @@
     2: "A complete page index, page by page, but no additional scholarly file yet",
     3: "A complete page index plus a real Tunebook File with additional scholarly and per-song detail"
   };
+  // Short, section-heading-length labels for the landing page's own Level 3/2/1 grouping
+  // - LEVEL_TITLES above is the full, tooltip-length description for the pill itself.
+  var LEVEL_GROUP_LABELS = { 3: "Level 3 \u2014 Enriched", 2: "Level 2 \u2014 Indexed", 1: "Level 1 \u2014 Listed" };
   function levelBadgeHtml(code){
     var level = bookLevel(code);
-    return '<span class="level-badge level-' + level + '" title="' + esc(LEVEL_TITLES[level]) + '">Level ' + level + '</span>';
+    // Kevin's own direction: truncate the pill itself to "L1"/"L2"/"L3" - the full title
+    // attribute (and LEVEL_TITLES' own longer description) still carries the complete
+    // meaning on hover, and every other Level-badge style stays exactly the same.
+    return '<span class="level-badge level-' + level + '" title="' + esc(LEVEL_TITLES[level]) + '">L' + level + '</span>';
   }
 
   function renderScholarlySection(l3){
@@ -895,16 +1010,6 @@
   backBtn.addEventListener("click", navigateToLanding);
   brandLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
   registryNavLink.addEventListener("click", function(e){ e.preventDefault(); navigateToLanding(); });
-
-  // ---------------- level filter (landing view) ----------------
-  [1, 2, 3].forEach(function(level){
-    var el = document.getElementById("levelFilter" + level);
-    el.checked = levelFilterState[level];
-    el.addEventListener("change", function(){
-      levelFilterState[level] = el.checked;
-      renderBookGrid();
-    });
-  });
 
   // ---------------- initial render, deep-link support (e.g. #SHM1991) ----------------
   renderBookGrid();

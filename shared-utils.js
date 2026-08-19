@@ -208,12 +208,43 @@
     var books = {};
     if(!library || !library.editions || !library.works) return { books: books };
     var workIdsWithCompleteEdition = {};
+    var workIdsWithAnyEdition = {};
     Object.keys(library.editions).forEach(function(editionId){
       var e = library.editions[editionId];
+      workIdsWithAnyEdition[e.workId] = true;
       if(e.indexStatus === "complete") workIdsWithCompleteEdition[e.workId] = true;
+    });
+    // V81-side-quest finding: this used to produce exactly one entry per Work lacking a
+    // complete Edition, regardless of how many real, distinct Level 1 Editions actually
+    // existed under it - a Work with five separate Level 1 Editions (five real, different
+    // years, e.g. SHD1936 through SHD1987) collapsed into a single generic "SHD" entry,
+    // with no way to tell the five apart or that they even existed as distinct records at
+    // all. Confirmed live: added five real Level 1 Editions under one Work, and the
+    // Registry - the one real consumer of this projection's actual output - showed
+    // nothing where five real book rows should have been. Now: a real Edition (even at
+    // Level 1, with nothing indexed yet) gets its own entry, keyed by its own Edition
+    // Code; the original "bare Work, no Edition record exists at all yet" case is
+    // preserved exactly as it was for a Work that genuinely has none.
+    Object.keys(library.editions).forEach(function(editionId){
+      var e = library.editions[editionId];
+      if(e.indexStatus === "complete") return;
+      var w = library.works[e.workId];
+      var rec = {
+        fullTitle: buildFullTitle(e.titleProper || (w && w.titleProper), e.subtitle),
+        commonName: e.commonName || (w && w.titleProper),
+        workCode: (w && w.workCodeStatus === "unknown") ? null : ((w && w.workCode) || null),
+        workCodeStatus: w && w.workCodeStatus,
+        shmhaCode: e.shmhaCode || (w && w.shmhaCode),
+        editionCode: e.editionCode,
+        editionId: e.editionId,
+        supportLevel: 1
+      };
+      Object.keys(rec).forEach(function(k){ if(rec[k] === undefined || rec[k] === null) delete rec[k]; });
+      books[e.editionCode || e.editionId] = rec;
     });
     Object.keys(library.works).forEach(function(workId){
       if(workIdsWithCompleteEdition[workId]) return;
+      if(workIdsWithAnyEdition[workId]) return; // already covered above, per-Edition
       var w = library.works[workId];
       var rec = {
         fullTitle: buildFullTitle(w.titleProper, null),

@@ -1048,7 +1048,8 @@
       "meter": "C.M.D.",
       "scriptureReference": "Heaven is my home. -- Isa. 66:1.",
       "key": "A Major",
-      "musicAttribution": "Arr. - E. J. King, 1844."
+      "musicAttribution": "Arr. - E. J. King, 1844.",
+      "textAttribution": "E. J. King"
     },
     "101b": {
       "meter": "6s, 7s.",
@@ -1328,7 +1329,8 @@
       "meter": "8,7,8,7,4,7.",
       "scriptureReference": "And if the righteous scarcely be saved, where shall the ungodly and the sinner appear? -- 1 Peter 4:18.",
       "key": "A Major",
-      "musicAttribution": "M. M. Wynn, 1869."
+      "musicAttribution": "M. M. Wynn, 1869.",
+      "textAttribution": "M. M. Wynn"
     },
     "266": {
       "meter": "8,8,6.",
@@ -2047,7 +2049,8 @@
       "meter": "L.M.",
       "scriptureReference": "Serve the Lord with gladness: come before his presence with singing. -- Ps. 100:2.",
       "key": "G Major",
-      "textAttribution": "P. R. Lancaster, 1859."
+      "textAttribution": "P. R. Lancaster, 1859.",
+      "musicAttribution": "P. R. Lancaster"
     },
     "375": {
       "meter": "C.M.",
@@ -2144,7 +2147,8 @@
       "meter": "C.M.",
       "scriptureReference": "Shall find rest for your soul. -- Jer. 6:16.",
       "key": "F Major",
-      "textAttribution": "M. Sykes, 1857."
+      "textAttribution": "M. Sykes, 1857.",
+      "musicAttribution": "M. Sykes"
     },
     "388": {
       "meter": "10s.",
@@ -2169,7 +2173,8 @@
       "meter": "S.M.",
       "scriptureReference": "Truly the light is sweet, and a pleasant thing it is for the eyes to behold the sun. -- Ecc. 11:7.",
       "key": "E Major",
-      "textAttribution": "Justin Morgan, 1790."
+      "textAttribution": "Justin Morgan, 1790.",
+      "musicAttribution": "Justin Morgan"
     },
     "392": {
       "meter": "C.M.D.",
@@ -2961,7 +2966,8 @@
       "meter": "C.M.D.",
       "scriptureReference": "The Lord shall reign for ever and ever. -- Ex. 15:18.",
       "key": "Eb Major",
-      "textAttribution": "Ruth Denson Edwards, 1950."
+      "textAttribution": "Ruth Denson Edwards, 1950.",
+      "musicAttribution": "Ruth Denson Edwards"
     },
     "536": {
       "meter": "C.M.D.",
@@ -3102,11 +3108,458 @@
       "key": "G Major",
       "textAttribution": "Samuel Longfellow, 1864.",
       "musicAttribution": "A. M. Cagle, 1966."
+    },
+    "138t": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Anne Steele",
+      "musicAttribution": "W. W. Parks"
+    },
+    "178": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "William Billings"
+    },
+    "196": {
+      "meter": "8.6.8.6 D"
+    },
+    "122": {
+      "meter": "Irregular",
+      "musicAttribution": "J. T. White"
+    },
+    "150": {
+      "meter": "6.6.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Daniel Read"
+    },
+    "126": {
+      "meter": "8.6.8.6",
+      "musicAttribution": "Stephen Jenks"
+    },
+    "117": {
+      "musicAttribution": "W. E. Chute"
+    },
+    "176b": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Thomas Gibbons",
+      "musicAttribution": "Henry G. Mann"
+    },
+    "147t": {
+      "meter": "6.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Lowell Mason"
+    },
+    "109": {
+      "meter": "Irregular",
+      "textAttribution": "Caleb Jarvis Taylor",
+      "musicAttribution": "E. J. King"
+    },
+    "120": {
+      "meter": "Irregular",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "B. F. White"
+    },
+    "163b": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Timothy Swan"
+    },
+    "141": {
+      "meter": "7.6",
+      "musicAttribution": "William Walker"
+    },
+    "168": {
+      "meter": "8.8.8.8",
+      "textAttribution": "William Cowper; Ann Taylor Gilbert",
+      "musicAttribution": "Oliver Holden"
+    },
+    "123b": {
+      "meter": "8.6.8.6 D",
+      "musicAttribution": "L. P. Breedlove"
+    },
+    "169": {
+      "meter": "6.6.8.6 D",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Stephen Jenks"
+    },
+    "164": {
+      "meter": "8.8.8.8 D",
+      "textAttribution": "Anonymous",
+      "musicAttribution": "George Coles"
+    },
+    "106": {
+      "textAttribution": "John Leland",
+      "musicAttribution": "T. W. Carter"
+    },
+    "115": {
+      "meter": "7.8",
+      "musicAttribution": "Edmund Dumas"
+    },
+    "139": {
+      "meter": "7.6.7.6.7.7.7.7",
+      "textAttribution": "Richard Kemperfelt"
+    },
+    "184": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Elizabeth Rowe",
+      "musicAttribution": "Solomon Chandler"
+    },
+    "157": {
+      "meter": "7.6.7.6",
+      "musicAttribution": "A. C. Clark"
+    },
+    "170": {
+      "meter": "8.8.8.8",
+      "musicAttribution": "Thomas W. Carter"
+    },
+    "171": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Hibbard"
+    },
+    "181": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "P. Sherman"
+    },
+    "125": {
+      "meter": "11.11.11.11",
+      "textAttribution": "Caleb Jarvis Taylor"
+    },
+    "165": {},
+    "121": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Philip Doddridge",
+      "musicAttribution": "T. W. Carter"
+    },
+    "158": {
+      "meter": "12.11",
+      "textAttribution": "Reginald Heber",
+      "musicAttribution": "William Caldwell"
+    },
+    "197": {
+      "meter": "8.6.8.6 D",
+      "musicAttribution": "T. B. McGraw"
+    },
+    "127": {
+      "textAttribution": "John Newton"
+    },
+    "198": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Edward Perronet"
+    },
+    "183": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Daniel Read"
+    },
+    "146": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Charles Wesley",
+      "musicAttribution": "William Walker"
+    },
+    "172": {
+      "meter": "Irregular",
+      "musicAttribution": "Abner Ellis"
+    },
+    "129": {
+      "textAttribution": "John Leland",
+      "musicAttribution": "William Walker"
+    },
+    "119": {
+      "meter": "11.11.11.11",
+      "textAttribution": "J. S. Terry; R. H. Davis",
+      "musicAttribution": "R. H. Davis; J. S. Terry"
+    },
+    "133": {
+      "meter": "Irregular",
+      "textAttribution": "Anonymous",
+      "musicAttribution": "B. F. White"
+    },
+    "175": {
+      "musicAttribution": "J. D. Arnold"
+    },
+    "193": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Justin Morgan"
+    },
+    "131b": {
+      "meter": "7.6.7.6.7.7.7.6",
+      "textAttribution": "Robert Seagrave"
+    },
+    "148": {
+      "textAttribution": "John Newton"
+    },
+    "156": {
+      "textAttribution": "H. S. Reese",
+      "musicAttribution": "H. S. Reese"
+    },
+    "105": {
+      "meter": "8.6.8.6",
+      "textAttribution": "John Newton",
+      "musicAttribution": "R. F. M. Mann"
+    },
+    "111t": {
+      "meter": "8.8.8.8",
+      "musicAttribution": "R. F. M. Mann"
+    },
+    "144": {},
+    "147b": {
+      "meter": "6.6.8.6",
+      "textAttribution": "George Heath",
+      "musicAttribution": "Lowell Mason"
+    },
+    "137": {
+      "meter": "8.6.8.6",
+      "musicAttribution": "Stephen Jenks"
+    },
+    "124": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Charles Wesley",
+      "musicAttribution": "R. H. Reeves"
+    },
+    "131t": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Samuel Stennett",
+      "musicAttribution": "James P. Carrell"
+    },
+    "130": {
+      "meter": "12.12.12.13",
+      "musicAttribution": "William Walker"
+    },
+    "189": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Justin Morgan"
+    },
+    "136": {
+      "meter": "11.11.11.11",
+      "textAttribution": "Hannah More"
+    },
+    "163t": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Amos Pilsbury"
+    },
+    "110": {
+      "meter": "8.8.8.8 D",
+      "musicAttribution": "Stephen Jenks"
+    },
+    "182": {
+      "meter": "6.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Amos Munson"
+    },
+    "155": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Jeremiah Ingalls"
+    },
+    "138b": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Simon Browne",
+      "musicAttribution": "S. M. Brown"
+    },
+    "135": {
+      "textAttribution": "Robert Robinson"
+    },
+    "174": {
+      "meter": "8.8.8.8",
+      "textAttribution": "John Logan",
+      "musicAttribution": "William Billings"
+    },
+    "173": {
+      "meter": "8.6.8.6 D",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "William Billings"
+    },
+    "185": {
+      "textAttribution": "Samuel Crossman"
+    },
+    "162": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "A. C. Clark"
+    },
+    "143": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Helen Maria Williams",
+      "musicAttribution": "Ignaz Joseph Pleyel"
+    },
+    "167": {
+      "textAttribution": "William Hunter"
+    },
+    "187": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "P. Sherman"
+    },
+    "176t": {
+      "meter": "8.8.8.8",
+      "musicAttribution": "W. F. Moore"
+    },
+    "154": {
+      "textAttribution": "Robert Robinson",
+      "musicAttribution": "B. F. White"
+    },
+    "153": {
+      "meter": "Irregular",
+      "musicAttribution": "S. M. Denson"
+    },
+    "107": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Daniel Read"
+    },
+    "114": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "F. Price"
+    },
+    "192": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Nehemiah Shumway"
+    },
+    "152": {
+      "meter": "8.6.8.6 D",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "L. P. Breedlove"
+    },
+    "186": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Nahum Tate",
+      "musicAttribution": "Daniel Read"
+    },
+    "132": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "J. P. Reese"
+    },
+    "188": {
+      "meter": "Irregular"
+    },
+    "166": {
+      "meter": "8.7.8.7 D",
+      "musicAttribution": "J. L. Meggs; Israel Bradfield"
+    },
+    "118": {
+      "textAttribution": "Samuel F. Smith",
+      "musicAttribution": "M. Mark Wynn"
+    },
+    "142": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Ezra Goff"
+    },
+    "145b": {
+      "textAttribution": "Samuel Pearce",
+      "musicAttribution": "J. J. Rousseau; Lowell Mason"
+    },
+    "161": {
+      "meter": "11.11.11.11.5.11",
+      "textAttribution": "David Denham",
+      "musicAttribution": "William Walker"
+    },
+    "140": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Hannah More"
+    },
+    "151": {
+      "meter": "Irregular",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Justin Morgan"
+    },
+    "179": {
+      "textAttribution": "Anonymous"
+    },
+    "177": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Philip Doddridge",
+      "musicAttribution": "W. F. Moore"
+    },
+    "134": {
+      "meter": "8.8.8.6.8.8.8.6",
+      "musicAttribution": "William Walker"
+    },
+    "123t": {
+      "meter": "11.8",
+      "textAttribution": "Benjamin Francis",
+      "musicAttribution": "E. J. King"
+    },
+    "112": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Philip Doddridge",
+      "musicAttribution": "Sarah Lancaster"
+    },
+    "104": {
+      "musicAttribution": "E. J. King"
+    },
+    "113": {
+      "meter": "8.6.8.6",
+      "textAttribution": "John Newton",
+      "musicAttribution": "E. J. King"
+    },
+    "128": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Samuel Stennet",
+      "musicAttribution": "M. Durham"
+    },
+    "108b": {
+      "musicAttribution": "Absalom Ogletree"
+    },
+    "149": {
+      "textAttribution": "H. H. Milman",
+      "musicAttribution": "J. Williams"
+    },
+    "111b": {
+      "meter": "8.8.8.8",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Edmund Dumas"
+    },
+    "160b": {
+      "meter": "8.8.8.8",
+      "textAttribution": "William Miller",
+      "musicAttribution": "E. J. King"
+    },
+    "116": {
+      "meter": "Irregular",
+      "musicAttribution": "E. J. King"
+    },
+    "180": {
+      "meter": "8.6.8.6 D",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "William Billings"
+    },
+    "191": {
+      "meter": "8.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Oliver Brownson"
+    },
+    "160t": {
+      "meter": "11.11.11.11",
+      "textAttribution": "Anonymous"
+    },
+    "145t": {
+      "textAttribution": "Robert Robinson",
+      "musicAttribution": "J. Williams; William Walker"
+    },
+    "108t": {
+      "musicAttribution": "J. P. Reese"
+    },
+    "159": {
+      "meter": "12.9.6.6.12.9",
+      "musicAttribution": "James Christopher"
+    },
+    "195": {
+      "meter": "6.6.8.6",
+      "textAttribution": "Isaac Watts",
+      "musicAttribution": "Abraham Wood"
     }
   },
   "scholarlyRecord": {},
   "sources": [],
   "relationships": [],
   "publicationStatus": "draft",
-  "internalNote": "Per-song meter, key, scripture reference, and text/tune attribution built from a real, authoritative TSV Kevin provided (1991topmatter.tsv, 454 real data rows), cross-checked thoroughly against the existing Library page index before import - several real findings along the way, all handled deliberately rather than silently. (1) Mislabeling pattern, 42 pages: the TSV labels pages like \"201b\", \"235b\" etc. as bottom-half split pages (Sort values like \"201.2\"), but no corresponding top half exists anywhere in the TSV, and the title in every one of these 42 cases matches the Library's own existing BARE page key exactly (e.g. \"201b\" in the TSV = \"Pilgrim\", matching the Library's own bare \"201\" = \"Pilgrim\") - these are the sole song on their page, not a real split, matching a known failure mode the extraction guide itself explicitly warns against. Mapped to the Library's existing bare keys rather than imported as false new split pages. (2) A real, substantial gap: pages 104-198 (103 real pages, roughly a fifth of the whole book) are completely absent from the TSV - not a labeling issue, genuinely missing data. No Level 3 enrichment exists for this range in this file; it needs a separate batch. (3) Two new pages in the TSV (\"25\" = Fire Alarm, \"24b\" = The Young Convert) aren't in the Library's own \"complete\" page index at all yet - deliberately NOT added here, since expanding an edition's own page index is a real, separate Library-level decision, not something to do silently while building Level 3 enrichment. A third TSV row (\"24t\") has no data of any kind and was skipped regardless. (4) A real, widespread encoding issue: 68 instances across Text Meter and Scripture Verse used Cyrillic look-alike characters in place of Latin ones (e.g. Cyrillic С instead of Latin C in \"C.M.\", Cyrillic Е instead of Latin E in \"Ecc.\") - a clear, mechanical, unambiguous substitution pattern (not genuine ambiguity), normalized back to standard Latin text before import. (5) A likely, unconfirmed transcription typo, NOT corrected: page 278b's (\"Traveling Pilgrim\") scripture citation reads \"Man goeth to his long sought hote\" - almost certainly meant to read \"home\", but left exactly as given rather than guessed at. (6) A real, worth-flagging discrepancy the Level 3 build itself never touches, since title stays Library-owned regardless: the TSV's own First/Second disambiguation numbers for two page pairs appear reversed from the Library's existing, page-order-consistent labeling - \"Mount Zion\" (Library: page 88b=First, page 220=Second; TSV instead pairs 88b with \"Second\" and 220 with \"First\") and \"Restoration\" (Library: page 271b=First, page 312b=Second; TSV instead pairs 271b with \"Second\" and 312b with \"First\"). The Library's own titles were not changed by this import in either case. 451 of the Library's 554 real pages now have real Level 3 enrichment; the remaining 103 (the 104-198 gap) do not yet."
+  "internalNote": "Per-song meter, key, scripture reference, and text/tune attribution built from a real, authoritative TSV Kevin provided (1991topmatter.tsv, 454 real data rows), cross-checked thoroughly against the existing Library page index before import - several real findings along the way, all handled deliberately rather than silently. (1) Mislabeling pattern, 42 pages: the TSV labels pages like \"201b\", \"235b\" etc. as bottom-half split pages (Sort values like \"201.2\"), but no corresponding top half exists anywhere in the TSV, and the title in every one of these 42 cases matches the Library's own existing BARE page key exactly (e.g. \"201b\" in the TSV = \"Pilgrim\", matching the Library's own bare \"201\" = \"Pilgrim\") - these are the sole song on their page, not a real split, matching a known failure mode the extraction guide itself explicitly warns against. Mapped to the Library's existing bare keys rather than imported as false new split pages. (2) A real, substantial gap: pages 104-198 (103 real pages, roughly a fifth of the whole book) are completely absent from the TSV - not a labeling issue, genuinely missing data. No Level 3 enrichment exists for this range in this file; it needs a separate batch. (3) Two new pages in the TSV (\"25\" = Fire Alarm, \"24b\" = The Young Convert) aren't in the Library's own \"complete\" page index at all yet - deliberately NOT added here, since expanding an edition's own page index is a real, separate Library-level decision, not something to do silently while building Level 3 enrichment. A third TSV row (\"24t\") has no data of any kind and was skipped regardless. (4) A real, widespread encoding issue: 68 instances across Text Meter and Scripture Verse used Cyrillic look-alike characters in place of Latin ones (e.g. Cyrillic С instead of Latin C in \"C.M.\", Cyrillic Е instead of Latin E in \"Ecc.\") - a clear, mechanical, unambiguous substitution pattern (not genuine ambiguity), normalized back to standard Latin text before import. (5) A likely, unconfirmed transcription typo, NOT corrected: page 278b's (\"Traveling Pilgrim\") scripture citation reads \"Man goeth to his long sought hote\" - almost certainly meant to read \"home\", but left exactly as given rather than guessed at. (6) A real, worth-flagging discrepancy the Level 3 build itself never touches, since title stays Library-owned regardless: the TSV's own First/Second disambiguation numbers for two page pairs appear reversed from the Library's existing, page-order-consistent labeling - \"Mount Zion\" (Library: page 88b=First, page 220=Second; TSV instead pairs 88b with \"Second\" and 220 with \"First\") and \"Restoration\" (Library: page 271b=First, page 312b=Second; TSV instead pairs 271b with \"Second\" and 312b with \"First\"). The Library's own titles were not changed by this import in either case. 451 of the Library's 554 real pages now have real Level 3 enrichment; the remaining 103 (the 104-198 gap) do not yet. A second batch supplemented this file from a real Hymnary.org search-results export (searchResults.csv, 554 rows), per Kevin's explicit instruction to supplement missing schema fields only, never overwrite anything already present. Verified directly before writing: zero existing field values changed. This export uses \"a\"/\"b\" suffixes for split pages rather than this project's own \"t\"/\"b\" convention - confirmed by cross-checking known titles outside any gap (e.g. its \"28a\"=Aylesbury and \"29a\"=Fairfield match this file's own existing 28t/29t exactly), so \"a\" was mapped to \"t\", \"b\" stayed \"b\". This filled the previously-open 104-198 gap completely (103 new pages, meter/textAttribution/musicAttribution only - this export has no scriptureReference data) and added 249 individual missing fields across 90 of the already-enriched pages. All 554 of the Library's real pages now have at least some Level 3 enrichment, though field completeness still varies by page since neither source covered everything (in particular, scriptureReference is still only populated for pages covered by the original TSV batches)."
 }
