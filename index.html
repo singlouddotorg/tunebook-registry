@@ -393,12 +393,24 @@
   var sortPages = EZMinutesShared.sortPages;
 
   // ---------------- badges ----------------
-  var SHAPE_SYSTEM_DIGIT_GLYPHS = { "4": "\u2779", "7": "\u277C", "0": "\u24EA" }; // \u2779 = ❹, \u277C = ❼, \u24EA = ⓪ (round-note)
+  // Kevin's own revised, complete set - a direct map keyed by the real shapeSystem
+  // string value, not a digit extracted via regex. "Mixed" and "Other" have no natural
+  // digit at all (there's no "N-shape" for either), which the old digit-extraction
+  // approach genuinely couldn't represent - this replaces it outright rather than
+  // bolting a workaround onto it. Same "negative circled" dingbat family throughout
+  // (sans-serif digits for 4/7/0, circled Latin letters for Mixed/Other) for one visually
+  // consistent set, not the old serif-digit circles mixed with something else. One
+  // shared vocabulary with the main Tunebooks app - both files keep this identical.
+  var SHAPE_SYSTEM_GLYPHS = {
+    "4-shape": "\u278D",        // ➍
+    "7-shape": "\u2790",        // ➐
+    "0-shape": "\u{1F10C}",     // 🄌 (round-note)
+    "mixed-shape": "\u{1F15C}", // 🅜
+    "other-shape": "\u{1F167}"  // 🅧
+  };
   function shapeGlyphHtml(book){
     if(!book || !book.shapeSystem) return "";
-    var match = /(\d)/.exec(book.shapeSystem);
-    if(!match) return "";
-    var glyph = SHAPE_SYSTEM_DIGIT_GLYPHS[match[1]];
+    var glyph = SHAPE_SYSTEM_GLYPHS[book.shapeSystem];
     if(!glyph) return "";
     return '<span class="shape-glyph" title="' + esc(book.shapeSystem) + '">' + glyph + '</span>';
   }
