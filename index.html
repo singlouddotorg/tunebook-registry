@@ -441,8 +441,25 @@
       // any more, since a genuine Level 1 book has no page index by definition.
       return !!(b.fullTitle || b.commonName);
     }).sort(function(a, b){
-      var ta = sortKeyForTitle(BOOKS[a].fullTitle || a);
-      var tb = sortKeyForTitle(BOOKS[b].fullTitle || b);
+      var ba = BOOKS[a], bb = BOOKS[b];
+      // Kevin's own correction: alphabetical-by-full-title is right for telling different
+      // Works apart, but wrong for ordering several Editions of the SAME Work against each
+      // other - a subtitle like "Fourth Edition" sorts on the word "Fourth", not on when
+      // that edition was actually published. Sort by the owning Work's own title first
+      // (grouping every Edition of the same Work into the right alphabetical position
+      // among other Works, regardless of each Edition's own subtitle text), then by
+      // publication year within that group when both sides actually have one. Falls back
+      // to the original full-title sort whenever year isn't available or ties - a bare
+      // Work with no year at all, or two Editions from the identical year, still get a
+      // real, stable, deterministic order rather than an arbitrary one.
+      var workTitleA = sortKeyForTitle(ba.workTitleProper || ba.fullTitle || a);
+      var workTitleB = sortKeyForTitle(bb.workTitleProper || bb.fullTitle || b);
+      if(workTitleA !== workTitleB) return workTitleA.localeCompare(workTitleB);
+      var yearA = parseInt(ba.publicationYear, 10);
+      var yearB = parseInt(bb.publicationYear, 10);
+      if(!isNaN(yearA) && !isNaN(yearB) && yearA !== yearB) return yearA - yearB;
+      var ta = sortKeyForTitle(ba.fullTitle || a);
+      var tb = sortKeyForTitle(bb.fullTitle || b);
       return ta.localeCompare(tb);
     });
   }

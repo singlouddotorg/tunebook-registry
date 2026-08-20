@@ -175,6 +175,11 @@
       if(!w) return;
       var rec = {
         fullTitle: buildFullTitle(e.titleProper || w.titleProper, e.subtitle),
+        // The owning Work's own title, independent of this Edition's own titleProper
+        // override or subtitle - lets a sort distinguish "which Work does this row
+        // belong to" from "what does this specific Edition's own full title read as",
+        // which fullTitle alone can't do once an Edition has a real subtitle.
+        workTitleProper: w.titleProper,
         subtitle: e.subtitle,
         commonName: e.commonName,
         workCode: w.workCode,
@@ -231,6 +236,14 @@
       var w = library.works[e.workId];
       var rec = {
         fullTitle: buildFullTitle(e.titleProper || (w && w.titleProper), e.subtitle),
+        // Same rationale as buildTunebookIndexFromLibrary() above: the owning Work's own
+        // title, separate from this Edition's own fullTitle (which folds in subtitle),
+        // needed to group same-Work Editions together correctly when sorting - and
+        // publicationYear, entirely missing from this projection before, needed to order
+        // them correctly once grouped. Same preferred-field-with-fallback derivation as
+        // the Level 2/3 projection above, for one real rule, not two that could drift.
+        workTitleProper: w && w.titleProper,
+        publicationYear: e.publicationYear || (/^\d{4}$/.test(e.editionIdentifierYear || "") ? e.editionIdentifierYear : (e.editionFirstPublicationDate || e.editionIdentifierYear)),
         commonName: e.commonName || (w && w.titleProper),
         workCode: (w && w.workCodeStatus === "unknown") ? null : ((w && w.workCode) || null),
         workCodeStatus: w && w.workCodeStatus,
@@ -248,6 +261,7 @@
       var w = library.works[workId];
       var rec = {
         fullTitle: buildFullTitle(w.titleProper, null),
+        workTitleProper: w.titleProper,
         commonName: w.titleProper,
         workCode: w.workCodeStatus === "unknown" ? null : (w.workCode || null),
         workCodeStatus: w.workCodeStatus,
