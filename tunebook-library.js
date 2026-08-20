@@ -8594,6 +8594,24 @@ const EZ_MINUTES_TUNEBOOK_LIBRARY = {
       "states": [],
       "publicationYear": "2012",
       "internalNote": "Bibliographic data from singloud.org/books/northern-harmony-1980/, added directly at Kevin's request. Kevin explicitly excluded three items from that page's own timeline: the 1988 Preview Tunebooklet, the 1992 [Second Printing, Second Edition?] printing, and the 199(2?) Second Edition Digital release."
+    },
+    "e_WiH1992": {
+      "editionId": "e_WiH1992",
+      "workId": "w_WiH",
+      "editionIdentifierYear": "1992",
+      "editionCode": "WiH1992",
+      "editionFirstPublicationDate": "1992",
+      "titleProper": "Wisconsin Harmony",
+      "subtitle": "Tunebooklet",
+      "commonName": "Wisconsin Harmony Tunebooklet",
+      "compiler": "James Philip Page",
+      "publicationYear": "1992",
+      "shapeSystem": "4-shape",
+      "tunebookFile": "WiH1992.json",
+      "indexStatus": "complete",
+      "ezMinutesVisibility": "search",
+      "states": [],
+      "songs": {"19": {"title": "Exultation"}, "20t": {"title": "Bangor"}, "20b": {"title": "Dance in the Sky"}, "22": {"title": "Solitude in the Grove"}, "23": {"title": "Madison"}, "24": {"title": "Forster"}, "25": {"title": "Musgrove"}, "26": {"title": "The Babe of Bethlehem"}, "27": {"title": "Star in the East"}, "28t": {"title": "When Jesus Wept"}, "28b": {"title": "Bellevue"}, "30": {"title": "Wilmington"}, "33": {"title": "Rainbow"}, "34": {"title": "New-Jordan"}, "36": {"title": "Captain Kidd"}, "38": {"title": "Solicitude"}, "39t": {"title": "Rockingham"}, "39b": {"title": "Unitia"}, "40": {"title": "Ganges"}, "41": {"title": "Wabash"}, "42": {"title": "Experience"}, "44": {"title": "Converse"}, "45": {"title": "Narrow Space"}, "46": {"title": "Cornwall"}}
     }
   }
 };
