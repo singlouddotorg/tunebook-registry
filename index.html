@@ -393,7 +393,7 @@
   var sortPages = EZMinutesShared.sortPages;
 
   // ---------------- badges ----------------
-  var SHAPE_SYSTEM_DIGIT_GLYPHS = { "4": "\u2779", "7": "\u277C" }; // \u2779 = ❹, \u277C = ❼
+  var SHAPE_SYSTEM_DIGIT_GLYPHS = { "4": "\u2779", "7": "\u277C", "0": "\u24EA" }; // \u2779 = ❹, \u277C = ❼, \u24EA = ⓪ (round-note)
   function shapeGlyphHtml(book){
     if(!book || !book.shapeSystem) return "";
     var match = /(\d)/.exec(book.shapeSystem);
