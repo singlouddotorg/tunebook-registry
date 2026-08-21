@@ -8607,7 +8607,7 @@ const EZ_MINUTES_TUNEBOOK_LIBRARY = {
       "compiler": "James Philip Page",
       "publicationYear": "1992",
       "shapeSystem": "4-shape",
-      "tunebookFile": "WiH1992.json",
+      "tunebookFile": "tunebook-files/WiH1992.json",
       "indexStatus": "complete",
       "ezMinutesVisibility": "search",
       "states": [],
