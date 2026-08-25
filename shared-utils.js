@@ -4,7 +4,7 @@
 // deliberately, since `import`/`export` modules are blocked by Chrome when a page is
 // opened directly via file://, and this whole suite's core value proposition is "double-
 // click the file, no server needed." This follows exactly the same loading pattern
-// tunebook-index.js already uses successfully. Load this file before any script that
+// tunebook-library.js already uses successfully. Load this file before any script that
 // calls into it.
 //
 // Extracted from real, live duplication found across the suite: parseCSV existed as
