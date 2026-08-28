@@ -537,7 +537,11 @@
 
   function renderBookGrid(){
     var codes = sortedBookCodes();
-    bookResultCount.textContent = codes.length + " tunebook" + (codes.length === 1 ? "" : "s");
+    var totalSongs = codes.reduce(function(sum, code){
+      return sum + Object.keys((BOOKS[code] && BOOKS[code].songs) || {}).length;
+    }, 0);
+    bookResultCount.textContent = codes.length + " tunebook" + (codes.length === 1 ? "" : "s") +
+      " \u00b7 " + totalSongs.toLocaleString() + " song" + (totalSongs === 1 ? "" : "s") + " indexed";
     if(!codes.length){
       bookGrid.innerHTML = '<div class="no-results">No tunebooks indexed yet.</div>';
       return;
@@ -551,9 +555,13 @@
     bookGrid.innerHTML = [3, 2, 1].map(function(level){
       var groupCodes = groups[level];
       if(!groupCodes.length) return "";
+      var groupSongs = groupCodes.reduce(function(sum, code){
+        return sum + Object.keys((BOOKS[code] && BOOKS[code].songs) || {}).length;
+      }, 0);
+      var songsLabel = ' \u00b7 ' + groupSongs.toLocaleString() + ' song' + (groupSongs === 1 ? '' : 's') + ' indexed';
       return '<div class="book-group">' +
         '<div class="group-heading" id="section-level-' + level + '">' + esc(LEVEL_GROUP_LABELS[level]) +
-          ' <span class="result-count group-heading-count">' + groupCodes.length + ' tunebook' + (groupCodes.length === 1 ? '' : 's') + '</span>' +
+          ' <span class="result-count group-heading-count">' + groupCodes.length + ' tunebook' + (groupCodes.length === 1 ? '' : 's') + esc(songsLabel) + '</span>' +
         '</div>' +
         '<div class="book-list">' + groupCodes.map(bookRowHtml).join("") + '</div>' +
       '</div>';
