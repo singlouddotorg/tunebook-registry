@@ -200,6 +200,14 @@
         badgeColor: e.badgeColor,
         badgeTextColor: e.badgeTextColor,
         isSacredHarpDefault: e.isSacredHarpDefault,
+        // v122: real, existing field on the Library data (Kevin's own "common" vs
+        // "search" split, so Minutes can show a short, curated list by default and let
+        // someone search for anything less frequently used) - genuinely missing from
+        // this projection until now, meaning Minutes had no way to see it even for the
+        // handful of editions already tagged with it. Confirmed live before fixing:
+        // EZ_MINUTES_TUNEBOOKS.books[code].ezMinutesVisibility was undefined for every
+        // single book, common or not.
+        ezMinutesVisibility: e.ezMinutesVisibility,
         addedIn: e.addedIn,
         songs: e.songs || {}
       };

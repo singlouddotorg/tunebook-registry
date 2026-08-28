@@ -1,0 +1,769 @@
+{
+  "editionId": "e_KtH1818",
+  "workId": "w_KtH",
+  "editionCode": "KtH1818",
+  "editionIdentifierYear": "1818",
+  "schemaVersion": "1",
+  "book": {
+    "titleProper": "The Kentucky Harmonist",
+    "publicationYear": "1818"
+  },
+  "states": [],
+  "scholarlyRecord": null,
+  "sources": [],
+  "relationships": [],
+  "publicationStatus": null,
+  "internalNote": "Built from Kevin's own per-song extraction CSV (kentucky_harmonist_1818_tunes.csv), 138 songs, pages 18-125 (pages 1-17 are this book's own front matter - rules and principles of composition, per the title page - with no song data to extract). No index cross-check has been done against this book's own printed index yet, unlike the multi-round verification done for some other Level 3 files this session - this is a first-pass build from the extraction CSV alone.",
+  "songs": {
+    "18t": {
+      "title": "Amanda",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Morgan"
+      }
+    },
+    "18b": {
+      "title": "Allsaints",
+      "meter": "L.M."
+    },
+    "19t": {
+      "title": "Amherst",
+      "meter": "P.M.",
+      "textAttribution": {
+        "credit": "Tate & Brady"
+      },
+      "musicAttribution": {
+        "credit": "W. Billings"
+      }
+    },
+    "19b": {
+      "title": "Aylesbury",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Cheetham"
+      }
+    },
+    "20": {
+      "title": "Archdale",
+      "meter": "C.M."
+    },
+    "21t": {
+      "title": "Abridge",
+      "meter": "C.M."
+    },
+    "21b": {
+      "title": "Brookfield",
+      "meter": "L.M."
+    },
+    "22t": {
+      "title": "Bunker Hill",
+      "meter": "11 & 5",
+      "textAttribution": {
+        "credit": "N. Niles"
+      }
+    },
+    "22b": {
+      "title": "Buckingham",
+      "meter": "6 M.",
+      "musicAttribution": {
+        "credit": "Wm. Dale"
+      }
+    },
+    "23t": {
+      "title": "Bourbon",
+      "meter": "L.M."
+    },
+    "23b": {
+      "title": "Cambridge",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Dr. Randall"
+      }
+    },
+    "24t": {
+      "title": "Cookham",
+      "meter": "4s"
+    },
+    "24b": {
+      "title": "Canterbury",
+      "musicAttribution": {
+        "credit": "Blanks"
+      }
+    },
+    "25t": {
+      "title": "Carmel",
+      "meter": "L.M."
+    },
+    "25b": {
+      "title": "Conquering Soldier",
+      "meter": "P.M."
+    },
+    "26t": {
+      "title": "Chester New",
+      "meter": "L.M."
+    },
+    "26b": {
+      "title": "China",
+      "meter": "C.M."
+    },
+    "27t": {
+      "title": "Castle Street",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Madan"
+      }
+    },
+    "27b": {
+      "title": "Consolation",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "28t": {
+      "title": "Communion",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Weal"
+      }
+    },
+    "28b": {
+      "title": "Coleshill",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Knby"
+      }
+    },
+    "29t": {
+      "title": "Christmas Hymn"
+    },
+    "29b": {
+      "title": "Dalston",
+      "meter": "P.M. 6s, 8s",
+      "musicAttribution": {
+        "credit": "Williams"
+      }
+    },
+    "30t": {
+      "title": "Devises",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "J. Tucker"
+      }
+    },
+    "30b": {
+      "title": "Dunstan",
+      "meter": "L.M."
+    },
+    "31t": {
+      "title": "Dumah",
+      "meter": "C.M."
+    },
+    "31b": {
+      "title": "Damascus",
+      "meter": "C.M."
+    },
+    "32": {
+      "title": "Enfield",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Chandler"
+      }
+    },
+    "33t": {
+      "title": "Fairfield",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Hitchcock"
+      }
+    },
+    "33b": {
+      "title": "Few Happy Matches",
+      "meter": "P.M. or 8, 6"
+    },
+    "34t": {
+      "title": "Fiducia",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "J. Robertson"
+      }
+    },
+    "34b": {
+      "title": "Funeral Thought",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "J. Smith"
+      }
+    },
+    "35t": {
+      "title": "Georgia",
+      "meter": "C.M."
+    },
+    "35b": {
+      "title": "Greenfields",
+      "meter": "P.M."
+    },
+    "36t": {
+      "title": "Hotham"
+    },
+    "36b": {
+      "title": "Heavenly Spark",
+      "meter": "P.M."
+    },
+    "37t": {
+      "title": "Hallelujah",
+      "meter": "5 and 7"
+    },
+    "37b": {
+      "title": "Hermit"
+    },
+    "38t": {
+      "title": "Irish",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Williams"
+      }
+    },
+    "38b": {
+      "title": "Invitation",
+      "meter": "L.M."
+    },
+    "39t": {
+      "title": "Kingsbridge",
+      "meter": "L.M."
+    },
+    "39b": {
+      "title": "Kingswood",
+      "meter": "7s"
+    },
+    "40": {
+      "title": "Lamentation",
+      "meter": "P.M."
+    },
+    "41t": {
+      "title": "Liberty Hall",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "41b": {
+      "title": "Litchfield",
+      "meter": "L.M."
+    },
+    "42t": {
+      "title": "Macedonia",
+      "meter": "C.M."
+    },
+    "42b": {
+      "title": "Mear",
+      "meter": "C.M."
+    },
+    "43": {
+      "title": "Mountain",
+      "meter": "C.M."
+    },
+    "44t": {
+      "title": "Morality"
+    },
+    "44b": {
+      "title": "Monmouth",
+      "meter": "8, 7, 8, 7",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "45t": {
+      "title": "Mount Vernon",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Johnson"
+      }
+    },
+    "45b": {
+      "title": "New Canaan",
+      "meter": "C.M."
+    },
+    "46t": {
+      "title": "Ninety-Third",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "L. Chapin"
+      }
+    },
+    "46b": {
+      "title": "New Salem",
+      "meter": "P.M."
+    },
+    "47t": {
+      "title": "Old Hundred",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Martin Luther or Dr. Dowland"
+      }
+    },
+    "47b": {
+      "title": "Paris",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "48t": {
+      "title": "Peckham",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "J. Smith"
+      }
+    },
+    "48b": {
+      "title": "Portugal",
+      "meter": "L.M."
+    },
+    "49": {
+      "title": "Pleyel’s Hymn Second",
+      "meter": "L.M."
+    },
+    "50t": {
+      "title": "Poland",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Swan"
+      }
+    },
+    "50b": {
+      "title": "Quercy",
+      "meter": "L.M."
+    },
+    "51t": {
+      "title": "Rochester",
+      "meter": "C.M."
+    },
+    "51b": {
+      "title": "Rockbridge",
+      "meter": "L.M."
+    },
+    "52t": {
+      "title": "Rockingham",
+      "meter": "C.M."
+    },
+    "52b": {
+      "title": "Silver Street",
+      "meter": "S.M."
+    },
+    "53t": {
+      "title": "Suffield",
+      "meter": "C.M."
+    },
+    "53b": {
+      "title": "Sophronia",
+      "meter": "P.M. or 5 and 10"
+    },
+    "54": {
+      "title": "St. Lawrence"
+    },
+    "55": {
+      "title": "Springfield",
+      "meter": "P.M. 7, 8"
+    },
+    "56t": {
+      "title": "Salvation",
+      "meter": "C.M."
+    },
+    "56b": {
+      "title": "Silver Spring",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Morgan"
+      }
+    },
+    "57t": {
+      "title": "St. Thomas",
+      "meter": "S.M."
+    },
+    "57b": {
+      "title": "Sicily",
+      "meter": "C.M."
+    },
+    "58t": {
+      "title": "Triumph",
+      "meter": "5, 5, 8, 5, 8, 5, 6",
+      "musicAttribution": {
+        "credit": "Hamilton"
+      }
+    },
+    "58b": {
+      "title": "The Indian Philosopher",
+      "meter": "P.M."
+    },
+    "59t": {
+      "title": "Thirtieth",
+      "meter": "S.M."
+    },
+    "59b": {
+      "title": "Twenty-Fourth",
+      "meter": "C.M."
+    },
+    "60": {
+      "title": "Tilden",
+      "meter": "L.M."
+    },
+    "61t": {
+      "title": "Tribulation",
+      "meter": "C.M."
+    },
+    "61b": {
+      "title": "Unitia",
+      "meter": "P.M. or 5s & 11s",
+      "musicAttribution": {
+        "credit": "Chapin"
+      }
+    },
+    "62t": {
+      "title": "Vernon",
+      "meter": "L.M."
+    },
+    "62b": {
+      "title": "Warren",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Lane"
+      }
+    },
+    "63t": {
+      "title": "Winchester",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Williams"
+      }
+    },
+    "63b": {
+      "title": "Winter",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "D. Reed"
+      }
+    },
+    "64t": {
+      "title": "Windham",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "D. Reed"
+      }
+    },
+    "64b": {
+      "title": "Wells",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Holdray"
+      }
+    },
+    "67t": {
+      "title": "America",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Wetmore"
+      }
+    },
+    "67b": {
+      "title": "Amity",
+      "meter": "P.M. or 6s & 8s",
+      "musicAttribution": {
+        "credit": "Reed"
+      }
+    },
+    "68": {
+      "title": "Allsaints New",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Hall"
+      }
+    },
+    "69": {
+      "title": "Bridgewater",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Edson"
+      }
+    },
+    "70": {
+      "title": "Bristol",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Swan"
+      }
+    },
+    "71t": {
+      "title": "Babylonian Captivity",
+      "meter": "P.M.",
+      "musicAttribution": {
+        "credit": "Dare"
+      }
+    },
+    "71b": {
+      "title": "Bridgetown",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Dare"
+      }
+    },
+    "72": {
+      "title": "Ballstown",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Shumway"
+      }
+    },
+    "73t": {
+      "title": "Canaan",
+      "meter": "C.M."
+    },
+    "73b": {
+      "title": "Concord",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Holden"
+      }
+    },
+    "74": {
+      "title": "Content",
+      "meter": "S.M."
+    },
+    "75": {
+      "title": "David’s Lamentation"
+    },
+    "76": {
+      "title": "Delight",
+      "meter": "P.M. 6s, 4s",
+      "musicAttribution": {
+        "credit": "Coan"
+      }
+    },
+    "77t": {
+      "title": "Dauphin",
+      "meter": "S.M."
+    },
+    "77b": {
+      "title": "Evening Shade",
+      "meter": "S.M."
+    },
+    "78": {
+      "title": "Eastford",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "French"
+      }
+    },
+    "79": {
+      "title": "Florida",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Wetmore"
+      }
+    },
+    "80": {
+      "title": "Exhortation",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Doolittle"
+      }
+    },
+    "81": {
+      "title": "Greenfield",
+      "meter": "P.M. 6 lines 8",
+      "musicAttribution": {
+        "credit": "Edson"
+      }
+    },
+    "82": {
+      "title": "Greenwich",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "D. Reed"
+      }
+    },
+    "83": {
+      "title": "Huntington",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Morgan"
+      }
+    },
+    "84": {
+      "title": "Jordan",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "W. Billings"
+      }
+    },
+    "85t": {
+      "title": "Lenox",
+      "meter": "P.M. 6s, 7s",
+      "musicAttribution": {
+        "credit": "Edson"
+      }
+    },
+    "85b": {
+      "title": "Liberty",
+      "meter": "C.M."
+    },
+    "86": {
+      "title": "Majesty",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "87": {
+      "title": "Montgomery",
+      "meter": "C.M."
+    },
+    "88": {
+      "title": "Mortality",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Griswold"
+      }
+    },
+    "89t": {
+      "title": "Melody",
+      "meter": "C.M."
+    },
+    "89b": {
+      "title": "North Salem",
+      "meter": "C.M."
+    },
+    "90": {
+      "title": "New Jerusalem",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Ingalls"
+      }
+    },
+    "91": {
+      "title": "Newburgh",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Munson"
+      }
+    },
+    "92t": {
+      "title": "Norwich",
+      "meter": "S.M.",
+      "musicAttribution": {
+        "credit": "Kibbard"
+      }
+    },
+    "92b": {
+      "title": "Ninety-Fifth",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Colton"
+      }
+    },
+    "93t": {
+      "title": "New Durham",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Austin"
+      }
+    },
+    "93b": {
+      "title": "Northfield",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Ingalls"
+      }
+    },
+    "94": {
+      "title": "Ocean",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Swan"
+      }
+    },
+    "95": {
+      "title": "Ode on Science"
+    },
+    "97": {
+      "title": "Portuguese Hymn",
+      "meter": "P.M."
+    },
+    "98": {
+      "title": "Repentance",
+      "meter": "C.M."
+    },
+    "99t": {
+      "title": "Russia",
+      "meter": "L.M."
+    },
+    "99b": {
+      "title": "Sutton",
+      "meter": "C.M."
+    },
+    "100": {
+      "title": "Southwell",
+      "meter": "P.M. or 8, 6",
+      "musicAttribution": {
+        "credit": "Carpenter"
+      }
+    },
+    "102": {
+      "title": "Sherburn",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "D. Reed"
+      }
+    },
+    "103": {
+      "title": "Symphony",
+      "meter": "P.M.",
+      "musicAttribution": {
+        "credit": "Morgan"
+      }
+    },
+    "104t": {
+      "title": "Williamstown",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Brown"
+      }
+    },
+    "104b": {
+      "title": "Whitestown",
+      "meter": "C.M.",
+      "musicAttribution": {
+        "credit": "Williams"
+      }
+    },
+    "105": {
+      "title": "Denmark",
+      "meter": "L.M.",
+      "musicAttribution": {
+        "credit": "Dr. Madan"
+      }
+    },
+    "108": {
+      "title": "Easter Anthem",
+      "musicAttribution": {
+        "credit": "Billings"
+      }
+    },
+    "111": {
+      "title": "Judgment Anthem",
+      "musicAttribution": {
+        "credit": "Morgan"
+      }
+    },
+    "119": {
+      "title": "Kedron"
+    },
+    "121": {
+      "title": "Newyork Anthem"
+    },
+    "125": {
+      "title": "Washington",
+      "meter": "P.M."
+    }
+  }
+}
