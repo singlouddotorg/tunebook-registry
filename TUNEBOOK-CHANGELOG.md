@@ -413,6 +413,59 @@ before use.
 
 ---
 
+## e_EaI1802, e_SHB1844, e_UCH1839, and e_WRS1820 added — four books processed in one batch
+
+**`EaI1802` — The Easy Instructor**, second-generation 4-shape notation pioneer by William
+Little and William Smith, added under the existing bare Work `w_EaI`: 105 songs, pages
+17–99. Caught a real 2-row discrepancy against the extraction's own record before building
+anything (it claimed 107 rows; the actual CSV had 105) — both turned out to be
+continuation fragments, not missing tunes, confirmed directly against Kevin's own page
+photos: page 30 is bare "Russia" (Calvary's own continuation from 29.3, which also prints
+a "Lyric Poems" label, now noted on Calvary's own record rather than misfiled as a text
+attribution or invented as a separate tune), and page 68 is bare "Sunday" (Still-Water's
+own continuation from 67b). `publicationYear` is recorded as a confirmed fact (1802), per
+Kevin's own direct correction after an initial build mistakenly left it unset.
+
+**`SHB1844` — The Sacred Harp**, the original 1844 first edition by B. F. White and E. J.
+King, added under the existing bare Work `w_SHB`: 242 songs, pages 27–260. A clean
+extraction from the start — row count matched exactly, zero structural issues. Full
+imprint recorded (T. K. & P. G. Collins, Philadelphia, for the proprietors); the one real
+editorial note preserved from the extraction is the index/tune-page title mismatch at page
+240 ("Christian's Song" vs. the tune-page's own "Christian Song" — the tune-page heading
+governs).
+
+**`UCH1839` — Die Union Choral Harmonie / The Union Choral Harmony**, Henry C. Eyer's
+bilingual German/English tenth edition, added under the existing bare Work `w_UCH`: 271
+songs, pages 1–192. The uploaded extraction-state snapshot itself claimed the book
+incomplete at page 170 (`bookComplete: false`); the actual supplied CSV went to page 192
+with 271 songs, confirmed by Kevin directly as the book's true, complete state before this
+was built — the snapshot was simply stale, not a sign of missing content. Real printed
+numbering irregularities (duplicate catalog numbers, a skipped number, out-of-sequence
+numbers) are preserved as printed, documented in the Level 3 file's own internal note
+rather than corrected. No publisher statement is printed anywhere in the book, only the
+stereotyper (John Fagan, Philadelphia); `publisher` stays unset.
+
+**`WRS1820` — Wyeth's Repository of Sacred Music, Part Second (2d. Edition)**, John
+Wyeth's own compilation, printed by him in Harrisburgh, Pennsylvania: 149 songs, pages
+18–131. Required a genuine cataloging decision, caught and resolved with Kevin directly
+rather than guessed: two existing Work records both looked plausible (`w_WyR`, matching
+the compiler and title but representing Part *First*, 1810; `w_WR2`, matching "Part II" in
+name but credited to "Lowens, Irving, ed." rather than Wyeth himself, apparently a modern
+scholarly catalog entry rather than the original compilation). Neither was correct —
+`w_WRS` is a new Work record, created directly with Kevin during this build, specifically
+for this original, Wyeth-compiled Part Second lineage, distinct from both. The extraction's
+own index audit found and preserved a real discrepancy: the book's printed title index
+lists "Minister's Farewell" on page 112, but the actual page contains "Providence" (112t)
+and "Hallelujah" (112b), with "Providence" omitted from the index entirely — the tune-page
+evidence was kept over the index's own claim.
+
+All four verified against the real Tunebook Editor's canonical validator (zero issues) and
+cross-checked against several of their own extraction's specific batch notes (visual page
+ordering, out-of-sequence catalog numbers, split-page contents) directly against the built
+data, not just structurally, before use.
+
+---
+
 
 **As of Workstream B (Master Tunebook List, draft v1), this table is superseded by `master-tunebook-list.js`** — the same ten books below now exist as real, structured Level 2 records there (per `MASTER-TUNEBOOK-LIST-SCHEMA.md`), rather than living only as changelog prose. This table is kept here for historical reference and because it's still the easier place to *read* the list. (`master-tunebook-list.js` itself was later superseded in turn by the unified `tunebook-library.js` — see the Tunebook Library and File Architecture work below — and has since been removed from the suite entirely.)
 
