@@ -17,6 +17,19 @@
 (function(global){
   "use strict";
 
+  // ---------------- Version ----------------
+  // This is THIS FILE's version, not any application's.
+  //
+  // It briefly held the whole suite's version number, which was the right answer while one
+  // repository held every app: the v156 review had found instructions.html six revisions
+  // behind the running app, and a single literal that every page reads at runtime fixed it.
+  // Splitting the suite made that answer wrong. Tunebooks carries its own copy of this file
+  // and would have been shipping Minutes' version number inside it. Each app versions
+  // itself now - see minutes-version.js and TUNEBOOK_EDITOR_VERSION - and what belongs here
+  // is only the identity of these shared utilities, so an app can report which vintage of
+  // them it is carrying.
+  var SHARED_UTILS_VERSION = "1.1.0";
+
   // ---------------- CSV parsing ----------------
   // Reconciles the three prior copies' behavior: capture.html and setup.html stripped a
   // leading BOM and skipped bare \r; compile.html instead pre-normalized \r\n/\r to \n and
@@ -297,6 +310,7 @@
   }
 
   var EZMinutesShared = {
+    SHARED_UTILS_VERSION: SHARED_UTILS_VERSION,
     version: "1",
     parseCSV: parseCSV,
     csvCell: csvCell,
