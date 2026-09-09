@@ -466,6 +466,41 @@ data, not just structurally, before use.
 
 ---
 
+## e_STH1913 upgraded to Level 3, and SHM2025/SHM1991 backfilled from fasola.org
+
+**`STH1913` — Sacred Tunes and Hymns (J. S. James, 1913)** upgraded from Level 2 to a real
+Level 3 Edition: 130 songs, built from a hymnary.org/hymnal/STH1913 CSV export Kevin
+supplied, cross-checked field-for-field against the existing Level 2 page/title index and
+matching exactly across all 130 entries. Carries first line, and text/music attribution
+where the source has it (30 of 130 entries have no text attribution, 11 have no music
+attribution — genuine gaps in the source, not omissions). Numbered by hymn number, not
+page, matching hymnary.org's own convention; the gaps in the numbering are real and
+confirmed across two independent sources, not an extraction artifact. This source carries
+no meter, key, or scripture-reference data for any entry — a second hymnary.org export
+supplied later was checked field-for-field against the built file and confirmed identical,
+so this remains a real, unfilled gap rather than an oversight. One entry (#129, tune
+"Detriot") is transcribed exactly as both sources give it; the tune's own identifier
+confirms it's the well-known tune "Detroit," almost certainly an original-print misspelling
+rather than a transcription error, so it was kept as printed rather than silently corrected.
+
+**`SHM2025` and `SHM1991`** (both already Level 3) had their `firstLine` gaps closed
+completely using fasola.org's First Lines index for each edition — 590/590 and 554/554
+respectively, cross-checked against each edition's own page/title index with zero
+unmatched entries. `SHM1991` additionally had 19 of 66 missing `textAttribution` values and
+30 of 42 missing `meter` values filled from fasola.org's Poets and Meters index views (one
+candidate deliberately left unfilled — page 197 — because fasola's own index lists two
+genuinely different sources for it, not a spelling variant); its 19 missing
+`musicAttribution` values were checked against fasola's Composers index and found
+uncovered there too, meaning they're very likely genuinely uncredited in the print, not a
+gap this source can close. `SHM2025` had 18 of its 21 missing `meter` values filled the
+same way, cross-validated against `SHM1991`'s own already-verified data for the same
+tunes; three (Claremont, Cuba, The Great Day) were left unfilled because fasola's 2025
+index directly contradicts concrete, already-confirmed meter values for those same tunes
+in `SHM1991`. Full reasoning for every fill and every deliberate gap is recorded in each
+file's own `internalNote`.
+
+---
+
 
 **As of Workstream B (Master Tunebook List, draft v1), this table is superseded by `master-tunebook-list.js`** — the same ten books below now exist as real, structured Level 2 records there (per `MASTER-TUNEBOOK-LIST-SCHEMA.md`), rather than living only as changelog prose. This table is kept here for historical reference and because it's still the easier place to *read* the list. (`master-tunebook-list.js` itself was later superseded in turn by the unified `tunebook-library.js` — see the Tunebook Library and File Architecture work below — and has since been removed from the suite entirely.)
 
