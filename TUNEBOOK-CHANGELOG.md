@@ -501,6 +501,37 @@ file's own `internalNote`.
 
 ---
 
+## e_MHC2026 added — The Maine Harmonic Companion, a real Level 2 edition
+
+**`MHC2026` — The Maine Harmonic Companion** (Maine Association of Shape-Note Singers,
+printed by Musica Americana Arcana, Readfield, ME, 2026), added under a new Work `w_MHC` —
+a brand-new 2026 compilation, so there was no prior SingLoud or SHMHA code to carry over.
+Built entirely from the book's own printed General Index and First Line Index, cross-checked
+against each other, before any tune-page photographs were available — a real Level 2
+(page/title) index, not a placeholder. Covers all 226 physical pages: 185 single-tune pages,
+20 split pages (40 titles), and 21 pages with no entry in either printed index (presumed
+blank or divider pages) — the 21 are deliberately left out of `songs{}` entirely rather than
+given an empty title, the same way this Library already handles a confirmed non-resolving
+page elsewhere (`GeH2012`'s page 24).
+
+Cross-checking the two printed indexes against each other surfaced a real 7-item errata list
+in the book's own indexes — two page-number errors, four omitted tunes (one found only on a
+second, more thorough pass: Lewiston, p.85), and one typesetting error — and confirmed three
+same/near-same-titled pairs as genuinely distinct tunes rather than misspellings, kept
+distinct here: Machias (208) / Mechias (222), Readfield (43) / Reedfield (213), and Hallowell
+(three separate pages, each a different hymn text) / Hollowall (175). "Star in the East"
+(pages 12/13) is two distinct tunes sharing one title, disambiguated as (First)/(Second) per
+this Library's own convention. 26 titles printed in the indexes in sort order ("X, The") were
+normalized to natural reading order ("The X") to match how the rest of this Library already
+represents such titles. Several titles carry a second phrase after a slash (e.g. "Farmington
+/ Black heavy thoughts") — kept exactly as both indexes print them, rather than split or
+guessed at.
+
+No tune-page data (meter, key, attribution, etc.) exists yet — that requires real page
+photographs, not yet supplied, and would be a separate Level 3 build.
+
+---
+
 
 **As of Workstream B (Master Tunebook List, draft v1), this table is superseded by `master-tunebook-list.js`** — the same ten books below now exist as real, structured Level 2 records there (per `MASTER-TUNEBOOK-LIST-SCHEMA.md`), rather than living only as changelog prose. This table is kept here for historical reference and because it's still the easier place to *read* the list. (`master-tunebook-list.js` itself was later superseded in turn by the unified `tunebook-library.js` — see the Tunebook Library and File Architecture work below — and has since been removed from the suite entirely.)
 
